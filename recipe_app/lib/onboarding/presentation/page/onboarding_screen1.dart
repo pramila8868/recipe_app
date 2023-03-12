@@ -130,18 +130,21 @@ class _OnBoarding1State extends State<OnBoarding1> {
                             ...List.generate(onboarding.length, (index) {
                               return Padding(
                                 padding: const EdgeInsets.all(6.66),
-                                child: Container(
-                                  height: 5.h,
-                                  //  MediaQuery.of(context).size.height * 0.01,
-                                  width: 37.56.w,
-                                  // MediaQuery.of(context).size.width * 0.124.w,
-                                  // margin: EdgeInsets.only(left: 70, right: 70),
-                                  decoration: BoxDecoration(
-                                    color: state.activePageIndex == index
-                                        ? Colors.black
-                                        : Colors.grey,
-                                    //   state == index ? Colors.black : Colors.grey,
-                                    shape: BoxShape.rectangle,
+                                child: InkWell(
+                                  onTap: () {},
+                                  child: Container(
+                                    height: 5.h,
+                                    //  MediaQuery.of(context).size.height * 0.01,
+                                    width: 37.56.w,
+                                    // MediaQuery.of(context).size.width * 0.124.w,
+                                    // margin: EdgeInsets.only(left: 70, right: 70),
+                                    decoration: BoxDecoration(
+                                      color: state.activePageIndex == index
+                                          ? Colors.black
+                                          : Colors.grey,
+                                      //   state == index ? Colors.black : Colors.grey,
+                                      shape: BoxShape.rectangle,
+                                    ),
                                   ),
                                 ),
                               );
