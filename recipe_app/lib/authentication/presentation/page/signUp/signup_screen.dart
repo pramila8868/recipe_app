@@ -9,6 +9,7 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/authentication/presentation/page/loginScreen/loginscreen.dart';
+import 'package:recipe_app/data/checkbox/cubit/checkbox_cubit.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -346,16 +347,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         var password = _passwordcontroller.text;
                         var repassword = _repasswordcontroller.text;
                         var invitation = _invitationCodeController.text;
-                        _formKey.currentState!.validate()
-                            ? context.read<SignupCubit>().PostUser(
-                                  _namecontroller.text,
-                                  _phnumbercontroller.text,
-                                  email,
-                                  password,
-                                  // repassword,
-                                  invitation = "",
-                                )
-                            : CustomButton(text: "Sign up");
+                        context.read<CheckboxCubit>().state
+                            ? _formKey.currentState!.validate()
+                                ? context.read<SignupCubit>().PostUser(
+                                      _namecontroller.text,
+                                      _phnumbercontroller.text,
+                                      email,
+                                      password,
+                                      // repassword,
+                                      invitation = "",
+                                    )
+                                : CustomButton(text: "Sign up")
+                            : null;
                       },
                     );
                   } else if (state is SignupLoading) {
