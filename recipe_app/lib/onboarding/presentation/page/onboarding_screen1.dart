@@ -131,7 +131,9 @@ class _OnBoarding1State extends State<OnBoarding1> {
                               return Padding(
                                 padding: const EdgeInsets.all(6.66),
                                 child: InkWell(
-                                  onTap: () {},
+                                  onTap: () {
+                                    pageController.jumpToPage(index);
+                                  },
                                   child: Container(
                                     height: 5.h,
                                     //  MediaQuery.of(context).size.height * 0.01,

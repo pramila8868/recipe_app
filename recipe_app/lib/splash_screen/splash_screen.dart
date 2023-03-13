@@ -11,8 +11,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-      
+      body: SafeArea(
         child: BlocListener<SplashCubit, SplashState>(
           listener: (context, state) {
             if (state == SplashState.loaded) {
