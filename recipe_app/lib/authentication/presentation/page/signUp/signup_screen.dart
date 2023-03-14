@@ -106,7 +106,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                   obSecureText: false,
                   keyBoard: TextInputType.name,
-                  focusNode: _focusNode,
+                  //focusNode: _focusNode,
+                  autoNode: true,
                 ),
                 SizedBox(
                   height: 20.h,
@@ -138,7 +139,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     return null;
                   },
                   obSecureText: false, keyBoard: TextInputType.phone,
-                  focusNode: _focusNode,
+                  //focusNode: _focusNode,
+                  autoNode: true,
                   // custvalidator: (value) {
                   //   if (value == null || value.isEmpty) {
                   //     return 'This field is required';
@@ -186,7 +188,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                   obSecureText: false,
                   keyBoard: TextInputType.emailAddress,
-                  focusNode: _focusNode,
+                  //focusNode: _focusNode,
+                  autoNode: true,
                 ),
                 SizedBox(
                   height: 20.h,
@@ -234,6 +237,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     return null;
                   },
                   keyBoard: TextInputType.text, focusNode: _focusNode,
+                  autoNode: true,
                 ),
                 SizedBox(
                   height: 20.h,
@@ -277,7 +281,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                   obSecureText: _isObscure,
                   keyBoard: TextInputType.text,
-                  focusNode: _focusNode,
+                  //focusNode: _focusNode,
+                  autoNode: true,
                 ),
                 // SizedBox(
                 //   height: 20.h,
@@ -306,15 +311,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     print(state.message);
 
                     Flushbar(
+                      maxWidth: 344,
+                      padding: const EdgeInsets.only(top: 13, bottom: 13),
+                      borderRadius: BorderRadius.circular(8),
                       flushbarPosition: FlushbarPosition.TOP,
                       reverseAnimationCurve: Curves.decelerate,
-                      backgroundColor: btnColor,
-                      title: "Error",
-                      titleColor: Colors.black,
-                      titleSize: 24,
-                      message: state.message,
+                      backgroundColor: flushColor,
 
-                      duration: Duration(seconds: 6),
+                      icon: const Icon(Icons.message_rounded),
+                      //title: "Error",
+                      //titleColor: Colors.black,
+                      // titleSize: 24,
+                      message: state.message,
+                      messageColor: Colors.white,
+                      messageSize: 14,
+
+                      duration: const Duration(seconds: 6),
                       //  title:"Error",
                     ).show(context);
                     print("message");
@@ -337,18 +349,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   // if(required.)
                 }, builder: (context, state) {
                   if (state is SignupInitial) {
-                    return InkWell(
-                      child: CustomButton(
-                        text: 'Sign Up',
-                      ),
-                      onTap: () {
-                        var name = _namecontroller.text;
-                        var email = _emailcontroller.text;
-                        var password = _passwordcontroller.text;
-                        var repassword = _repasswordcontroller.text;
-                        var invitation = _invitationCodeController.text;
-                        context.read<CheckboxCubit>().state
-                            ? _formKey.currentState!.validate()
+                    return BlocBuilder<CheckboxCubit, bool>(
+                      builder: (context, checked) {
+                        return InkWell(
+                          child: CustomButton(
+                            text: 'Sign Up',
+                          ),
+                          onTap: () {
+                            var name = _namecontroller.text;
+                            var email = _emailcontroller.text;
+                            var password = _passwordcontroller.text;
+                            var repassword = _repasswordcontroller.text;
+                            var invitation = _invitationCodeController.text;
+                            //  context
+                            //.read<CheckboxCubit>()
+                            //   .state //updateCheckbox;//state
+                            //?
+                            _formKey.currentState!.validate()
                                 ? context.read<SignupCubit>().PostUser(
                                       _namecontroller.text,
                                       _phnumbercontroller.text,
@@ -357,8 +374,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       // repassword,
                                       invitation = "",
                                     )
-                                : CustomButton(text: "Sign up")
-                            : null;
+                                : CustomButton(text: "Sign up");
+                          },
+                        );
                       },
                     );
                   } else if (state is SignupLoading) {

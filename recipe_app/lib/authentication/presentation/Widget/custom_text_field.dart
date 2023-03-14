@@ -6,8 +6,10 @@ import 'constant.dart';
 //w=344
 //h:48
 //padding:16
+
 class CustomTextField extends StatelessWidget {
-  FocusNode focusNode;
+  bool autoNode;
+  FocusNode? focusNode;
   TextInputType keyBoard;
   IconButton? icon1;
   bool obSecureText;
@@ -19,7 +21,8 @@ class CustomTextField extends StatelessWidget {
   String label;
   CustomTextField(
       {super.key,
-      required this.focusNode,
+      required this.autoNode,
+      this.focusNode,
       required this.keyBoard,
       required this.obSecureText,
       this.icon1,
@@ -42,6 +45,7 @@ class CustomTextField extends StatelessWidget {
         //   child:
 
         TextFormField(
+      autofocus: autoNode,
       focusNode: focusNode,
       keyboardType: keyBoard,
       //    keyboardType: ,
@@ -59,7 +63,7 @@ class CustomTextField extends StatelessWidget {
       cursorColor: Colors.black,
       cursorHeight: 20,
       decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(12),
+          // contentPadding: const EdgeInsets.all(12),
           floatingLabelBehavior: FloatingLabelBehavior.never,
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
@@ -76,12 +80,15 @@ class CustomTextField extends StatelessWidget {
               borderSide: BorderSide(
                 color: textColor,
               )),
-          label: Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: textColor,
+          label: Padding(
+            padding: const EdgeInsets.only(top: 19, left: 20, bottom: 18),
+            child: Text(
+              label,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                color: textColor,
+              ),
             ),
           ),
           suffixIcon: icon1

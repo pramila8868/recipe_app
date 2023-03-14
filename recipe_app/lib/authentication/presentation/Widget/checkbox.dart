@@ -5,6 +5,7 @@ import 'package:recipe_app/authentication/presentation/Widget/constant.dart';
 import 'package:recipe_app/data/checkbox/cubit/checkbox_cubit.dart';
 
 class CheckboxCustom extends StatelessWidget {
+  
   const CheckboxCustom({super.key});
 
   @override
@@ -14,11 +15,13 @@ class CheckboxCustom extends StatelessWidget {
         return Checkbox(
           value: state,
           onChanged: (value) {
-            context.read<CheckboxCubit>().updateCheckbox();
+            BlocProvider.of<CheckboxCubit>(context).updateCheckbox();
+            // context.read<CheckboxCubit>().updateCheckbox();
           },
           activeColor: btnColor,
           side: BorderSide(color: text1Color),
         );
+        
       },
     );
   }

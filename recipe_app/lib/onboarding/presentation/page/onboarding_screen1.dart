@@ -47,7 +47,7 @@ class _OnBoarding1State extends State<OnBoarding1> {
                     children: [
                   //   BlocBuilder<OnboardingCubit, int>(builder: (context, state) {
                   //   return
-                  Container(
+                  SizedBox(
                     height: MediaQuery.of(context).size.height *
                         0.75, //* 0.75, //* 0.87.h,
                     // color: Colors.pink,

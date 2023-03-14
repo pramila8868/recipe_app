@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:recipe_app/authentication/data/Model/model.dart';
 import 'package:recipe_app/authentication/presentation/Common/Dio/cubit/Login_cubit.dart';
 import 'package:recipe_app/authentication/presentation/Common/LoginRepostory/repository.dart';
+import 'package:recipe_app/authentication/presentation/Common/Storage/storageService.dart';
 import 'package:recipe_app/authentication/presentation/Common/google/Repository/googleRepository.dart';
 import 'package:recipe_app/authentication/presentation/Common/google/cubit/google_cubit.dart';
 import 'package:recipe_app/authentication/presentation/page/signUp/signup_screen.dart';
+import 'package:recipe_app/button.dart';
 //import 'package:recipe_app/Presentation/authentication/widget/signUp/cubit/signup_cubit.dart';
 //import 'package:recipe_app/Presentation/authentication/widget/signUp/repository/repository.dart';
 import 'package:recipe_app/onboarding/presentation/bloc/onboarding/onbardingCubit.dart';
@@ -22,11 +24,12 @@ import 'authentication/presentation/page/loginScreen/loginscreen.dart';
 //import 'Presentation/authentication/widget/Presentation/repository/repository.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final StorageService authService = StorageService();
+  MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -36,11 +39,10 @@ class MyApp extends StatelessWidget {
         builder: (context, child) {
           return MultiBlocProvider(
             providers: [
-              BlocProvider(
-                create: (context) => SplashCubit()
-                  ..loadsplash(), //cascade notation.. chain multiple method on the same object,contun the same method chain,  return splashcubit itself instead loadsplashcall function on object
-                //   child: OnBoardingScreen() //const SplashScreen(),
-              ),
+              BlocProvider(create: (context) => SplashCubit()
+                  // ..loadsplash(), //cascade notation.. chain multiple method on the same object,contun the same method chain,  return splashcubit itself instead loadsplashcall function on object
+                  //   child: OnBoardingScreen() //const SplashScreen(),
+                  ),
               BlocProvider(create: (context) => OnbardingCubit()),
               BlocProvider(create: (context) => CheckboxCubit()),
               BlocProvider(create: (context) => SignupCubit(PostRepository())),
@@ -55,10 +57,24 @@ class MyApp extends StatelessWidget {
                 theme: ThemeData(
                   primarySwatch: Colors.blue,
                 ),
-                home: const SplashScreen()
-                // home:
-                //OnBoardingScreen(),
-                //LoginScreen()
+                home: //MyWidget(),
+                    // FutureBuilder<String?>(
+                    //   future: authService.getToken(),
+                    //   builder: (context, snapshot) {
+                    //     if (snapshot.connectionState == ConnectionState.waiting) {
+                    //       return SplashScreen();
+                    //     } else {
+                    //       return snapshot.hasData
+                    //           ? const LoginScreen()
+                    //           : const OnBoarding1(); //LoginPage(authService: authService);
+                    //     }
+                    //   },
+                    // ),
+
+                    //SplashScreen()
+                    // home:
+                    //OnBoardingScreen(),
+                    LoginScreen()
                 //  SignUpScreen(),
                 ),
           );

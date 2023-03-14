@@ -53,8 +53,8 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Form(
           key: _formKey,
           child: SingleChildScrollView(
-            physics:
-                BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+            physics: const BouncingScrollPhysics(),
+            // parent: AlwaysScrollableScrollPhysics()),
             // physics: BouncingScrollPhysics(),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,7 +93,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   autovalidarorMode: AutovalidateMode.onUserInteraction,
                   obSecureText: false,
                   keyBoard: TextInputType.phone,
-                  focusNode: _focusNode,
+                  //  focusNode: _focusNode,
+                  autoNode: true,
                 ),
                 // CustomTextField(
                 //   controller: _emailcontroller,
@@ -157,7 +158,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                   obSecureText: _isObscure,
                   keyBoard: TextInputType.emailAddress,
-                  focusNode: _focusNode,
+                  //focusNode: _focusNode,
+                  autoNode: false,
                 ),
                 SizedBox(
                   height: 19.h,
@@ -200,14 +202,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       print(state.message);
 
                       Flushbar(
+                        messageSize: 14,
+                        padding: const EdgeInsets.only(top: 13, bottom: 13),
+
+                        borderRadius: BorderRadius.circular(8),
                         flushbarPosition: FlushbarPosition.TOP,
                         reverseAnimationCurve: Curves.decelerate,
-                        backgroundColor: btnColor,
-                        title: "Error",
-                        titleColor: Colors.black,
-                        titleSize: 24,
+                        backgroundColor: flushColor,
+                        //titleColor: Colors.black,
+                        // titleSize: 24,
                         message: state.message,
-
+                        messageColor: Colors.white,
                         duration: Duration(seconds: 6),
                         //  title:"Error",
                       ).show(context);
