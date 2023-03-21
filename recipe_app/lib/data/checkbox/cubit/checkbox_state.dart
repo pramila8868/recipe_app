@@ -4,3 +4,4 @@ part of 'checkbox_cubit.dart';
 abstract class CheckboxState {}
 
 class CheckboxInitial extends CheckboxState {}
+

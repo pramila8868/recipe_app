@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:another_flushbar/flushbar.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import 'authentication/presentation/Widget/constant.dart';
 
 class MyWidget extends StatelessWidget {
@@ -18,20 +18,28 @@ class MyWidget extends StatelessWidget {
               Flushbar(
                 maxWidth: 344,
                 //margin: EdgeInsets.all(12),
-                padding: const EdgeInsets.only(top: 13, bottom: 13),
+                padding: const EdgeInsets.only(top: 13, bottom: 13, left: 16),
                 borderRadius: BorderRadius.circular(8),
                 flushbarPosition: FlushbarPosition.TOP,
-                reverseAnimationCurve: Curves.decelerate,
+                // reverseAnimationCurve: Curves.linear,
                 backgroundColor: flushColor,
 
-                icon: const Icon(Icons.message_rounded),
+                icon: SvgPicture.asset('images/flushbar.svg'),
+                //.asset(name)//const Icon(Icons.message_rounded),
                 //title: "Error",
                 //titleColor: Colors.black,
                 //titleSize: 24,
-                message: "Message", // state.message,
+                //message: "Message", // state.message,
                 messageColor: Colors.white,
                 messageSize: 14,
-
+                messageText: const Padding(
+                  padding: EdgeInsets.only(left: 16),
+                  child: Text(
+                    "Message",
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.w400),
+                  ),
+                ),
                 duration: const Duration(seconds: 15),
                 //  title:"Error",
               ).show(context);

@@ -17,23 +17,27 @@ class SplashScreen extends StatelessWidget {
         child: BlocListener<SplashCubit, SplashState>(
           listener: (context, state) async {
             if (state == SplashState.loaded) {
-              // final storage = StorageService();
-              // final token = await storage.getToken();
-              // if (token != null) {
-              //   // ignore: use_build_context_synchronously
-              //   Navigator.pushReplacement(
-              //     context,
-              //     MaterialPageRoute(builder: (context) => LoginScreen()),
-              //   );
-              // } else {
-              //   // ignore: use_build_context_synchronously
-              //   Navigator.pushReplacement(
-              //     context,
-              //     MaterialPageRoute(builder: (context) => OnBoarding1()),
-              //   );
-              // }
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => OnBoarding1()));
+              StorageService storage = StorageService();
+              final token = await storage.getToken();
+              if (token != null) {
+                // ignore: use_build_context_synchronously
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => const LoginScreen()),
+                // );
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                        builder: (context) => const LoginScreen()),
+                    (Route route) => false);
+              } else {
+                // ignore: use_build_context_synchronously
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const OnBoarding1()),
+                );
+              }
+              // Navigator.pushReplacement(context,
+              //     MaterialPageRoute(builder: (context) => OnBoarding1()));
               // Navigator.of(context).pushNamed(const OnBoarding1());
               // } else {
               //   return Container();

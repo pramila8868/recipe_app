@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:recipe_app/HomePage/Presentation/Page/homeScreen.dart';
 import 'package:recipe_app/authentication/presentation/Common/Dio/cubit/Login_cubit.dart';
 import 'package:recipe_app/authentication/presentation/Common/Dio/cubit/login_state.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:another_flushbar/flushbar.dart';
@@ -25,10 +28,11 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final TextEditingController _emailcontroller = TextEditingController();
+  final TextEditingController _emailcontroller =
+      TextEditingController(text: "+977");
 
   final TextEditingController _passwordcontroller = TextEditingController();
-
+  //bool _keywordVisibility = false;
   bool _isObscure = true;
   void securePassword() {
     setState(() {
@@ -36,278 +40,280 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  final _focusNode = FocusNode();
-
-  @override
-  void dispose() {
-    _focusNode.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(30.0),
-        child: Form(
-          key: _formKey,
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            // parent: AlwaysScrollableScrollPhysics()),
-            // physics: BouncingScrollPhysics(),
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+          // resizeToAvoidBottomInset: false,
+          body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: SafeArea(
+          child: Form(
+            key: _formKey,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-          
               children: [
-                SizedBox(
-                  height: 54.h,
-                ),
-                const Text(
-                  "Hello,",
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
-                ),
-                const Text(
-                  "Welcome Back!",
-                  style: TextStyle(fontWeight: FontWeight.w400, fontSize: 20),
-                ),
-                SizedBox(
-                  height: 57.h,
-                ),
-                const Text(
-                  " Enter UserName",
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                ),
-                SizedBox(
-                  height: 26.h,
-                ),
-                CustomTextField(
-                  label: "UserName",
-                  controller: _emailcontroller,
-                  custvalidator: (value) {
-                    if (value!.isEmpty) {
-                      return "required username";
-                    }
-                    return "null";
-                  },
-                  autovalidarorMode: AutovalidateMode.onUserInteraction,
-                  obSecureText: false,
-                  keyBoard: TextInputType.phone,
-                  //  focusNode: _focusNode,
-                  autoNode: true,
-                ),
-                // CustomTextField(
-                //   controller: _emailcontroller,
-                //   label: 'Enter Email',
-                //   autovalidarorMode: AutovalidateMode.onUserInteraction,
-                //   custvalidator: (value) {
-                //     if (value == null || value.isEmpty) {
-                //       return 'This field is required';
-                //     }
-
-                //     // using regular expression
-                //     else if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-                //       return "Please enter a valid email address";
-                //     } else if (value.length < 8) {
-                //       return 'password must be at least 8 digits long';
-                //     }
-                //     // the email is valid
-                //     return null;
-                // },
-                //  ),
-                SizedBox(
-                  height: 30.h,
-                ),
-                const Text(
-                  "Enter Password",
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      fontFamily: "Poppins"),
-                ),
-                SizedBox(
-                  height: 26.h,
-                ),
-                CustomTextField(
-                  icon1: IconButton(
-                      icon: Icon(
-                        _isObscure ? Icons.visibility_off : Icons.visibility,
-                        color: textColor,
+                Padding(
+                  padding: const EdgeInsets.only(left: 30, right: 30),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: 40.h,
                       ),
-                      onPressed: securePassword),
-                  controller: _passwordcontroller,
-                  label: 'Enter Password',
-                  autovalidarorMode: AutovalidateMode.onUserInteraction,
-                  custvalidator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'This field is required.';
-                    }
-                    if (value.length < 8) {
-                      return 'Password must be at least 8 characters long.';
-                    }
-                    if (!RegExp(r'[a-zA-Z]').hasMatch(value)) {
-                      return 'Password must contain at least one letter.';
-                    }
-                    if (!RegExp(r'[0-9]').hasMatch(value)) {
-                      return 'Password must contain at least one number.';
-                    }
-                    if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(value)) {
-                      return 'Password must contain at least one special character.';
-                    }
-                    return null;
-                  },
-                  obSecureText: _isObscure,
-                  keyBoard: TextInputType.emailAddress,
-                  //focusNode: _focusNode,
-                  autoNode: false,
+
+                      const Text(
+                        "Hello,",
+                        style: TextStyle(
+                            fontSize: 30, fontWeight: FontWeight.w600),
+                      ),
+                      const SizedBox(
+                        height: 2,
+                      ),
+                      const Text(
+                        "Welcome Back!",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400, fontSize: 20),
+                      ),
+                      SizedBox(
+                        height: 40.h,
+                      ),
+                      const Text(
+                        "Username",
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.w400),
+                      ),
+                      SizedBox(
+                        height: 8.h,
+                      ),
+                      CustomTextField(
+                        label: " Enter Username",
+                        controller: _emailcontroller,
+                        custvalidator: (value) {
+                          if (value!.isEmpty) {
+                            return "This field is required";
+                          } else if (value.length < 14) {
+                            return "Please enter correct number";
+                          } else if (!RegExp(r"[0-9]+$").hasMatch(value)) {
+                            return "Please enter valid number";
+                          } else if (value.length > 14) {
+                            return "Invalid number ";
+                          }
+                          // return "null";
+                        },
+                        autovalidarorMode: AutovalidateMode.onUserInteraction,
+                        obSecureText: false,
+                        keyBoard: TextInputType.phone,
+                        //  focusNode: _focusNode,
+                        autoNode: true,
+                        lengthLimitingTextInputFormatter: 14,
+                        // enabled: null,
+                      ),
+                      //   // CustomTextField(
+                      //   //   controller: _emailcontroller,
+                      //   //   label: 'Enter Email',
+                      //   //   autovalidarorMode: AutovalidateMode.onUserInteraction,
+                      //   //   custvalidator: (value) {
+                      //   //     if (value == null || value.isEmpty) {
+                      //   //       return 'This field is required';
+                      //   //     }
+
+                      //   //     // using regular expression
+                      //   //     else if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+                      //   //       return "Please enter a valid email address";
+                      //   //     } else if (value.length < 8) {
+                      //   //       return 'password must be at least 8 digits long';
+                      //   //     }
+                      //   //     // the email is valid
+                      //   //     return null;
+                      //   // },
+                      //   //  ),
+                      SizedBox(
+                        height: 46.h,
+                      ),
+                      const Text(
+                        " Password",
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: "Poppins"),
+                      ),
+                      SizedBox(
+                        height: 8.h,
+                      ),
+                      CustomTextField(
+                        icon1: IconButton(
+                            icon: Icon(
+                              _isObscure
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                              color: textColor,
+                            ),
+                            onPressed: securePassword),
+                        controller: _passwordcontroller,
+                        label: 'Enter Password',
+                        autovalidarorMode: AutovalidateMode.onUserInteraction,
+                        custvalidator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'This field is required.';
+                          }
+                          if (value.length < 8) {
+                            return 'Password must be at least 8 characters long.';
+                          }
+                          if (!RegExp(r'[a-zA-Z]').hasMatch(value)) {
+                            return 'Password must contain at least one letter.';
+                          }
+                          if (!RegExp(r'[0-9]').hasMatch(value)) {
+                            return 'Password must contain at least one number.';
+                          }
+                          if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]')
+                              .hasMatch(value)) {
+                            return 'Password must contain at least one special character.';
+                          }
+                          return null;
+                        },
+                        obSecureText: _isObscure,
+                        keyBoard: TextInputType.emailAddress,
+                        //focusNode: _focusNode,
+                        autoNode: false, lengthLimitingTextInputFormatter: 15,
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            "Forget Password?",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12,
+                                color: text1Color),
+                          )),
+                      SizedBox(
+                        height: 24.h,
+                      ),
+                      //   // InkWell(
+                      //   //   onTap: () {
+                      //   //     if (_formKey.currentState!.validate()) {
+                      //   //       return _formKey.currentState!.save();
+                      //   //     } else {
+                      //   //       print('unsucess');
+                      //   //     }
+                      //   //     //   Navigator.push(
+                      //   //     //       context,
+                      //   //     //       MaterialPageRoute(
+                      //   //     //           builder: (context) => SignUpScreen()));
+
+                      //   //     // ;
+                      //   //     // _formKey.currentState?.validate();
+                      //   //   },
+                      //   //   child: CustomButton(
+                      //   //     text: 'Sign In',
+                      //   //   ),
+                      //   // ),
+                      BlocConsumer<LoginCubit, LoginState>(
+                        listener: (context, state) {
+                          if (state is LoginError) {
+                            print("error state listened");
+                            print(state.message);
+
+                            Flushbar(
+                              maxWidth: 344,
+                              messageSize: 14,
+                              padding: const EdgeInsets.only(
+                                  top: 13, bottom: 13, left: 16),
+
+                              borderRadius: BorderRadius.circular(8),
+                              flushbarPosition: FlushbarPosition.TOP,
+                              reverseAnimationCurve: Curves.decelerate,
+                              backgroundColor: flushColor,
+                              //titleColor: Colors.black,
+                              // titleSize: 24,
+                              icon: SvgPicture.asset('images/flushbar.svg'),
+                              messageText: Padding(
+                                padding: EdgeInsets.only(left: 16),
+                                child: Text(
+                                  state.message,
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ),
+                              duration: const Duration(seconds: 6),
+                              //  title:"Error",
+                            ).show(context);
+                            print("message");
+                            print(state.message);
+                          } else if (state is LoginLoaded) {
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                    builder: (context) => const HomeScreen()),
+                                (Route route) => false);
+                            // Navigator.pushAndRemoveUntil(context, newRoute, (route) => false)
+                            // Navigator.pushReplacement(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => const HomeScreen()));
+                          }
+                        },
+                        builder: (context, state) {
+                          if (state is LoginLoading) {
+                            return Center(
+                                child: CircularProgressIndicator(
+                              color: btnColor,
+                            ));
+                          } else {
+                            return InkWell(
+                                child: CustomButton(
+                                  text: 'Sign In',
+                                ),
+                                onTap: () {
+                                  //  bool autovalidatemode = false;
+                                  if (_formKey.currentState!.validate()) {
+                                    //var name = _namecontroller.text;
+                                    var email = _emailcontroller.text;
+                                    var password = _passwordcontroller.text;
+                                    // var repassword = _repasswordcontroller.text;
+                                    // var invitation = _invitationCodeController.text;
+                                    context.read<LoginCubit>().LogIn(
+                                          //_namecontroller.text,
+                                          //  _phnumbercontroller.text,
+                                          email,
+                                          password,
+                                          // repassword,
+                                          // invitation = "",
+                                        );
+
+                                    //  _formKey.currentState!.save();
+                                    //  _formKey.currentState!.reset();
+                                    //_formKey.currentState?.validate();
+                                    // } else {
+                                    //   // ignore: avoid_returning_null_for_void
+                                  } else {
+                                    CustomButton(
+                                      text: "Sign in",
+                                    );
+                                  }
+                                });
+                          }
+
+                          //       // ignore: curly_braces_in_flow_control_structures
+                        },
+                      ),
+                      //   // if(required.)
+
+                      //   // createUser(fg
+                      //   //   _namecontroller.text,_emailcontroller.text,_passwordcontroller.text,_repasswordcontroller.text
+                      //   // ),
+                    ],
+                  ),
                 ),
-                SizedBox(
-                  height: 19.h,
-                ),
-                TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      "Forget Password?",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 12,
-                          color: text1Color),
-                    )),
+
                 SizedBox(
                   height: 25.h,
-                ),
-                // InkWell(
-                //   onTap: () {
-                //     if (_formKey.currentState!.validate()) {
-                //       return _formKey.currentState!.save();
-                //     } else {
-                //       print('unsucess');
-                //     }
-                //     //   Navigator.push(
-                //     //       context,
-                //     //       MaterialPageRoute(
-                //     //           builder: (context) => SignUpScreen()));
-
-                //     // ;
-                //     // _formKey.currentState?.validate();
-                //   },
-                //   child: CustomButton(
-                //     text: 'Sign In',
-                //   ),
-                // ),
-                BlocConsumer<LoginCubit, LoginState>(
-                  listener: (context, state) {
-                    if (state is LoginError) {
-                      print("error state listened");
-                      print(state.message);
-
-                      Flushbar(
-                        messageSize: 14,
-                        padding: const EdgeInsets.only(top: 13, bottom: 13),
-
-                        borderRadius: BorderRadius.circular(8),
-                        flushbarPosition: FlushbarPosition.TOP,
-                        reverseAnimationCurve: Curves.decelerate,
-                        backgroundColor: flushColor,
-                        //titleColor: Colors.black,
-                        // titleSize: 24,
-                        message: state.message,
-                        messageColor: Colors.white,
-                        duration: Duration(seconds: 6),
-                        //  title:"Error",
-                      ).show(context);
-                      print("message");
-                    } else if (state is LoginLoaded) {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomeScreen()));
-                    }
-                  },
-                  builder: (context, state) {
-                    if (state is LoginInitial) {
-                      return InkWell(
-                        child: CustomButton(
-                          text: 'Sign Up',
-                        ),
-                        onTap: () {
-                          //var name = _namecontroller.text;
-                          var email = _emailcontroller.text;
-                          var password = _passwordcontroller.text;
-                          // var repassword = _repasswordcontroller.text;
-                          // var invitation = _invitationCodeController.text;
-                          _formKey.currentState!.validate()
-                              ?
-                              //  if (_formKey.currentState?.validate()):
-                              context.read<LoginCubit>().LogIn(
-                                    //_namecontroller.text,
-                                    //  _phnumbercontroller.text,
-                                    email,
-                                    password,
-                                    // repassword,
-                                    // invitation = "",
-                                  )
-                              : CustomButton(text: "Sign up");
-                          // _formKey.currentState?.validate();
-                        },
-                      );
-                    } else if (state is LoginLoading) {
-                      return Center(
-                          child: CircularProgressIndicator(
-                        color: btnColor,
-                      ));
-                    } else if (state is LoginLoaded) {
-                      return InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginScreen()));
-                        },
-
-                        // createUser(fg
-                        //   _namecontroller.text,_emailcontroller.text,_passwordcontroller.text,_repasswordcontroller.text
-                        // ),
-                        child: CustomButton(
-                          text: 'Sign Up',
-                        ),
-                      );
-                    } else {
-                      return InkWell(
-                        child: CustomButton(
-                          text: 'Sign Up',
-                        ),
-                        onTap: () {
-                          //var name = _namecontroller.text;
-                          var email = _emailcontroller.text;
-                          var password = _passwordcontroller.text;
-                          // var repassword = _repasswordcontroller.text;
-                          // var invitation = _invitationCodeController.text;
-                          context.read<LoginCubit>().LogIn(
-                                //_namecontroller.text,
-                                //  _phnumbercontroller.text,
-                                email,
-                                password,
-                                // repassword,
-                                // invitation = "",
-                              );
-                          //  _formKey.currentState?.validate();
-                        },
-                      );
-                    }
-
-                    // ignore: curly_braces_in_flow_control_structures
-                  },
-                ),
-                // if(required.)
-
-                // createUser(fg
-                //   _namecontroller.text,_emailcontroller.text,_passwordcontroller.text,_repasswordcontroller.text
-                // ),
-
-                SizedBox(
-                  height: 19.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -331,33 +337,68 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 25,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     BlocConsumer<GoogleSignInCubit, GoogleSignInState>(
                       listener: (context, state) {
-                        // TODO: implement listener
+                        if (state is GoogleSignInSuccess) {
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (context) => const HomeScreen()),
+                              (Route route) => false);
+                          // Navigator.pushAndRemoveUntil(context, newRoute, (route) => false)
+                          // Navigator.pushReplacement(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => const HomeScreen()));
+                        } else if (state is GoogleSignInError) {
+                          Flushbar(
+                            maxWidth: 344,
+                            padding: const EdgeInsets.only(top: 13, bottom: 13),
+                            borderRadius: BorderRadius.circular(8),
+                            flushbarPosition: FlushbarPosition.TOP,
+                            reverseAnimationCurve: Curves.decelerate,
+                            backgroundColor: flushColor,
+                            icon: const Icon(Icons.message_rounded),
+                            messageText: Padding(
+                              padding: const EdgeInsets.only(left: 16),
+                              child: Text(
+                                state.message,
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+
+                            duration: const Duration(seconds: 6),
+                            //  title:"Error",
+                          ).show(context);
+                          print("message");
+                          print(state.message);
+                        }
                       },
                       builder: (context, state) {
-                        if (state is GoogleSignInInitial) {
-                          return InkWell(
-                            onTap:
-                                context.read<GoogleSignInCubit>().GoogleLogin,
-                            // .signInWithGoogle, //_handleGoogleSignIn,
-                            child: CustomContainer(
-                              image: 'images/icon1.png',
-                              //image: "images/logo1.png",
-                            ),
-                          );
-                        }
+                        // if (state is GoogleSignInInitial) {
+                        //   return InkWell(
+                        //     onTap:
+                        //         context.read<GoogleSignInCubit>().GoogleLogin,
+                        //     // .signInWithGoogle, //_handleGoogleSignIn,
+                        //     child: CustomContainer(
+                        //       image: 'images/icon1.png',
+                        //       //image: "images/logo1.png",
+                        //     ),
+                        //   );
+                        // }
                         if (state is GoogleSignInLoading) {
-                          return CircularProgressIndicator();
+                          return const CircularProgressIndicator();
                         } else {
                           return InkWell(
-                            onTap:
-                                context.read<GoogleSignInCubit>().GoogleLogin,
+                            onTap: context
+                                .read<GoogleSignInCubit>()
+                                .signIn, //.GoogleLogin,
                             //.signInWithGoogle, //_handleGoogleSignIn,
                             child: CustomContainer(
                               image: 'images/icon1.png',
@@ -368,7 +409,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                     ),
                     SizedBox(
-                      width: 25.h,
+                      width: 25.w,
                     ),
                     CustomContainer(
                       image: 'images/icon2.png',
@@ -376,8 +417,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 54,
+                SizedBox(
+                  height: 36.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -409,14 +450,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 // CustomContainer(
                 //   image: "images/logo2.png",
                 // )
-                SizedBox(
-                  height: 99.h,
-                )
+                // Padding(
+                //     padding: EdgeInsets.only(
+                //         bottom: MediaQuery.of(context).viewInsets.bottom))
               ],
             ),
           ),
         ),
-      ),
-    ));
+      )),
+    );
   }
 }

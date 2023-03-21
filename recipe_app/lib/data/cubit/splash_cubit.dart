@@ -12,7 +12,7 @@ class SplashCubit extends Cubit<SplashState> {
 
   void loadsplash() {
     // Future.delayed(Duration(seconds: 9));
-    Timer(const Duration(seconds: 6), () {
+    Timer(const Duration(seconds: 3), () {
       emit(SplashState.loaded);
     });
   }

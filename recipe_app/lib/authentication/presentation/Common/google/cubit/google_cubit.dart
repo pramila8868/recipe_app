@@ -3,7 +3,7 @@ import 'package:recipe_app/authentication/presentation/Common/Dio/cubit/login_st
 import 'package:recipe_app/authentication/presentation/Common/google/Repository/googleRepository.dart';
 import 'package:recipe_app/authentication/presentation/cubit/signup_cubit.dart';
 // import 'package:meta/meta.dart';
-
+import 'package:dio/dio.dart';
 import 'google_state.dart';
 
 import 'package:google_sign_in/google_sign_in.dart';
@@ -33,18 +33,50 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'google_state.dart';
 
 class GoogleSignInCubit extends Cubit<GoogleSignInState> {
-//  final GoogleSignIn _googleSignIn;
-  final UserRepository _userRepository;
-  GoogleSignInCubit(this._userRepository) : super(GoogleSignInInitial());
-  Future<void> GoogleLogin() async {
+  final GoogleSignInRepository _repository;
+  final _googleSignIn = GoogleSignIn(
+    scopes: [
+      'email',
+      'https://www.googleapis.com/auth/contacts.readonly',
+    ],
+  );
+
+  GoogleSignInCubit(this._repository):super(GoogleSignInInitial());
+
+  Future<void> signIn() async {
     try {
-      emit(GoogleSignInLoading());
-      final token1 = await _userRepository.signInWithGoogle();
-      emit(GoogleSignInSuccess(token1!));
-    } catch (error) {
-      emit(GoogleSignInError(error.toString()));
+      final googleUser = await _googleSignIn.signIn();
+      final googleAuth = await googleUser?.authentication;
+      if (googleAuth != null) {
+        emit(GoogleSignInSuccess(googleAuth.accessToken!));
+      } else {
+        emit(GoogleSignInError('Authentication failed'));
+      }
+    } catch (e) {
+      emit(GoogleSignInError(e.toString()));
     }
   }
+}
+
+
+  //________________________
+//  final GoogleSignIn _googleSignIn;
+  // final UserRepository _userRepository;
+  // GoogleSignInCubit(this._userRepository) : super(GoogleSignInInitial());
+  // Future<void> GoogleLogin() async {
+  //   try {
+  //     emit(GoogleSignInLoading());
+  //     final token1 = await _userRepository.signInWithGoogle();
+  //     emit(GoogleSignInSuccess(token1!));
+  //   } //on DioError
+  //   catch (error) {
+  //     print(error);
+  //     emit(GoogleSignInError(error.toString()));
+  //   }
+  // }
+
+
+  
   // final GoogleSignIn _googleSignIn1 = GoogleSignIn(scopes: ['email']);
 
   // Future<void> signInWithGoogle() async {
@@ -62,4 +94,4 @@ class GoogleSignInCubit extends Cubit<GoogleSignInState> {
   //   await _googleSignIn.disconnect();
   //   emit(GoogleSignInInitial());
   // }
-}
+//}

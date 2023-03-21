@@ -20,6 +20,7 @@ class CheckboxCustom extends StatelessWidget {
           },
           activeColor: btnColor,
           side: BorderSide(color: text1Color),
+          
         );
         
       },

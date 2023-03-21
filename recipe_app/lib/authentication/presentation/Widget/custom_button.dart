@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'constant.dart';
 
 class CustomButton extends StatelessWidget {
@@ -9,8 +9,8 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
-      width: 315,
+      height: 48,
+      width: 316,
       decoration: BoxDecoration(
         color: btnColor,
         borderRadius: BorderRadius.circular(10),
@@ -28,8 +28,8 @@ class CustomButton extends StatelessWidget {
                   fontWeight: FontWeight.w600),
             ),
           ),
-          const SizedBox(
-            width: 30,
+          SizedBox(
+            width: 8.w,
           ),
           const Icon(
             Icons.arrow_forward,

@@ -17,8 +17,15 @@ class AppInterceptors extends Interceptor {
 
   @override
   Future onError(DioError err, ErrorInterceptorHandler handler) async {
-    print(err.response!);
+    print(err.response!.statusMessage);
     print(err.response!.statusCode);
+    //String errorMsg = err.response?.data["message"];
+    // //['message'];
+    print("error");
+    //print(errorMsg);
+    //String errorMessage = err.response!.data['message'];
+    print(err.message);
+    print(err.response);
 
     switch (err.type) {
       case DioErrorType.connectionTimeout:
@@ -29,11 +36,14 @@ class AppInterceptors extends Interceptor {
       case DioErrorType.badResponse:
         switch (err.response?.statusCode) {
           case 400:
-            super.onError(BadRequestException(err.requestOptions), handler);
-            //throw BadRequestException(err.requestOptions);
+            super.onError(BadRequestException(err.requestOptions, err.response),
+                handler); // response pass garni ani return garni message
+            //   throw BadRequestException(err.requestOptions);
             break;
           case 401:
-            super.onError(UnauthorizedException(err.requestOptions), handler);
+            super.onError(
+                UnauthorizedException(err.requestOptions, err.response),
+                handler);
             break;
           case 404:
             super.onError(NotFoundException(err.requestOptions), handler);
@@ -64,11 +74,52 @@ class AppInterceptors extends Interceptor {
 }
 
 class BadRequestException extends DioError {
-  BadRequestException(RequestOptions r) : super(requestOptions: r);
+  BadRequestException(RequestOptions r, Response? res)
+      : super(requestOptions: r, response: res);
 
   @override
   String toString() {
-    return 'Invalid request';
+    //for(var error in errors)
+    print(response!.data.toString());
+    print(response!.data["errors"].toString());
+    print(response!.data["errors"][0]['message']["phone_number"].toString());
+    print(response!.data["errors"][0]['message']["field"].toString());
+    //["message"].toString());
+    print("backend error");
+    // final errors = response!.data["errors"];
+    // for (var error in errors) {
+    //   final field = error["field"];
+    //   final messages = error["message"][field];
+    //   print(messages);
+    // }
+
+    // String errors;
+    // for (var error in errors) {
+    //   print("Field: ${error["field"]}");
+    //   print("Message: ${error["message"][error["field"]]}");
+    // }
+    // String errorMsg = err.response?.data["message"];
+    // return response!.data //['errors']
+    //     ["errors"][0]["message"]
+    //     // ['message']
+    //     .toString(); //['message'].toString(); // "invalid response" ;
+
+    final errors = response!.data["errors"];
+    String phoneNumberErrorMessage = "";
+    String emailErrorMessage = "";
+    for (var error in errors) {
+      final field = error["field"];
+      final messages = error["message"][field];
+      if (field == "phone_number") {
+        phoneNumberErrorMessage = messages.toString();
+      } else if (field == "email") {
+        emailErrorMessage = messages.toString();
+      }
+    }
+
+    return " $phoneNumberErrorMessage,  $emailErrorMessage";
+
+    //"Phone Number Error: $phoneNumberErrorMessage, Email Error: $emailErrorMessage";
   }
 }
 
@@ -91,11 +142,38 @@ class ConflictException extends DioError {
 }
 
 class UnauthorizedException extends DioError {
-  UnauthorizedException(RequestOptions r) : super(requestOptions: r);
+  UnauthorizedException(RequestOptions r, Response? res)
+      : super(requestOptions: r, response: res);
 
   @override
   String toString() {
-    return 'Access denied';
+    //  print(response!.data["errors"]);
+    print(response!.data.toString());
+    // print(response!.data.toString());
+    print(response!.data["errors"].toString());
+    print(response!.data["errors"][0]["message"].toString());
+    // print(response!.data["errors"][0]['message']["phone_number"].toString());
+    // String errormessage = response!.data["errors"][0]['message'].toString();
+    //["message"].toString());
+    print("backend error");
+    //print(re)
+    // return 'Access denied';
+
+    // final errors = response!.data["errors"];
+    // String phoneNumberErrorMessage = "";
+    // String emailErrorMessage = "";
+    // for (var error in errors) {
+    //   final field = error["field"];
+    //   final messages = error["message"][field];
+    //   if (field == "phone_number") {
+    //     phoneNumberErrorMessage = messages.toString();
+    //   } else if (field == "email") {
+    //     emailErrorMessage = messages.toString();
+    //   }
+    // }
+
+    return response!.data["errors"][0]["message"]
+        .toString(); //errormessage; //" $phoneNumberErrorMessage,  $emailErrorMessage";
   }
 }
 

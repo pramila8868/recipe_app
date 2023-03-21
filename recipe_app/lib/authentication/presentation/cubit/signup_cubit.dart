@@ -30,8 +30,14 @@ class SignupCubit extends Cubit<SignupState> {
       );
       emit(SignupLoaded(response));
     } on DioError catch (e) {
+      //DioError(requestOptions: )
+      print(DioErrorType);
       print("Hello");
+      print(e.error);
+      print(e.message);
       print(e);
+      //String errorMessage = e.response!.data['message'].toString();
+      //print(errorMessage);
       emit(SignupError(e.toString()));
     }
   }

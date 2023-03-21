@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import 'constant.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 //w=344
 //h:48
 //padding:16
 
 class CustomTextField extends StatelessWidget {
+  int lengthLimitingTextInputFormatter;
+  // MaxLengthEnforcement? maxlengthEnforcement;
+  int? maxlength;
   bool autoNode;
   FocusNode? focusNode;
   TextInputType keyBoard;
   IconButton? icon1;
   bool obSecureText;
-  AutovalidateMode autovalidarorMode;
+  AutovalidateMode ?autovalidarorMode;
   bool? enabled;
   String? initialvalue;
   final String? Function(String?) custvalidator;
@@ -21,6 +26,9 @@ class CustomTextField extends StatelessWidget {
   String label;
   CustomTextField(
       {super.key,
+      required this.lengthLimitingTextInputFormatter,
+    //  this.maxlengthEnforcement,
+      this.maxlength,
       required this.autoNode,
       this.focusNode,
       required this.keyBoard,
@@ -31,7 +39,7 @@ class CustomTextField extends StatelessWidget {
       required this.label,
       required this.controller,
       required this.custvalidator,
-      required this.autovalidarorMode});
+       this.autovalidarorMode});
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +53,14 @@ class CustomTextField extends StatelessWidget {
         //   child:
 
         TextFormField(
+      maxLength: maxlength,
       autofocus: autoNode,
       focusNode: focusNode,
       keyboardType: keyBoard,
+      inputFormatters: [
+        new LengthLimitingTextInputFormatter(lengthLimitingTextInputFormatter)
+      ],
+    //  maxLengthEnforcement: maxlengthEnforcement,
       //    keyboardType: ,
       // keyboardType: TextInputType.name,
       validator: custvalidator,
@@ -62,14 +75,22 @@ class CustomTextField extends StatelessWidget {
       controller: controller,
       cursorColor: Colors.black,
       cursorHeight: 20,
+
       decoration: InputDecoration(
-          // contentPadding: const EdgeInsets.all(12),
+
+          // focusedErrorBorder: OutlineInputBorder(),
+          contentPadding: const EdgeInsets.all(12),
           floatingLabelBehavior: FloatingLabelBehavior.never,
           border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: textColor)),
+            borderRadius: BorderRadius.circular(10),
+            //  borderSide: BorderSide(color: textColor)
+          ),
+          // errorBorder: OutlineInputBorder(
 
-          //hoverColor: textfieldColor,
+          //   borderRadius: BorderRadius.circular(10),
+
+          //  ),
+          //  hoverColor: textfieldColor, // textfieldColor,
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(
@@ -81,7 +102,7 @@ class CustomTextField extends StatelessWidget {
                 color: textColor,
               )),
           label: Padding(
-            padding: const EdgeInsets.only(top: 19, left: 20, bottom: 18),
+            padding: const EdgeInsets.all(12),
             child: Text(
               label,
               style: TextStyle(

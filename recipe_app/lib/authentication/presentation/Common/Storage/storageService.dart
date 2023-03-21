@@ -38,11 +38,12 @@ import 'package:recipe_app/onboarding/presentation/page/onboarding_screen1.dart'
 
 class StorageService {
   final FlutterSecureStorage _storage = const FlutterSecureStorage();
-
+//Retrieve a value using the key
   Future<String?> getToken() async {
     return await _storage.read(key: 'token');
   }
 
+//Store a value with a key
   Future<void> saveToken(String token) async {
     await _storage.write(key: 'token', value: token);
   }
