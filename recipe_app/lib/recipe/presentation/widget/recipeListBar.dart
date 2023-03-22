@@ -134,29 +134,33 @@ class _RecipeListBarState extends State<RecipeListBar>
             const SizedBox(
               height: 29,
             ),
-            Container(
-              height: 42.h,
-              width: 313.w,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8), color: searchRecipe),
-              child: Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  // ignore: prefer_const_literals_to_create_immutables
-                  children: [
-                    SvgPicture.asset("images/Search.svg"),
-                    SizedBox(
-                      width: 12.w,
-                    ),
-                    const Text(
-                      "Find more recipes",
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: "Metropolis",
-                          color: Colors.white),
-                    ),
-                  ],
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 42),
+              child: Container(
+                height: 42.h,
+                // width: 313.w,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: searchRecipe),
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: [
+                      SvgPicture.asset("images/Search.svg"),
+                      SizedBox(
+                        width: 12.w,
+                      ),
+                      const Text(
+                        "Find more recipes",
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: "Metropolis",
+                            color: Colors.white),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             )

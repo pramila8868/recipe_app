@@ -25,7 +25,7 @@ class BreakFast extends StatelessWidget {
       //icon: Icon(Icons.ad)
     ),
     BreakfastModel(
-      id: 2, name: "Healthy Sandwiches",
+      id: 2, name: "Healthy Sandwicheswwwwwwwwwwww",
       image: image22, //SvgPicture.asset('images/image3.svg'),
       number: '5 Recipes',
 
@@ -45,49 +45,57 @@ class BreakFast extends StatelessWidget {
           //.length, //model!.length, //forYoumodel,//2, //data.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (BuildContext context, int index) {
-            return Padding(
-              padding: const EdgeInsets.only(right: 16),
-              child: Column(
-                children: [
-                  Container(
-                      width: 120.w,
-                      height: 120.h,
-                      decoration: BoxDecoration(
-                          //color: Colors.blue,
-                          borderRadius: BorderRadius.circular(8)),
-                      child: Image.asset(
-                        breakfastModel[index].image.toString(),
-                        //"images/image5.svg",
-                        fit: BoxFit.cover,
-                      )),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16),
-                    child: Text(
-                      //"hello",
-                      breakfastModel[index].name,
-                      softWrap: true,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                          color: foodColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: "Metropolis"),
-                    ),
+            return Column(
+              children: [
+                Container(
+                  width: 120.w,
+                  height: 120.h,
+                  margin: EdgeInsets.only(right: 16),
+                  decoration: BoxDecoration(
+                    // ignore: prefer_const_literals_to_create_immutables
+                    boxShadow: [
+                      const BoxShadow(
+                          color: Color.fromRGBO(0, 0, 0, 1.5),
+                          offset: Offset(3, 6),
+                          spreadRadius: 2,
+                          blurRadius: 8)
+                    ],
+                    //color: Colors.blue,
+                    borderRadius: BorderRadius.circular(8),
+                    image: DecorationImage(
+                        image: AssetImage(
+                          breakfastModel[index].image.toString(),
+                        ),
+                        fit: BoxFit.cover),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16),
-                    child: Text(
-                      breakfastModel[index].number,
-                      style: TextStyle(
-                          color: numberColor,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: "Metropolis"),
-                    ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: Text(
+                    //"hello",
+                    breakfastModel[index].name,
+                    softWrap: true,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        color: foodColor,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: "Metropolis"),
                   ),
-                ],
-              ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: Text(
+                    breakfastModel[index].number,
+                    style: TextStyle(
+                        color: numberColor,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: "Metropolis"),
+                  ),
+                ),
+              ],
             );
           }),
     );

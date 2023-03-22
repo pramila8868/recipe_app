@@ -45,6 +45,7 @@ class JustForYou extends StatelessWidget {
                 height: 84.h,
                 // ignore: prefer_const_constructors
                 decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
                   // color: Colors.red,
                   image: DecorationImage(
                     image: AssetImage(

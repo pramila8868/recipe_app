@@ -45,76 +45,214 @@ class FoodRecipe extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 300,
-      // color: Colors.green,
-      padding: EdgeInsets.only(left: 21, right: 42),
-      child: GridView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          //shrinkWrap: true,
-          itemCount: recipemodel.length, //more.length,
-          //scrollDirection: VerticalDirection,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 12.0,
-            mainAxisSpacing: 8.0,
-            // childAspectRatio: 1
-          ),
-          itemBuilder: (context, index) {
-            return
-                // child: ListView.builder(
-                //     shrinkWrap: true,
-                //     itemCount: payment.length, //FoodCollection.length,
-                //     //: Axis.horizontal,
-                //     scrollDirection: Axis.vertical,
-                //     // ignore: sort_child_properties_last, sized_box_for_whitespace
-                //     itemBuilder: (context, index) =>
-                Container(
-              height: 70,
-              width: 150.w,
-              //  margin: const EdgeInsets.symmetric(vertical: 35, horizontal: 22),
-
-              //height: 36.h,
-              // width: 150.w,
-              //  width: MediaQuery.of(context).size.width * 0.04.w,
-
-              //  height: 700,
-
-              decoration: BoxDecoration(
-                  // color: Colors.blue,
-                  borderRadius: BorderRadius.circular(8),
-                  image: DecorationImage(
-                    image: AssetImage(
-                      recipemodel[index].image,
-                    ),
-                    // scale: 10,
-                    fit: BoxFit.cover,
-                  )
-                  // color: Colors.white,
-
-                  // boxShadow: [
-                  //   BoxShadow(color: Colors.grey, offset: Offset(3, 6)
-                  //)
-                  // ]
+    return Padding(
+      padding: const EdgeInsets.only(left: 21),
+      child: Row(
+        children: [
+          Container(
+            height: 96.h,
+            width: 150.w,
+            // margin: const EdgeInsets.only(right: 12),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              image: const DecorationImage(
+                  image: AssetImage(
+                    "images/image12.png",
                   ),
+                  fit: BoxFit.cover),
+            ),
+            child: Align(
+              alignment: Alignment.bottomLeft,
               child: Padding(
-                padding: const EdgeInsets.only(left: 14, bottom: 8),
-                child: Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Text(
-                    recipemodel[index].text,
-                    style: TextStyle(
+                padding: const EdgeInsets.only(bottom: 8, left: 14),
+                child: Text(
+                  "Chicken",
+                  style: TextStyle(
                       color: labelColor,
                       fontSize: 20,
                       fontWeight: FontWeight.w500,
-                      //fontFamily: "Metropolis"
-                    ),
-                  ),
+                      fontFamily: "Metropolis"),
                 ),
               ),
-            );
-          }),
+            ),
+          ),
+          const SizedBox(
+            width: 12,
+          ),
+          Container(
+            height: 96.h,
+            width: 150.w,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                image: const DecorationImage(
+                    image: AssetImage(
+                      "images/image13.png",
+                    ),
+                    fit: BoxFit.cover)),
+            child: Align(
+              alignment: Alignment.bottomLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 8, left: 14),
+                child: Text(
+                  "Noodles",
+                  style: TextStyle(
+                      color: labelColor,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: "Metropolis"),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
+    
+  }
+}
+
+
+class FoodRecipe1 extends StatelessWidget {
+  
+  //final List<ForYouModel> model;
+  FoodRecipe1({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 21),
+      child: Row(
+        children: [
+          Container(
+            height: 96.h,
+            width: 150.w,
+            // margin: const EdgeInsets.only(right: 12),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              image: const DecorationImage(
+                  image: AssetImage(
+                    "images/image12.png",
+                  ),
+                  fit: BoxFit.cover),
+            ),
+            child: Align(
+              alignment: Alignment.bottomLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 8, left: 14),
+                child: Text(
+                  "Bread",
+                  style: TextStyle(
+                      color: labelColor,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: "Metropolis"),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 12,
+          ),
+          Container(
+            height: 96.h,
+            width: 150.w,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                image: const DecorationImage(
+                    image: AssetImage(
+                      "images/image13.png",
+                    ),
+                    fit: BoxFit.cover)),
+            child: Align(
+              alignment: Alignment.bottomLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 8, left: 14),
+                child: Text(
+                  "For Kids",
+                  style: TextStyle(
+                      color: labelColor,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: "Metropolis"),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+    // return Container(
+    //   height: 300,
+    //   // color: Colors.green,
+    //   padding: EdgeInsets.only(left: 21, right: 42),
+    //   child: GridView.builder(
+    //       physics: NeverScrollableScrollPhysics(),
+    //       //shrinkWrap: true,
+    //       itemCount: recipemodel.length, //more.length,
+    //       //scrollDirection: VerticalDirection,
+    //       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+    //         crossAxisCount: 2,
+    //         crossAxisSpacing: 12.0,
+    //         mainAxisSpacing: 8.0,
+    //         // childAspectRatio: 1
+    //       ),
+    //       itemBuilder: (context, index) {
+    //         return
+    //             // child: ListView.builder(
+    //             //     shrinkWrap: true,
+    //             //     itemCount: payment.length, //FoodCollection.length,
+    //             //     //: Axis.horizontal,
+    //             //     scrollDirection: Axis.vertical,
+    //             //     // ignore: sort_child_properties_last, sized_box_for_whitespace
+    //             //     itemBuilder: (context, index) =>
+    //             Container(
+    //           height: 70,
+    //           width: 150.w,
+    //           //  margin: const EdgeInsets.symmetric(vertical: 35, horizontal: 22),
+
+    //           //height: 36.h,
+    //           // width: 150.w,
+    //           //  width: MediaQuery.of(context).size.width * 0.04.w,
+
+    //           //  height: 700,
+
+    //           decoration: BoxDecoration(
+    //               // color: Colors.blue,
+    //               borderRadius: BorderRadius.circular(8),
+    //               image: DecorationImage(
+    //                 image: AssetImage(
+    //                   recipemodel[index].image,
+    //                 ),
+    //                 // scale: 10,
+    //                 fit: BoxFit.cover,
+    //               )
+    //               // color: Colors.white,
+
+    //               // boxShadow: [
+    //               //   BoxShadow(color: Colors.grey, offset: Offset(3, 6)
+    //               //)
+    //               // ]
+    //               ),
+    //           child: Padding(
+    //             padding: const EdgeInsets.only(left: 14, bottom: 8),
+    //             child: Align(
+    //               alignment: Alignment.bottomLeft,
+    //               child: Text(
+    //                 recipemodel[index].text,
+    //                 style: TextStyle(
+    //                   color: labelColor,
+    //                   fontSize: 20,
+    //                   fontWeight: FontWeight.w500,
+    //                   //fontFamily: "Metropolis"
+    //                 ),
+    //               ),
+    //             ),
+    //           ),
+    //         );
+    //       }),
+    // );
 
     //
     //

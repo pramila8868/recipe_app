@@ -18,14 +18,14 @@ class EveningSpecial extends StatelessWidget {
 
     EveningModel(
       id: 1, name: "Cake Delivery",
-      image: 'images/image17.jpg', //Image.asset('images/image17.svg'),
+      image: image17, //Image.asset('images/image17.svg'),
       number: '15 Recipes',
 
       //icon: Icon(Icons.ad)
     ),
     EveningModel(
       id: 2, name: "Yum Snacks",
-      image: 'images/image18.jpg', //Image.asset('images/image18.svg'),
+      image: image18, //Image.asset('images/image18.svg'),
       number: '5 Recipes',
 
       //icon: Icon(Icons.ad)
@@ -36,66 +36,130 @@ class EveningSpecial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 190.h, // MediaQuery.of(context).size.height * 0.25,
-      //color: Colors.orange,
+      height: 190.h,
+      //width: 120,
+      //scolor: Colors.yellow,
       child: ListView.builder(
           physics: BouncingScrollPhysics(),
-          itemCount: eveningModel.length, //foRYoumodel
-          //.length, //model!.length, //forYoumodel,//2, //data.length,
+          itemCount: eveningModel.length, //5,
           scrollDirection: Axis.horizontal,
-          itemBuilder: (BuildContext context, int index) {
-            return Padding(
-              padding: const EdgeInsets.only(right: 16),
-              child: Column(
-                children: [
-                  Container(
-                      width: 120.w,
-                      height: 120.h,
-                      // margin: EdgeInsets.only(top: 2, left: 12),
-                      decoration: BoxDecoration(
-
-                          // color: Colors.blue,
-                          borderRadius: BorderRadius.circular(8),
-                          // ignore: prefer_const_literals_to_create_immutables
-                          boxShadow: [
-                            const BoxShadow(
-                              color: Color.fromRGBO(0, 0, 0, 0.15),
-                            ),
-                          ]
-                          // image: Im
-                          ),
-                      child: Image.asset(
-                        eveningModel[index].image.toString(),
-                        //"images/image5.svg",
-                        fit: BoxFit.cover,
-                      )),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16),
-                    child: Text(
-                      //"hello",
-                      eveningModel[index].name,
-                      style: TextStyle(
-                          color: foodColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: "Metropolis"),
-                    ),
+          itemBuilder: (context, index) {
+            return Column(
+              children: [
+                Container(
+                  height: 120.h,
+                  width: 120.w,
+                  margin: EdgeInsets.only(right: 16),
+                  decoration: BoxDecoration(
+                    // color: Colors.pink,
+                    borderRadius: BorderRadius.circular(8),
+                    // ignore: prefer_const_literals_to_create_immutables
+                    boxShadow: [
+                      const BoxShadow(
+                          color: Color.fromRGBO(0, 0, 0, 1.5),
+                          offset: Offset(3, 6),
+                          spreadRadius: 2,
+                          blurRadius: 8)
+                    ],
+                    image: DecorationImage(
+                        image: AssetImage(
+                          eveningModel[index].image.toString(),
+                        ),
+                        fit: BoxFit.cover),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16),
-                    child: Text(
-                      eveningModel[index].number,
-                      style: TextStyle(
-                          color: numberColor,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: "Metropolis"),
-                    ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: Text(
+                    //"hello",
+                    eveningModel[index].name,
+                    style: TextStyle(
+                        color: foodColor,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: "Metropolis"),
                   ),
-                ],
-              ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: Text(
+                    eveningModel[index].number,
+                    style: TextStyle(
+                        color: numberColor,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: "Metropolis"),
+                  ),
+                ),
+              ],
+              // ),
+              //child: Text("Hello"),
             );
           }),
     );
+
+    //_________________________
+    // return Container(
+    //   height: 190.h, // MediaQuery.of(context).size.height * 0.25,
+    //   //color: Colors.orange,
+    //   child: ListView.builder(
+    //       physics: BouncingScrollPhysics(),
+    //       itemCount: eveningModel.length, //foRYoumodel
+    //       //.length, //model!.length, //forYoumodel,//2, //data.length,
+    //       scrollDirection: Axis.horizontal,
+    //       itemBuilder: (BuildContext context, int index) {
+    //         return Padding(
+    //           padding: const EdgeInsets.only(right: 16),
+    //           child: Column(
+    //             children: [
+    //               Container(
+    //                   width: 120.w,
+    //                   height: 120.h,
+    //                   // margin: EdgeInsets.only(top: 2, left: 12),
+    //                   decoration: BoxDecoration(
+
+    //                       // color: Colors.blue,
+    //                       borderRadius: BorderRadius.circular(8),
+    //                       // ignore: prefer_const_literals_to_create_immutables
+    //                       boxShadow: [
+    //                         const BoxShadow(
+    //                           color: Color.fromRGBO(0, 0, 0, 0.15),
+    //                         ),
+    //                       ]
+    //                       // image: Im
+    //                       ),
+    //                   child: Image.asset(
+    //                     eveningModel[index].image.toString(),
+    //                     //"images/image5.svg",
+    //                     fit: BoxFit.cover,
+    //                   )),
+    //               Padding(
+    //                 padding: const EdgeInsets.only(top: 16),
+    //                 child: Text(
+    //                   //"hello",
+    //                   eveningModel[index].name,
+    //                   style: TextStyle(
+    //                       color: foodColor,
+    //                       fontSize: 14,
+    //                       fontWeight: FontWeight.w600,
+    //                       fontFamily: "Metropolis"),
+    //                 ),
+    //               ),
+    //               Padding(
+    //                 padding: const EdgeInsets.only(top: 16),
+    //                 child: Text(
+    //                   eveningModel[index].number,
+    //                   style: TextStyle(
+    //                       color: numberColor,
+    //                       fontSize: 12,
+    //                       fontWeight: FontWeight.w400,
+    //                       fontFamily: "Metropolis"),
+    //                 ),
+    //               ),
+    //             ],
+    //           ),
+    //         );
+    //       }),
+    // );
   }
 }

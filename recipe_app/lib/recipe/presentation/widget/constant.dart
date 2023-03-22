@@ -9,3 +9,4 @@ Color textColor = Color.fromRGBO(0, 0, 0, 1);
 Color foodColor = Color.fromRGBO(18, 18, 18, 1);
 Color numberColor = Color.fromRGBO(151, 162, 176, 1);
 Color buttonColor = Color.fromRGBO(112, 185, 190, 1);
+

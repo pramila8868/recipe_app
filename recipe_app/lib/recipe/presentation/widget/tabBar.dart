@@ -43,7 +43,10 @@ class _TabBarPageState extends State<TabBarPage>
               padding: const EdgeInsets.only(left: 22),
               child: Row(
                 children: [
-                  Image.asset("images/image5.jpg"),
+                  SvgPicture.asset(
+                    "images/headchief.svg",
+                    color: recipeColor,
+                  ),
                   SizedBox(
                     width: 6.43.w,
                   ),
@@ -75,7 +78,7 @@ class _TabBarPageState extends State<TabBarPage>
                       isScrollable: false,
                       indicatorSize: TabBarIndicatorSize.label,
                       indicatorColor: Color.fromRGBO(226, 62, 62, 1),
-
+                        
                       controller: _tabController,
                       // ignore: prefer_const_literals_to_create_immutables
                       tabs: [
@@ -98,7 +101,7 @@ class _TabBarPageState extends State<TabBarPage>
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10),
+              padding: const EdgeInsets.only(top: 0),
               child: Container(
                 width: double.infinity,
                 height: 124.h,

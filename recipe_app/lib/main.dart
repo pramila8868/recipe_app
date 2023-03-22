@@ -26,6 +26,7 @@ import 'recipe/presentation/screens/buttonNavogationBar.dart';
 import 'recipe/presentation/screens/recipeScreen.dart';
 import 'recipe/presentation/widget/cubit/tabbar_cubit.dart';
 import 'recipe/presentation/widget/foodRecipe.dart';
+import 'recipe/presentation/widget/practice.dart';
 import 'recipe/presentation/widget/tabBar.dart';
 
 //import 'Presentation/authentication/widget/Presentation/cubit/signup_cubit.dart';
@@ -73,7 +74,7 @@ class MyApp extends StatelessWidget {
                 primarySwatch: Colors.blue,
               ),
               home: //FoodRecipe(),
-
+                  // Practice(),
                   // RecipeScreen()
                   CenteredBottomNavigation(),
               // BottomNavigation()
