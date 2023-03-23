@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
@@ -5,13 +7,15 @@ import 'package:dio/dio.dart';
 import 'package:recipe_app/HomePage/Presentation/Page/homeScreen.dart';
 
 import 'package:recipe_app/authentication/data/Model/model.dart';
+import 'package:recipe_app/authentication/domain/repository/SignUpRepository.dart';
+import 'package:recipe_app/authentication/presentation/cubit/signUpCubit/signUpState.dart';
 import 'package:recipe_app/authentication/presentation/page/signUp/signup_screen.dart';
 
-import '../../data/Repository/repository.dart';
+//import '../../data/Repository/repository.dart';
 
 //import 'package:recipe_app/Presentation/authentication/widget/signUp/repository/repository.dart';
 
-part 'signup_state.dart';
+//part 'signup_state.dart';
 
 class SignupCubit extends Cubit<SignupState> {
   final PostRepository _repository;

@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:recipe_app/recipe/presentation/widget/breakFastFood.dart';
 import 'package:recipe_app/recipe/presentation/widget/constant.dart';
 import 'package:recipe_app/recipe/presentation/widget/customContainer.dart';
 import 'package:recipe_app/recipe/presentation/widget/eveningSpecials.dart';
 import 'package:recipe_app/recipe/presentation/widget/foodRecipe.dart';
 import 'package:recipe_app/recipe/presentation/widget/imageConst.dart';
-import 'package:recipe_app/recipe/presentation/widget/justForYou.dart';
 import 'package:recipe_app/recipe/presentation/widget/recipeListBar.dart';
 import 'package:recipe_app/recipe/presentation/widget/tabBar.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../widget/specialList.dart';
@@ -31,7 +28,7 @@ class RecipeScreen extends StatelessWidget {
               const SizedBox(
                 height: 26,
               ),
-              TabBarPage(),
+              const TabBarPage(),
               // ignore: prefer_const_constructors
 
               Padding(
@@ -71,17 +68,6 @@ class RecipeScreen extends StatelessWidget {
                         fontFamily: "Metropolis",
                       ),
                     ),
-                    // GridView.builder(
-                    //   itemCount: 2, //images.length,
-                    //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    //       crossAxisCount: 2,
-                    //       crossAxisSpacing: 4.0,
-                    //       mainAxisSpacing: 4.0),
-                    //   itemBuilder: (BuildContext context, int index) {
-                    //     return Text("Hello");
-                    //     //Image.network(images[index]);
-                    //   },
-                    // )
                   ],
                 ),
               ),
@@ -94,7 +80,7 @@ class RecipeScreen extends StatelessWidget {
               SizedBox(
                 height: 8.h,
               ),
-              FoodRecipe1(),
+              const FoodRecipe1(),
               const SizedBox(
                 height: 30,
               ),
@@ -160,7 +146,9 @@ class RecipeScreen extends StatelessWidget {
               SizedBox(height: 56.h),
               Container(height: 16.h, color: backgroundColor),
               Padding(
-                padding: const EdgeInsets.only(left: 20, right: 48),
+                padding: const EdgeInsets.only(
+                  left: 20,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -194,7 +182,7 @@ class RecipeScreen extends StatelessWidget {
               Container(
                 height: 124.h,
                 width: 375.w,
-                // color: backgroundColor,
+                color: backgroundColor,
                 child: Center(
                   child: Text(
                     "Ad AREA",

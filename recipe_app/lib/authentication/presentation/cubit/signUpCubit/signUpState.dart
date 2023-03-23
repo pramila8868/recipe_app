@@ -1,6 +1,8 @@
-part of 'signup_cubit.dart';
+//part of 'signup_cubit.dart';
 
-@immutable
+//@immutable
+import 'package:recipe_app/authentication/data/Model/model.dart';
+
 abstract class SignupState {}
 
 class SignupInitial extends SignupState {}
@@ -17,3 +19,4 @@ class SignupError extends SignupState {
   final String message;
   SignupError(this.message);
 }
+

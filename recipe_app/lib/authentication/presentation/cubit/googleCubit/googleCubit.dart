@@ -1,10 +1,9 @@
 import 'package:bloc/bloc.dart';
-import 'package:recipe_app/authentication/presentation/Common/Dio/cubit/login_state.dart';
-import 'package:recipe_app/authentication/presentation/Common/google/Repository/googleRepository.dart';
-import 'package:recipe_app/authentication/presentation/cubit/signup_cubit.dart';
+import 'package:recipe_app/authentication/domain/repository/googleRepository.dart';
+//import 'package:recipe_app/authentication/presentation/cubit/signup_cubit.dart';
 // import 'package:meta/meta.dart';
 import 'package:dio/dio.dart';
-import 'google_state.dart';
+import 'googleState.dart';
 
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -30,7 +29,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 //   }
 // }
 
-import 'google_state.dart';
+import 'googleState.dart';
 
 class GoogleSignInCubit extends Cubit<GoogleSignInState> {
   final GoogleSignInRepository _repository;
@@ -58,40 +57,3 @@ class GoogleSignInCubit extends Cubit<GoogleSignInState> {
   }
 }
 
-
-  //________________________
-//  final GoogleSignIn _googleSignIn;
-  // final UserRepository _userRepository;
-  // GoogleSignInCubit(this._userRepository) : super(GoogleSignInInitial());
-  // Future<void> GoogleLogin() async {
-  //   try {
-  //     emit(GoogleSignInLoading());
-  //     final token1 = await _userRepository.signInWithGoogle();
-  //     emit(GoogleSignInSuccess(token1!));
-  //   } //on DioError
-  //   catch (error) {
-  //     print(error);
-  //     emit(GoogleSignInError(error.toString()));
-  //   }
-  // }
-
-
-  
-  // final GoogleSignIn _googleSignIn1 = GoogleSignIn(scopes: ['email']);
-
-  // Future<void> signInWithGoogle() async {
-  //   try {
-  //     //  final GoogleSignInAccount?
-  //     emit(GoogleSignInLoading());
-  //     final googleUser = await _googleSignIn.signIn();
-  //     // emit(GoogleSignInSuccess(googleUser));
-  //   } catch (e) {
-  //     emit(GoogleSignInError(e.toString()));
-  //   }
-  // }
-
-  // Future<void> signOut() async {
-  //   await _googleSignIn.disconnect();
-  //   emit(GoogleSignInInitial());
-  // }
-//}

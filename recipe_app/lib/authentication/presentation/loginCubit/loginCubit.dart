@@ -1,21 +1,22 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:meta/meta.dart';
+// ignore: depend_on_referenced_packages
 import 'package:dio/dio.dart';
-import 'package:recipe_app/HomePage/Presentation/Page/homeScreen.dart';
+import 'package:recipe_app/authentication/presentation/loginCubit/loginState.dart';
+import 'package:recipe_app/homePage/Presentation/Page/homeScreen.dart';
 import 'package:recipe_app/authentication/data/Model/loginDetail.dart';
 import 'package:recipe_app/authentication/data/Model/model.dart';
-import 'package:recipe_app/authentication/presentation/Common/Dio/cubit/login_state.dart';
-import 'package:recipe_app/authentication/presentation/Common/LoginRepostory/repository.dart';
+import 'package:recipe_app/authentication/domain/repository/loginRepository.dart';
 import 'package:recipe_app/authentication/presentation/page/signUp/signup_screen.dart';
 
-//import 'package:recipe_app/Presentation/authentication/widget/signUp/repository/repository.dart';
+
 
 class LoginCubit extends Cubit<LoginState> {
   final LoginPostRepository _repository;
   LoginCubit(this._repository) : super(LoginInitial());
 
+  // ignore: non_constant_identifier_names
   Future<void> LogIn(
     String name,
     String password,

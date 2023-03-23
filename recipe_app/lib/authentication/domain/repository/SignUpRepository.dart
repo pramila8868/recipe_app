@@ -1,12 +1,9 @@
-import 'dart:convert';
 
-import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:http/http.dart' as http;
+import 'package:recipe_app/authentication/data/Model/model.dart';
 import 'package:recipe_app/authentication/data/api/api.dart';
 
 import '../../../common/Dio/url.dart';
-import '../Model/model.dart';
+
 import '../../../common/interceptor/customInterceptor.dart';
 
 class PostRepository {

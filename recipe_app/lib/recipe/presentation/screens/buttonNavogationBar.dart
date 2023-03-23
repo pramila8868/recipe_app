@@ -1,15 +1,20 @@
+
 import 'package:flutter/material.dart';
-import 'package:recipe_app/authentication/presentation/Widget/search.dart';
+import 'package:recipe_app/authentication/presentation/widget/search.dart';
 import 'package:recipe_app/authentication/presentation/page/loginScreen/loginscreen.dart';
-import 'package:recipe_app/authentication/presentation/page/signUp/signup_screen.dart';
 import 'package:recipe_app/recipe/presentation/widget/constant.dart';
 import 'package:recipe_app/recipe/presentation/widget/imageConst.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_svg/flutter_svg.dart';
 import 'recipeScreen.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CenteredBottomNavigation extends StatefulWidget {
+  const CenteredBottomNavigation({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _CenteredBottomNavigationState createState() =>
       _CenteredBottomNavigationState();
 }
@@ -18,9 +23,9 @@ class _CenteredBottomNavigationState extends State<CenteredBottomNavigation> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    RecipeScreen(),
-    Search(),
-    LoginScreen(),
+    const RecipeScreen(),
+    const Search(),
+    const LoginScreen(),
     // SignUpScreen(),
   ]; // Add your pages here  ];
 
@@ -41,19 +46,8 @@ class _CenteredBottomNavigationState extends State<CenteredBottomNavigation> {
       bottomNavigationBar: SafeArea(
         child: BottomAppBar(
           notchMargin: 8,
-          // color: Colors.green,
-          //  elevation: 0.0,
-          // surfaceTintColor: Colors.red,
-
-          // shape: AutomaticNotchedShape(RoundedRectangleBorder(
-          //     borderRadius: BorderRadius.all(Radius.circular(30)))),
           shape: const CircularNotchedRectangle(),
 
-          //  clipBehavior: Clip.none,
-          // shape: AutomaticNotchedShape(
-
-          //     // StadiumBorder(),
-          //     ),
 
           child: Container(
             height: 83.h,
@@ -87,7 +81,7 @@ class _CenteredBottomNavigationState extends State<CenteredBottomNavigation> {
                       _onItemTapped(1);
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 48.0,
                   ),
                   IconButton(
@@ -115,18 +109,15 @@ class _CenteredBottomNavigationState extends State<CenteredBottomNavigation> {
         ),
       ),
       floatingActionButton: Container(
-        height: 120,
-        width: 56,
-        //width: 105,dec
-        // child: Material(
-        //  color: Colors.transparent,
         child: FloatingActionButton(
           onPressed: () {},
-
-          //  Icon(Icons.add)
-          backgroundColor: Colors.white,
-          child: SvgPicture.asset(
-            button,
+          backgroundColor: floatingColor,
+          child: //Image.asset("images/floatingbutton.jpg"),
+              // child:
+              SvgPicture.asset(
+            "images/headchief.svg",
+            color: Colors.white,
+            //button,
             fit: BoxFit.cover,
           ),
         ),

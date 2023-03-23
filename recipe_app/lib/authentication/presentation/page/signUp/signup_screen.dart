@@ -1,26 +1,31 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:recipe_app/HomePage/Presentation/Page/homeScreen.dart';
 import 'package:recipe_app/authentication/presentation/Widget/checkbox.dart';
 import 'package:recipe_app/authentication/presentation/Widget/constant.dart';
 import 'package:recipe_app/authentication/presentation/Widget/custom_button.dart';
 import 'package:recipe_app/authentication/presentation/Widget/custom_text_field.dart';
-import 'package:recipe_app/authentication/presentation/cubit/signup_cubit.dart';
+// ignore: depend_on_referenced_packages
 import 'package:another_flushbar/flushbar.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_svg/flutter_svg.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recipe_app/authentication/presentation/cubit/signUpCubit/signUpCubit.dart';
+import 'package:recipe_app/authentication/presentation/cubit/signUpCubit/signUpState.dart';
 import 'package:recipe_app/authentication/presentation/page/loginScreen/loginscreen.dart';
-import 'package:recipe_app/data/checkbox/cubit/checkbox_cubit.dart';
+import 'package:recipe_app/data/checkbox/cubit/checkboxCubit.dart';
 
 class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
+
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
   //key/ validate form is id  is in the form of key
-  TextEditingController _invitationCodeController = TextEditingController();
+  final TextEditingController _invitationCodeController = TextEditingController();
 
   final TextEditingController _namecontroller = TextEditingController();
 

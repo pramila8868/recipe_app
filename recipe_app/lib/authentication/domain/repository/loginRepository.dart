@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
@@ -6,8 +8,7 @@ import 'package:http/http.dart' as http;
 import 'package:recipe_app/authentication/data/Model/loginDetail.dart';
 import 'package:recipe_app/authentication/data/api/api.dart';
 
-import '../../../../common/Dio/url.dart';
-import '../../../data/Model/model.dart';
+import '../../../common/Dio/url.dart';
 
 class LoginPostRepository {
   Api apiLogin = Api();
@@ -17,6 +18,7 @@ class LoginPostRepository {
       "username": name,
       "password": password,
     };
+    // ignore: avoid_print
     print(map);
     //const apiUrl = url;
     //  "https://api-dev.revelarena.com/v1/auth/normal-user-register";

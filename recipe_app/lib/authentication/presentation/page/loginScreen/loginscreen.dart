@@ -1,22 +1,28 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:recipe_app/HomePage/Presentation/Page/homeScreen.dart';
-import 'package:recipe_app/authentication/presentation/Common/Dio/cubit/Login_cubit.dart';
-import 'package:recipe_app/authentication/presentation/Common/Dio/cubit/login_state.dart';
+import 'package:recipe_app/authentication/presentation/Widget/custom_text_field.dart';
+import 'package:recipe_app/authentication/presentation/cubit/googleCubit/googleCubit.dart';
+import 'package:recipe_app/authentication/presentation/cubit/googleCubit/googleState.dart';
+import 'package:recipe_app/authentication/presentation/loginCubit/loginCubit.dart';
+import 'package:recipe_app/authentication/presentation/loginCubit/loginState.dart';
+
+import 'package:recipe_app/homePage/Presentation/Page/homeScreen.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_svg/flutter_svg.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+// ignore: depend_on_referenced_packages
 import 'package:another_flushbar/flushbar.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:recipe_app/authentication/presentation/Common/google/cubit/google_cubit.dart';
-import 'package:recipe_app/authentication/presentation/Common/google/cubit/google_state.dart';
-import 'package:recipe_app/authentication/presentation/Widget/constant.dart';
-import 'package:recipe_app/authentication/presentation/Widget/custom_button.dart';
-import 'package:recipe_app/authentication/presentation/Widget/custom_container.dart';
-import 'package:recipe_app/authentication/presentation/Widget/custom_text_field.dart';
+
+import 'package:recipe_app/authentication/presentation/widget/constant.dart';
+
+import 'package:recipe_app/authentication/presentation/widget/custom_container.dart';
+
 import 'package:recipe_app/authentication/presentation/page/signUp/signup_screen.dart';
+
+import '../../widget/custom_button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -321,10 +327,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   // ignore: prefer_const_literals_to_create_immutables
                   children: [
                     Container(
-                      width: 50.h,
-                      height: 2,
-                      color: textColor,
-                    ),
+                        width: 50.h, height: 2, color: textColor //textColor,
+                        ),
                     Text(
                       " Or Sign in With ",
                       style: TextStyle(color: textColor),

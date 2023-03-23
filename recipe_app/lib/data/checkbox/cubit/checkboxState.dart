@@ -1,4 +1,4 @@
-part of 'checkbox_cubit.dart';
+part of 'checkboxCubit.dart';
 
 @immutable
 abstract class CheckboxState {}

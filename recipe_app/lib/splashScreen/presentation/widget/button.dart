@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:another_flushbar/flushbar.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_svg/flutter_svg.dart';
-import 'authentication/presentation/Widget/constant.dart';
+import '../../../authentication/presentation/widget/constant.dart';
 
 class MyWidget extends StatelessWidget {
   const MyWidget({super.key});
@@ -43,9 +44,9 @@ class MyWidget extends StatelessWidget {
                 duration: const Duration(seconds: 15),
                 //  title:"Error",
               ).show(context);
-              Text("Hello");
+              const Text("Hello");
             },
-            child: Text("Button"),
+            child: const Text("Button"),
           )
         ],
       ),

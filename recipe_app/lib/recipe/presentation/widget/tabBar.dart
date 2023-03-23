@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bloc/bloc.dart';
-import 'package:recipe_app/recipe/presentation/widget/cubit/tabbar_cubit.dart';
+import 'package:recipe_app/recipe/presentation/cubit/tabbar_cubit.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'constant.dart';

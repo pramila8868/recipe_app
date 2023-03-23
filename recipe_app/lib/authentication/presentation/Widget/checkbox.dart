@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:recipe_app/authentication/presentation/Widget/constant.dart';
-import 'package:recipe_app/data/checkbox/cubit/checkbox_cubit.dart';
+import 'package:recipe_app/authentication/presentation/widget/constant.dart';
+import 'package:recipe_app/data/checkbox/cubit/checkboxCubit.dart';
+//import 'package:recipe_app/data/checkbox/cubit/checkbox_cubit.dart';
 
 class CheckboxCustom extends StatelessWidget {
   

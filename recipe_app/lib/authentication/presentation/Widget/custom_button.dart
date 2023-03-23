@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'constant.dart';
 
+// ignore: must_be_immutable
 class CustomButton extends StatelessWidget {
   String text;
   CustomButton({super.key, required this.text});

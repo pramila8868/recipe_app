@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:recipe_app/authentication/presentation/Widget/constant.dart';
 import 'package:recipe_app/recipe/presentation/widget/constant.dart';
 
 class SpecialList extends StatelessWidget {
@@ -16,7 +12,7 @@ class SpecialList extends StatelessWidget {
     "Potato",
     "Italian",
     "French",
-    "Japanese AND eNGLISH",
+    "Japanese ",
   ];
   SpecialList({
     super.key,
@@ -27,7 +23,7 @@ class SpecialList extends StatelessWidget {
     return Wrap(spacing: 12, runSpacing: 20, children: [
       ...List.generate(list.length, (index) {
         return Container(
-            height: 42,
+            //height: 42,
             decoration: BoxDecoration(
                 color: specialListColor,
                 borderRadius: BorderRadius.circular(8)),
@@ -36,6 +32,9 @@ class SpecialList extends StatelessWidget {
                   const EdgeInsets.only(left: 24, right: 24, top: 9, bottom: 9),
               child: Text(
                 list[index],
+                softWrap: false,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   fontSize: 16,
                   fontFamily: "Metropolis",

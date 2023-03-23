@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 import 'constant.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 //w=344
 //h:48
 //padding:16
 
+// ignore: must_be_immutable
 class CustomTextField extends StatelessWidget {
   int lengthLimitingTextInputFormatter;
   // MaxLengthEnforcement? maxlengthEnforcement;

@@ -1,5 +1,7 @@
 
 
+//import 'package:recipe_app/authentication/data/Model/loginDetail.dart';
+
 import 'package:recipe_app/authentication/data/Model/loginDetail.dart';
 
 abstract class LoginState {}

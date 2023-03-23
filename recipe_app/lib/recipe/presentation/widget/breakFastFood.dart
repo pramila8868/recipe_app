@@ -25,7 +25,7 @@ class BreakFast extends StatelessWidget {
       //icon: Icon(Icons.ad)
     ),
     BreakfastModel(
-      id: 2, name: "Healthy Sandwicheswwwwwwwwwwww",
+      id: 2, name: "Healthy Sandwiches",
       image: image22, //SvgPicture.asset('images/image3.svg'),
       number: '5 Recipes',
 
@@ -36,63 +36,75 @@ class BreakFast extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
       height: 190.h, // MediaQuery.of(context).size.height * 0.25,
       //color: Colors.orange,
       child: ListView.builder(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           itemCount: breakfastModel.length, //foRYoumodel
           //.length, //model!.length, //forYoumodel,//2, //data.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (BuildContext context, int index) {
             return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   width: 120.w,
                   height: 120.h,
-                  margin: EdgeInsets.only(right: 16),
+                  margin: const EdgeInsets.only(right: 16),
                   decoration: BoxDecoration(
                     // ignore: prefer_const_literals_to_create_immutables
                     boxShadow: [
                       const BoxShadow(
-                          color: Color.fromRGBO(0, 0, 0, 1.5),
-                          offset: Offset(3, 6),
-                          spreadRadius: 2,
-                          blurRadius: 8)
+                        color: Color.fromRGBO(0, 0, 0, 1.5),
+                        //  offset: Offset(3, 6),
+                        //spreadRadius: 2,
+                        blurRadius: 8,
+                      )
                     ],
                     //color: Colors.blue,
                     borderRadius: BorderRadius.circular(8),
                     image: DecorationImage(
+                        // image: //SvgPicture.asset(image12),
                         image: AssetImage(
+                          //icon1
                           breakfastModel[index].image.toString(),
                         ),
                         fit: BoxFit.cover),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 16),
-                  child: Text(
-                    //"hello",
-                    breakfastModel[index].name,
-                    softWrap: true,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                        color: foodColor,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: "Metropolis"),
+                  padding: const EdgeInsets.only(
+                    top: 16,
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16),
-                  child: Text(
-                    breakfastModel[index].number,
-                    style: TextStyle(
-                        color: numberColor,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: "Metropolis"),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        //"hello",
+                        breakfastModel[index].name,
+                        //softWrap: false,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            color: foodColor,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: "Metropolis"),
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      Text(
+                        breakfastModel[index].number,
+                        style: TextStyle(
+                            color: numberColor,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: "Metropolis"),
+                      ),
+                    ],
                   ),
                 ),
               ],

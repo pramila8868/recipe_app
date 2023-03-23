@@ -1,5 +1,5 @@
+// ignore: depend_on_referenced_packages
 import 'package:dio/dio.dart';
-import 'package:recipe_app/authentication/data/Repository/repository.dart';
 
 import '../../../common/interceptor/customInterceptor.dart';
 import '../../../common/Dio/url.dart';

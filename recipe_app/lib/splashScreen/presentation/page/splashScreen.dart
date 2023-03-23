@@ -1,11 +1,15 @@
+
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app/authentication/presentation/Common/Storage/storageService.dart';
 import 'package:recipe_app/authentication/presentation/page/loginScreen/loginscreen.dart';
 import 'package:recipe_app/onboarding/presentation/page/onboarding_screen1.dart';
-import 'package:recipe_app/data/cubit/splash_cubit.dart';
+
+// ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bloc/bloc.dart';
+import 'package:recipe_app/splashScreen/presentation/cubit/splash_cubit.dart';
+
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -25,6 +29,7 @@ class SplashScreen extends StatelessWidget {
                 //   context,
                 //   MaterialPageRoute(builder: (context) => const LoginScreen()),
                 // );
+                // ignore: use_build_context_synchronously
                 Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(
                         builder: (context) => const LoginScreen()),

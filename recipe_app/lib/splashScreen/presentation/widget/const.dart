@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 String image1 = "images/logo1.svg";
 String image2 = "images/image2.svg";

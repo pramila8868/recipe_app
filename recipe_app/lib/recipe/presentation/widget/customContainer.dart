@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // ignore: depend_on_referenced_packages
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:recipe_app/recipe/presentation/widget/constant.dart';
 //import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 
+// ignore: must_be_immutable
 class CustomContainer extends StatelessWidget {
   String image;
   String text1;
@@ -27,6 +26,9 @@ class CustomContainer extends StatelessWidget {
       child: Center(
           child: Text(
         text1,
+        softWrap: false,
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
         style: TextStyle(
             color: labelColor,
             fontWeight: FontWeight.w600,

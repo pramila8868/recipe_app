@@ -5,9 +5,10 @@ import 'package:recipe_app/authentication/presentation/Common/Storage/storageSer
 import 'package:recipe_app/authentication/presentation/page/loginScreen/loginscreen.dart';
 import 'package:recipe_app/onboarding/model/onboarding.dart';
 import 'package:recipe_app/onboarding/presentation/bloc/onboarding/onbardingCubit.dart';
-import 'package:recipe_app/splash_screen/const.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:recipe_app/splashScreen/presentation/widget/const.dart';
 
 class OnBoarding1 extends StatefulWidget {
   const OnBoarding1({

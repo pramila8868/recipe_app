@@ -1,14 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:recipe_app/recipe/data/model/JustForYouModel.dart';
 
 import 'constant.dart';
 
+// ignore: must_be_immutable
 class JustForYou extends StatelessWidget {
   List<ForYouModel> foRYoumodel = [
     ForYouModel(id: 0, text: "Soup ", image: 'images/image25.jpg'),
@@ -27,7 +26,7 @@ class JustForYou extends StatelessWidget {
   Widget build(BuildContext context) {
     //return Container();
     return ListView.builder(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         itemCount: foRYoumodel
             .length, //model!.length, //forYoumodel,//2, //data.length,
         scrollDirection: Axis.horizontal,
@@ -70,6 +69,9 @@ class JustForYou extends StatelessWidget {
                     ),
                     child: Text(
                       foRYoumodel[index].text,
+                      softWrap: false,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                           color: labelColor,
                           fontSize: 24,

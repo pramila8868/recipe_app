@@ -1,4 +1,4 @@
-import 'package:recipe_app/splash_screen/const.dart';
+
 
 class Onboarding {
   int? id;
