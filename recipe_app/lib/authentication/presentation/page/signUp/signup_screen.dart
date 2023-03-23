@@ -25,7 +25,8 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   //key/ validate form is id  is in the form of key
-  final TextEditingController _invitationCodeController = TextEditingController();
+  final TextEditingController _invitationCodeController =
+      TextEditingController();
 
   final TextEditingController _namecontroller = TextEditingController();
 
