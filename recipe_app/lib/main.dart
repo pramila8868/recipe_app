@@ -44,10 +44,6 @@ class MyApp extends StatelessWidget {
               BlocProvider(create: (context) => OnbardingCubit()),
               BlocProvider(create: (context) => CheckboxCubit()),
               BlocProvider(create: (context) => SignupCubit(PostRepository())),
-              // BlocProvider(
-              //     create: (context) => GoogleSignInCubit(
-              //         GoogleSignInRepository()
-              //             as GoogleSignInState)), //UserRepository())),
               BlocProvider(
                   create: (context) => LoginCubit(LoginPostRepository())),
               BlocProvider(create: (context) => TabBarCubit()),
@@ -66,19 +62,7 @@ class MyApp extends StatelessWidget {
                   // RecipeScreen()
                   const CenteredBottomNavigation(),
               // BottomNavigation()
-              // const MyWidget(),
-              // FutureBuilder<String?>(
-              //   future: authService.getToken(),
-              //   builder: (context, snapshot) {
-              //     if (snapshot.connectionState == ConnectionState.waiting) {
-              //       return SplashScreen();
-              //     } else {
-              //       return snapshot.hasData
-              //           ? const LoginScreen()
-              //           : const OnBoarding1(); //LoginPage(authService: authService);
-              //     }
-              //   },
-              // ),
+
               // TabBarPage(),
               // const SplashScreen()
               // home:
@@ -88,8 +72,6 @@ class MyApp extends StatelessWidget {
               //  SignUpScreen(),
             ),
           );
-          //  home: const MyHomePage(title: 'Flutter Demo Home Page'),
-          //    );
         });
   }
 }

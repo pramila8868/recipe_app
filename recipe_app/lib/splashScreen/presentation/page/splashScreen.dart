@@ -41,11 +41,7 @@ class SplashScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const OnBoarding1()),
                 );
               }
-              // Navigator.pushReplacement(context,
-              //     MaterialPageRoute(builder: (context) => OnBoarding1()));
-              // Navigator.of(context).pushNamed(const OnBoarding1());
-              // } else {
-              //   return Container();
+              
             }
           },
           child: Container(

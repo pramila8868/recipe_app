@@ -13,15 +13,3 @@ class ForYouModel {
   });
 }
 
-// List<ForYouModel> foRYoumodel = [
-//   ForYouModel(id: 0, text: "Soup ", icon: Icon(Icons.money_outlined)),
-//   //icon: Icon(Icons.ad)
-
-//   ForYouModel(
-//     id: 1,
-//     text: "Cakes", icon: Icon(Icons.document_scanner_outlined),
-//     //icon: Icon(Icons.ad)
-//   ),
- 
-  
-// ];
