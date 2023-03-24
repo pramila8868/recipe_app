@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:recipe_app/authentication/presentation/Widget/custom_text_field.dart';
 import 'package:recipe_app/authentication/presentation/cubit/googleCubit/googleCubit.dart';
@@ -32,7 +34,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final TextEditingController _emailcontroller =
       TextEditingController(text: "+977");
@@ -108,6 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           } else if (value.length > 14) {
                             return "Invalid number ";
                           }
+                         // return null;
                           // return "null";
                         },
                         autovalidarorMode: AutovalidateMode.onUserInteraction,
@@ -222,8 +225,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       //   // ),
                       BlocConsumer<LoginCubit, LoginState>(
                         listener: (context, state) {
+                          // ignore: duplicate_ignore
                           if (state is LoginError) {
+                            // ignore: avoid_print
                             print("error state listened");
+                            // ignore: avoid_print
                             print(state.message);
 
                             Flushbar(
@@ -240,7 +246,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               // titleSize: 24,
                               icon: SvgPicture.asset('images/flushbar.svg'),
                               messageText: Padding(
-                                padding: EdgeInsets.only(left: 16),
+                                padding: const EdgeInsets.only(left: 16),
                                 child: Text(
                                   state.message,
                                   style: const TextStyle(
@@ -381,6 +387,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             //  title:"Error",
                           ).show(context);
                           print("message");
+                          // ignore: avoid_print
                           print(state.message);
                         }
                       },
@@ -437,7 +444,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SignUpScreen()));
+                                builder: (context) => const SignUpScreen()));
                       },
                       child: Text(
                         "Sign up",

@@ -2,9 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:recipe_app/authentication/domain/repository/googleRepository.dart';
 //import 'package:recipe_app/authentication/presentation/cubit/signup_cubit.dart';
 // import 'package:meta/meta.dart';
-import 'package:dio/dio.dart';
 import 'googleState.dart';
 
+// ignore: depend_on_referenced_packages
 import 'package:google_sign_in/google_sign_in.dart';
 
 // class GoogleCubit extends Cubit<GoogleState> {

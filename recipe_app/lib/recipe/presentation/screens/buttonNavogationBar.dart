@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:recipe_app/authentication/presentation/widget/search.dart';
 import 'package:recipe_app/authentication/presentation/page/loginScreen/loginscreen.dart';
@@ -47,8 +46,6 @@ class _CenteredBottomNavigationState extends State<CenteredBottomNavigation> {
         child: BottomAppBar(
           notchMargin: 8,
           shape: const CircularNotchedRectangle(),
-
-
           child: Container(
             height: 83.h,
             decoration: const BoxDecoration(
@@ -66,6 +63,7 @@ class _CenteredBottomNavigationState extends State<CenteredBottomNavigation> {
                     icon: //Icon(Icons.home),
                         SvgPicture.asset(
                       icon1,
+                      // ignore: deprecated_member_use
                       color: _selectedIndex == 0 ? buttonColor : searchRecipe,
                     ),
                     onPressed: () {
@@ -75,6 +73,7 @@ class _CenteredBottomNavigationState extends State<CenteredBottomNavigation> {
                   IconButton(
                     icon: SvgPicture.asset(
                       icon2,
+                      // ignore: deprecated_member_use
                       color: _selectedIndex == 1 ? buttonColor : searchRecipe,
                     ),
                     onPressed: () {
@@ -87,6 +86,7 @@ class _CenteredBottomNavigationState extends State<CenteredBottomNavigation> {
                   IconButton(
                     icon: SvgPicture.asset(
                       icon3,
+                      // ignore: deprecated_member_use
                       color: _selectedIndex == 2 ? buttonColor : searchRecipe,
                     ),
                     onPressed: () {
@@ -96,6 +96,7 @@ class _CenteredBottomNavigationState extends State<CenteredBottomNavigation> {
                   IconButton(
                     icon: SvgPicture.asset(
                       icon4,
+                      // ignore: deprecated_member_use
                       color: _selectedIndex == 3 ? buttonColor : searchRecipe,
                     ),
                     onPressed: () {
@@ -108,20 +109,18 @@ class _CenteredBottomNavigationState extends State<CenteredBottomNavigation> {
           ),
         ),
       ),
-      floatingActionButton: Container(
-        child: FloatingActionButton(
-          onPressed: () {},
-          backgroundColor: floatingColor,
-          child: //Image.asset("images/floatingbutton.jpg"),
-              // child:
-              SvgPicture.asset(
-            "images/headchief.svg",
-            color: Colors.white,
-            //button,
-            fit: BoxFit.cover,
-          ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: floatingColor,
+        child: //Image.asset("images/floatingbutton.jpg"),
+            // child:
+            SvgPicture.asset(
+          "images/headchief.svg",
+          // ignore: deprecated_member_use
+          color: Colors.white,
+          //button,
+          fit: BoxFit.cover,
         ),
-        //  ),
       ),
 
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

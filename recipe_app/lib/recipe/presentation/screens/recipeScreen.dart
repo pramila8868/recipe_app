@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/recipe/presentation/widget/breakFastFood.dart';
 import 'package:recipe_app/recipe/presentation/widget/constant.dart';
-import 'package:recipe_app/recipe/presentation/widget/customContainer.dart';
-import 'package:recipe_app/recipe/presentation/widget/eveningSpecials.dart';
-import 'package:recipe_app/recipe/presentation/widget/foodRecipe.dart';
-import 'package:recipe_app/recipe/presentation/widget/imageConst.dart';
+import 'package:recipe_app/recipe/presentation/widget/customImageContainer.dart';
 import 'package:recipe_app/recipe/presentation/widget/recipeListBar.dart';
 import 'package:recipe_app/recipe/presentation/widget/tabBar.dart';
 // ignore: depend_on_referenced_packages
@@ -20,7 +17,7 @@ class RecipeScreen extends StatelessWidget {
     return SafeArea(
       bottom: false,
       child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             // ignore: prefer_const_literals_to_create_immutables
@@ -33,42 +30,25 @@ class RecipeScreen extends StatelessWidget {
 
               Padding(
                 padding: const EdgeInsets.only(left: 20, top: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        const Text(
-                          "Find ",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 24,
-                            fontFamily: "Metropolis",
-                          ),
-                        ),
-                        Text(
-                          "best recipes",
-                          style: TextStyle(
-                            color: recipeColor,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 24,
-                            fontFamily: "Metropolis",
-                          ),
-                        )
-                      ],
-                    ),
-                    const Text(
-                      "for Cooking ",
-                      style: TextStyle(
+                child: RichText(
+                  //   textAlign: TextAlign.start,
+                  text: TextSpan(
+                      style: const TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w600,
                         fontSize: 24,
                         fontFamily: "Metropolis",
                       ),
-                    ),
-                  ],
+                      children: [
+                        const TextSpan(
+                          text: "Find ",
+                        ),
+                        TextSpan(
+                          text: "best recipes\n",
+                          style: TextStyle(color: recipeColor),
+                        ),
+                        const TextSpan(text: "for Cooking")
+                      ]),
                 ),
               ),
 
@@ -76,11 +56,22 @@ class RecipeScreen extends StatelessWidget {
                 height: 28,
               ),
 
-              FoodRecipe(),
+              //FoodRecipe(),
+              Row(
+                children: [
+                  recipe("Chicken", "images/image12.png"),
+                  recipe("Noodles", "images/image13.png")
+                ],
+              ),
               SizedBox(
                 height: 8.h,
               ),
-              const FoodRecipe1(),
+              Row(
+                children: [
+                  recipe("Bread", "images/image12.png"),
+                  recipe("For kids", "images/image13.png")
+                ],
+              ),
               const SizedBox(
                 height: 30,
               ),
@@ -118,31 +109,12 @@ class RecipeScreen extends StatelessWidget {
                       height: 24.h,
                     ),
                     BreakFast(),
-                    SizedBox(
-                      height: 40.h,
-                    ),
-                    const Text(
-                      "Evening Specials",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 22,
-                        fontFamily: "Metropolis",
-                      ),
-                    ),
-                    SizedBox(
-                      height: 24.h,
-                    ),
-                    EveningSpecial(),
                   ],
                 ),
               ),
               SizedBox(height: 48.h),
-              CustomContainer(image: image16, text1: "Apple Pie"),
-              SizedBox(height: 16.h),
-              CustomContainer(image: image15, text1: "IceCream"),
-              SizedBox(height: 16.h),
-              CustomContainer(image: image8, text1: "Cup Cakes"),
+              CustomImageContainer(),
+
               SizedBox(height: 56.h),
               Container(height: 16.h, color: backgroundColor),
               Padding(
@@ -199,6 +171,38 @@ class RecipeScreen extends StatelessWidget {
               )
             ],
           )),
+    );
+  }
+
+  Widget recipe(String text, String image) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 21),
+      child: Container(
+        height: 96.h,
+        width: 150.w,
+        // margin: const EdgeInsets.only(right: 12),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5),
+          image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover),
+        ),
+        child: Align(
+          alignment: Alignment.bottomLeft,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 8, left: 14),
+            child: Text(
+              text,
+              softWrap: false,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                  color: labelColor,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: "Metropolis"),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

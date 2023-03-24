@@ -57,7 +57,7 @@ class CustomTextField extends StatelessWidget {
       focusNode: focusNode,
       keyboardType: keyBoard,
       inputFormatters: [
-        new LengthLimitingTextInputFormatter(lengthLimitingTextInputFormatter)
+        LengthLimitingTextInputFormatter(lengthLimitingTextInputFormatter)
       ],
     //  maxLengthEnforcement: maxlengthEnforcement,
       //    keyboardType: ,

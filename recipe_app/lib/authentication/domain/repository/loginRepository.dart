@@ -1,10 +1,8 @@
 // ignore_for_file: avoid_print
 
-import 'dart:convert';
 
+// ignore: depend_on_referenced_packages
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:http/http.dart' as http;
 import 'package:recipe_app/authentication/data/Model/loginDetail.dart';
 import 'package:recipe_app/authentication/data/api/api.dart';
 

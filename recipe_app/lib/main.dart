@@ -57,19 +57,12 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primarySwatch: Colors.blue,
               ),
-              home: //FoodRecipe(),
-                  // Practice(),
-                  // RecipeScreen()
-                  const CenteredBottomNavigation(),
-              // BottomNavigation()
+              home: const CenteredBottomNavigation(),
 
-              // TabBarPage(),
               // const SplashScreen()
               // home:
-              //  OnBoarding1()
-              // OnBoardingScreen1(),
+
               //const LoginScreen()
-              //  SignUpScreen(),
             ),
           );
         });

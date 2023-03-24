@@ -25,7 +25,9 @@ class PostRepository {
       apiurl,
       data: map,
     );
+    // ignore: avoid_print
     print(response);
+    // ignore: avoid_print
     print(response.statusCode);
 
     final Map<String, dynamic> body = response.data;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:recipe_app/recipe/data/model/breakfastModel.dart';
 import 'package:recipe_app/recipe/data/model/eveningModel.dart';
 import 'package:recipe_app/recipe/presentation/widget/imageConst.dart';
@@ -32,17 +32,67 @@ class BreakFast extends StatelessWidget {
       //icon: Icon(Icons.ad)
     ),
   ];
+
+  List<EveningModel> eveningModel = [
+    EveningModel(
+        id: 0,
+        name: "Desserts Corner",
+        image:
+            image19, //'images/image19.jpg', //Image.asset('images/image19.jpg'),
+        number: '5 Recipes'),
+
+    //icon:  Icon(Icons.ad)
+
+    EveningModel(
+      id: 1, name: "Cake Delivery",
+      image: image17, //Image.asset('images/image17.svg'),
+      number: '15 Recipes',
+
+      //icon: Icon(Icons.ad)
+    ),
+    EveningModel(
+      id: 2, name: "Yum Snacks",
+      image: image18, //Image.asset('images/image18.svg'),
+      number: '5 Recipes',
+
+      //icon: Icon(Icons.ad)
+    ),
+  ];
   BreakFast({super.key});
 
   @override
   Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        recipeList(breakfastModel),
+        SizedBox(
+          height: 40.h,
+        ),
+        const Text(
+          "Evening Specials",
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.w600,
+            fontSize: 22,
+            fontFamily: "Metropolis",
+          ),
+        ),
+        SizedBox(
+          height: 24.h,
+        ),
+        recipeList(eveningModel)
+      ],
+    );
+  }
+
+  Widget recipeList(List data) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      height: 190.h, // MediaQuery.of(context).size.height * 0.25,
-      //color: Colors.orange,
+      height: 190.h,
+      //width: MediaQuery.of(context).size.width,
       child: ListView.builder(
           physics: const BouncingScrollPhysics(),
-          itemCount: breakfastModel.length, //foRYoumodel
+          itemCount: data.length, //foRYoumodel
           //.length, //model!.length, //forYoumodel,//2, //data.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (BuildContext context, int index) {
@@ -67,44 +117,55 @@ class BreakFast extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                     image: DecorationImage(
                         // image: //SvgPicture.asset(image12),
-                        image: AssetImage(
-                          //icon1
-                          breakfastModel[index].image.toString(),
-                        ),
+                        image: AssetImage(data[index].image.toString()
+                            //breakfastModel[index].image.toString()
+                            //image
+                            //    image21
+                            //   icon1
+                            //  breakfastModel[index].image.toString(),
+                            ),
                         fit: BoxFit.cover),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 16,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        //"hello",
-                        breakfastModel[index].name,
-                        //softWrap: false,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            color: foodColor,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: "Metropolis"),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      top: 16,
+                    ),
+                    child: SizedBox(
+                      width: 120,
+                      // width: double.infinity,
+                      // color: Colors.amber,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            // text,
+                            //  "Egg",
+                            data[index].name,
+                            softWrap: true,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                color: foodColor,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: "Metropolis"),
+                          ),
+                          const Expanded(child: SizedBox()),
+                          Text(
+                            // "% recipe",
+                            // recipeNumber,
+                            data[index].number,
+                            style: TextStyle(
+                                color: numberColor,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: "Metropolis"),
+                          ),
+                        ],
                       ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      Text(
-                        breakfastModel[index].number,
-                        style: TextStyle(
-                            color: numberColor,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: "Metropolis"),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ],

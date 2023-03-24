@@ -1,3 +1,7 @@
+// ignore: depend_on_referenced_packages
+// ignore_for_file: avoid_print
+
+// ignore: depend_on_referenced_packages
 import 'package:dio/dio.dart';
 
 class AppInterceptors extends Interceptor {
@@ -21,9 +25,11 @@ class AppInterceptors extends Interceptor {
     print(err.response!.statusCode);
     //String errorMsg = err.response?.data["message"];
     // //['message'];
+    // ignore: avoid_print
     print("error");
     //print(errorMsg);
     //String errorMessage = err.response!.data['message'];
+    
     print(err.message);
     print(err.response);
 
@@ -62,10 +68,10 @@ class AppInterceptors extends Interceptor {
       case DioErrorType.unknown:
         throw NoInternetConnectionException(err.requestOptions);
       case DioErrorType.badCertificate:
-        // TODO: Handle this case.
+        
         break;
       case DioErrorType.connectionError:
-        // TODO: Handle this case.
+        
         break;
     }
 

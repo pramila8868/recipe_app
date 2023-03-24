@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:recipe_app/authentication/presentation/Widget/checkbox.dart';
 import 'package:recipe_app/authentication/presentation/Widget/constant.dart';
@@ -53,7 +55,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   //SignUpScreen({super.key});
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final _focusNode = FocusNode();
   @override
 
@@ -70,7 +72,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       child: WillPopScope(
         onWillPop: () async {
           Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => LoginScreen()),
+            MaterialPageRoute(builder: (context) => const LoginScreen()),
           );
           return false;
         },
@@ -122,9 +124,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         label: 'Enter Name',
                         autovalidarorMode: AutovalidateMode.onUserInteraction,
                         custvalidator: (value) {
-                          if (value!.length < 3 && value.isNotEmpty)
+                          if (value!.length < 3 && value.isNotEmpty) {
                             return "name is short";
-                          else if (value.isEmpty) {
+                          } else if (value.isEmpty) {
                             return "This field is required";
                           } else if (!RegExp(r"[a-zA-Z]+$").hasMatch(value)) {
                             return " Please enter a valid name";
@@ -351,6 +353,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       BlocConsumer<SignupCubit, SignupState>(
                           listener: (context, state) {
                         if (state is SignupError) {
+                          // ignore: avoid_print
                           print("error state listened");
                           print(state.message);
 
@@ -538,9 +541,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                                     if (_formKey.currentState!.validate()) {
                                       if (checkStatus) {
-                                        var name = _namecontroller.text;
                                         var email = _emailcontroller.text;
                                         var password = _passwordcontroller.text;
+                                        // ignore: unused_local_variable
                                         var repassword =
                                             _repasswordcontroller.text;
                                         var invitation =
@@ -640,7 +643,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => LoginScreen()));
+                                      builder: (context) => const LoginScreen()));
                             },
                             child: Text(
                               "Sign in",
