@@ -6,8 +6,6 @@ import 'package:recipe_app/authentication/presentation/loginCubit/loginState.dar
 import 'package:recipe_app/authentication/data/Model/loginDetail.dart';
 import 'package:recipe_app/authentication/domain/repository/loginRepository.dart';
 
-
-
 class LoginCubit extends Cubit<LoginState> {
   final LoginPostRepository _repository;
   LoginCubit(this._repository) : super(LoginInitial());
@@ -40,3 +38,5 @@ class LoginCubit extends Cubit<LoginState> {
     }
   }
 }
+
+

@@ -99,32 +99,45 @@ class BreakFast extends StatelessWidget {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: 120.w,
-                  height: 120.h,
-                  margin: const EdgeInsets.only(right: 16),
-                  decoration: BoxDecoration(
-                    // ignore: prefer_const_literals_to_create_immutables
-                    boxShadow: [
-                      const BoxShadow(
-                        color: Color.fromRGBO(0, 0, 0, 1.5),
-                        //  offset: Offset(3, 6),
-                        //spreadRadius: 2,
-                        blurRadius: 8,
-                      )
-                    ],
-                    //color: Colors.blue,
-                    borderRadius: BorderRadius.circular(8),
-                    image: DecorationImage(
-                        // image: //SvgPicture.asset(image12),
-                        image: AssetImage(data[index].image.toString()
-                            //breakfastModel[index].image.toString()
-                            //image
-                            //    image21
-                            //   icon1
-                            //  breakfastModel[index].image.toString(),
-                            ),
-                        fit: BoxFit.cover),
+                ShaderMask(
+                  shaderCallback: (Rect bounds) {
+                    return const LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color.fromARGB(118, 255, 255, 255),
+                        Color.fromARGB(112, 0, 0, 0)
+                      ],
+                    ).createShader(bounds);
+                  },
+                  blendMode: BlendMode.darken,
+                  child: Container(
+                    width: 120.w,
+                    height: 120.h,
+                    margin: const EdgeInsets.only(right: 16),
+                    decoration: BoxDecoration(
+                      // ignore: prefer_const_literals_to_create_immutables
+                      // boxShadow: [
+                      //   const BoxShadow(
+                      //     color: Color.fromRGBO(0, 0, 0, 1.5),
+                      //     offset: Offset(3, 6),
+                      //     //spreadRadius: 2,
+                      //     blurRadius: 8,
+                      //   )
+                      // ],
+                      //color: Colors.blue,
+                      borderRadius: BorderRadius.circular(8),
+                      image: DecorationImage(
+                          // image: //SvgPicture.asset(image12),
+                          image: AssetImage(data[index].image.toString()
+                              //breakfastModel[index].image.toString()
+                              //image
+                              //    image21
+                              //   icon1
+                              //  breakfastModel[index].image.toString(),
+                              ),
+                          fit: BoxFit.cover),
+                    ),
                   ),
                 ),
                 Expanded(

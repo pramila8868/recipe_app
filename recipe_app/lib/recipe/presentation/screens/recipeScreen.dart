@@ -177,28 +177,41 @@ class RecipeScreen extends StatelessWidget {
   Widget recipe(String text, String image) {
     return Padding(
       padding: const EdgeInsets.only(left: 21),
-      child: Container(
-        height: 96.h,
-        width: 150.w,
-        // margin: const EdgeInsets.only(right: 12),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover),
-        ),
-        child: Align(
-          alignment: Alignment.bottomLeft,
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 8, left: 14),
-            child: Text(
-              text,
-              softWrap: false,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                  color: labelColor,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: "Metropolis"),
+      child: ShaderMask(
+        shaderCallback: (Rect bounds) {
+          return const LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color.fromRGBO(0, 0, 0, 0.4),
+                Color.fromRGBO(0, 0, 0, 1)
+              ] //Colors.white, Colors.black.withOpacity(0.1)],
+              ).createShader(bounds);
+        },
+        blendMode: BlendMode.softLight,
+        child: Container(
+          height: 96.h,
+          width: 150.w,
+          // margin: const EdgeInsets.only(right: 12),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover),
+          ),
+          child: Align(
+            alignment: Alignment.bottomLeft,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 8, left: 14),
+              child: Text(
+                text,
+                softWrap: false,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                    color: labelColor,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: "Metropolis"),
+              ),
             ),
           ),
         ),

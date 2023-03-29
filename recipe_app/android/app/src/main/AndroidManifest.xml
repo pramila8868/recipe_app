@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.recipe_app">
+    package="com.revelarena.revel">
    <application
         android:label="recipe_app"
         android:name="${applicationName}"

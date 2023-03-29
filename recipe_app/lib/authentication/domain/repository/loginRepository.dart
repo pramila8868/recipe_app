@@ -16,10 +16,7 @@ class LoginPostRepository {
       "username": name,
       "password": password,
     };
-    // ignore: avoid_print
-    print(map);
-    //const apiUrl = url;
-    //  "https://api-dev.revelarena.com/v1/auth/normal-user-register";
+   
 
     final response = await apiLogin.dio.post(
       apiurl,

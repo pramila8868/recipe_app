@@ -24,8 +24,7 @@ class _CenteredBottomNavigationState extends State<CenteredBottomNavigation> {
   final List<Widget> _pages = [
     const RecipeScreen(),
     const Search(),
-    const LoginScreen(),
-    // SignUpScreen(),
+    const Search(),
   ]; // Add your pages here  ];
 
   void _onItemTapped(int index) {

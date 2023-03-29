@@ -72,37 +72,7 @@ class _RecipeListBarState extends State<RecipeListBar>
                 tabList.length,
                 (index) => Tab(text: tabList[index]),
               ),
-              // ignore: prefer_const_literals_to_create_immutables
-              // tabs:
-              //  [
-              //   Container(
-              //     height: 200,
-              //     child: ListView.builder(
-              //         itemCount: tabList.length,
-              //         itemBuilder: (context, index) {
-              //           return Text("Hello");
-              //         }),
-              //   )
-              // ], //tabList//[
-              //   const Tab(
-              //     text: 'All',
-              //   ),
-              //   const Tab(
-              //     text: 'Eggs',
-              //   ),
-              //   const Tab(
-              //     text: 'Bread',
-              //   ),
-              //   const Tab(
-              //     text: 'Pasta',
-              //   ),
-              //   const Tab(
-              //     text: 'Milk',
-              //   ),
-              //   const Tab(
-              //     text: 'Tomato',
-              //   ),
-              // ],
+              
               onTap: (index) {
                 context
                     .read<TabBarCubit>()

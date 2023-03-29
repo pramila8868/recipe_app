@@ -1,10 +1,10 @@
 
-import 'package:recipe_app/authentication/data/Model/model.dart';
+import 'package:recipe_app/authentication/data/Model/mode.dart';
+
 import 'package:recipe_app/authentication/data/api/api.dart';
 
 import '../../../common/Dio/url.dart';
 
-import '../../../common/interceptor/customInterceptor.dart';
 
 class PostRepository {
   Api api = Api();

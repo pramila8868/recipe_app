@@ -23,7 +23,9 @@ import 'package:recipe_app/authentication/presentation/widget/constant.dart';
 import 'package:recipe_app/authentication/presentation/widget/custom_container.dart';
 
 import 'package:recipe_app/authentication/presentation/page/signUp/signup_screen.dart';
+import 'package:recipe_app/recipe/presentation/screens/buttonNavogationBar.dart';
 
+import '../../../domain/repository/googleRepository.dart';
 import '../../widget/custom_button.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -34,6 +36,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  // final _googleSignInKey = GlobalKey<GoogleSignInButtonState>();
+  // final _googleSignIn = GoogleSignIn();
+  // final _dio = Dio();
+  // final _secureStorage = FlutterSecureStorage();
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final TextEditingController _emailcontroller =
@@ -110,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           } else if (value.length > 14) {
                             return "Invalid number ";
                           }
-                         // return null;
+                          // return null;
                           // return "null";
                         },
                         autovalidarorMode: AutovalidateMode.onUserInteraction,
@@ -262,13 +269,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           } else if (state is LoginLoaded) {
                             Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(
-                                    builder: (context) => const HomeScreen()),
+                                    builder: (context) =>
+                                        const CenteredBottomNavigation()),
                                 (Route route) => false);
-                            // Navigator.pushAndRemoveUntil(context, newRoute, (route) => false)
-                            // Navigator.pushReplacement(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => const HomeScreen()));
                           }
                         },
                         builder: (context, state) {
@@ -357,13 +360,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         if (state is GoogleSignInSuccess) {
                           Navigator.of(context).pushAndRemoveUntil(
                               MaterialPageRoute(
-                                  builder: (context) => const HomeScreen()),
+                                  builder: (context) =>
+                                      const CenteredBottomNavigation()),
                               (Route route) => false);
                           // Navigator.pushAndRemoveUntil(context, newRoute, (route) => false)
                           // Navigator.pushReplacement(
                           //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => const HomeScreen()));
                         } else if (state is GoogleSignInError) {
                           Flushbar(
                             maxWidth: 344,
@@ -373,11 +375,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             reverseAnimationCurve: Curves.decelerate,
                             backgroundColor: flushColor,
                             icon: const Icon(Icons.message_rounded),
-                            messageText: Padding(
-                              padding: const EdgeInsets.only(left: 16),
+                            messageText: const Padding(
+                              padding: EdgeInsets.only(left: 16),
                               child: Text(
-                                state.message,
-                                style: const TextStyle(
+                                "Error",
+                                // state.message,
+                                style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w400),
                               ),
@@ -387,8 +390,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             //  title:"Error",
                           ).show(context);
                           print("message");
+                          print("error show");
                           // ignore: avoid_print
-                          print(state.message);
+                          //print(state.message);
                         }
                       },
                       builder: (context, state) {
@@ -404,17 +408,23 @@ class _LoginScreenState extends State<LoginScreen> {
                         //   );
                         // }
                         if (state is GoogleSignInLoading) {
-                          return const CircularProgressIndicator();
+                          return const Center(
+                              child: CircularProgressIndicator());
                         } else {
                           return InkWell(
-                            onTap: context
-                                .read<GoogleSignInCubit>()
-                                .signIn, //.GoogleLogin,
-                            //.signInWithGoogle, //_handleGoogleSignIn,
+                            // ignore: sort_child_properties_last
                             child: CustomContainer(
                               image: 'images/icon1.png',
                               //image: "images/logo1.png",
                             ),
+
+                            onTap:
+                                context.read<GoogleSignInCubit>().googleLogin,
+                            //   () async {
+                            // await context
+                            //     .read<GoogleSignInCubit>()
+                            //     .googleLogin();
+                            //},
                           );
                         }
                       },
@@ -422,9 +432,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                       width: 25.w,
                     ),
-                    CustomContainer(
-                      image: 'images/icon2.png',
-                      //image: "images/logo1.png",
+                    InkWell(
+                      onTap: () {
+                        context.read<GoogleSignInCubit>().dicontinue();
+                        // UserRepository().dicontinue();
+                      },
+                      child: CustomContainer(
+                        image: 'images/icon2.png',
+                        //image: "images/logo1.png",
+                      ),
                     ),
                   ],
                 ),

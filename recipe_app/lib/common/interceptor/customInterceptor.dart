@@ -11,6 +11,8 @@ class AppInterceptors extends Interceptor {
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
+    print(options.path);
+    print(options.data);
     return handler.next(options);
   }
 
@@ -29,7 +31,7 @@ class AppInterceptors extends Interceptor {
     print("error");
     //print(errorMsg);
     //String errorMessage = err.response!.data['message'];
-    
+
     print(err.message);
     print(err.response);
 
@@ -68,10 +70,8 @@ class AppInterceptors extends Interceptor {
       case DioErrorType.unknown:
         throw NoInternetConnectionException(err.requestOptions);
       case DioErrorType.badCertificate:
-        
         break;
       case DioErrorType.connectionError:
-        
         break;
     }
 
@@ -88,7 +88,7 @@ class BadRequestException extends DioError {
     //for(var error in errors)
     print(response!.data.toString());
     print(response!.data["errors"].toString());
-    print(response!.data["errors"][0]['message']["phone_number"].toString());
+    //print(response!.data["errors"][0]['message']["phone_number"].toString());
     print(response!.data["errors"][0]['message']["field"].toString());
     //["message"].toString());
     print("backend error");

@@ -39,62 +39,75 @@ class FoodListPage extends StatelessWidget {
             .length, //model!.length, //forYoumodel,//2, //data.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) {
-          return Container(
-            margin: const EdgeInsets.only(right: 8),
-            width: 248.w,
-            height: 224.h,
-            // ignore: prefer_const_constructors
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              //color: Colors.amber,
-              image: DecorationImage(
-                image: AssetImage(foodListmodel[index].image),
-                //("images/image6.png"),
+          return ShaderMask(
+            shaderCallback: (Rect bounds) {
+              return const LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color.fromRGBO(0, 0, 0, 0.4),
+                  Color.fromRGBO(0, 0, 0, 1)
+                ],
+              ).createShader(bounds);
+            },
+            blendMode: BlendMode.softLight,
+            child: Container(
+              margin: const EdgeInsets.only(right: 8),
+              width: 248.w,
+              height: 224.h,
+              // ignore: prefer_const_constructors
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                //color: Colors.amber,
+                image: DecorationImage(
+                  image: AssetImage(foodListmodel[index].image),
+                  //("images/image6.png"),
 
-                // //    image: SvgPicture.(
-                // //      foRYoumodel[index].image.toString(),
-                // // //     //   fit: BoxFit.contain,
-                // //    )
-                fit: BoxFit.cover,
+                  // //    image: SvgPicture.(
+                  // //      foRYoumodel[index].image.toString(),
+                  // // //     //   fit: BoxFit.contain,
+                  // //    )
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
 
-            // margin: const EdgeInsets.all(8),
-            child: //Padding(
-                // padding: const EdgeInsets.only(left: 8, top: 176),
-                // child:
-                Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 17,
-                    left: 211,
+              // margin: const EdgeInsets.all(8),
+              child: //Padding(
+                  // padding: const EdgeInsets.only(left: 8, top: 176),
+                  // child:
+                  Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 17,
+                      left: 211,
+                    ),
+                    // ignore: deprecated_member_use
+                    child: SvgPicture.asset(icon5, color: recipeColor),
                   ),
-                  // ignore: deprecated_member_use
-                  child: SvgPicture.asset(icon5, color: recipeColor),
-                ),
-                const Expanded(child: SizedBox()),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8, right: 30),
-                  child: Text(
-                    foodListmodel[index].text,
-                    textAlign: TextAlign.left,
-                    softWrap: false,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                        color: labelColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: "Metropolis"),
+                  const Expanded(child: SizedBox()),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8, right: 30),
+                    child: Text(
+                      foodListmodel[index].text,
+                      textAlign: TextAlign.left,
+                      softWrap: false,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          color: labelColor,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: "Metropolis"),
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-              ],
+                  const SizedBox(
+                    height: 8,
+                  ),
+                ],
+              ),
             ),
           );
         });
