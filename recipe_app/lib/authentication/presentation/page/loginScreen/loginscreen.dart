@@ -375,10 +375,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             reverseAnimationCurve: Curves.decelerate,
                             backgroundColor: flushColor,
                             icon: const Icon(Icons.message_rounded),
-                            messageText: const Padding(
+                            messageText: Padding(
                               padding: EdgeInsets.only(left: 16),
                               child: Text(
-                                "Error",
+                                state.message,
+                                // "Error",
                                 // state.message,
                                 style: TextStyle(
                                     color: Colors.white,
