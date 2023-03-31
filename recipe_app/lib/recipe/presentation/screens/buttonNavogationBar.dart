@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/authentication/presentation/widget/search.dart';
 import 'package:recipe_app/authentication/presentation/page/loginScreen/loginscreen.dart';
+import 'package:recipe_app/recipe/presentation/screens/exploreScreen.dart';
+import 'package:recipe_app/recipe/presentation/screens/signOut.dart';
 import 'package:recipe_app/recipe/presentation/widget/constant.dart';
 import 'package:recipe_app/recipe/presentation/widget/imageConst.dart';
 // ignore: depend_on_referenced_packages
@@ -24,6 +26,8 @@ class _CenteredBottomNavigationState extends State<CenteredBottomNavigation> {
   final List<Widget> _pages = [
     const RecipeScreen(),
     const Search(),
+    SignOut(),
+    //ExploreScreen(),
     const Search(),
   ]; // Add your pages here  ];
 

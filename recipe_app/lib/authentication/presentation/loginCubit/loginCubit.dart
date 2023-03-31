@@ -37,6 +37,9 @@ class LoginCubit extends Cubit<LoginState> {
       emit(LoginError(e.toString()));
     }
   }
+
+  void logOut() {
+    // _repository.
+    emit(LoginInitial());
+  }
 }
-
-

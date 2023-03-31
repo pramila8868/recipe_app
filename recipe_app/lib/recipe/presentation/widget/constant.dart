@@ -10,3 +10,4 @@ Color foodColor = const Color.fromRGBO(18, 18, 18, 1);
 Color numberColor = const Color.fromRGBO(151, 162, 176, 1);
 Color buttonColor = const Color.fromRGBO(112, 185, 190, 1);
 Color floatingColor = const Color.fromRGBO(4, 38, 40, 1);
+Color iconBackgroundColor = Color.fromRGBO(7, 98, 103, 1);

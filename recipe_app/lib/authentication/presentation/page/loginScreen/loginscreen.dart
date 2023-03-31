@@ -1,12 +1,13 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:recipe_app/authentication/presentation/Common/Storage/loginStorageService.dart';
 import 'package:recipe_app/authentication/presentation/Widget/custom_text_field.dart';
 import 'package:recipe_app/authentication/presentation/cubit/googleCubit/googleCubit.dart';
 import 'package:recipe_app/authentication/presentation/cubit/googleCubit/googleState.dart';
 import 'package:recipe_app/authentication/presentation/loginCubit/loginCubit.dart';
 import 'package:recipe_app/authentication/presentation/loginCubit/loginState.dart';
-
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:recipe_app/homePage/Presentation/Page/homeScreen.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_svg/flutter_svg.dart';
@@ -36,6 +37,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  LoginStorageService loginService = LoginStorageService();
   // final _googleSignInKey = GlobalKey<GoogleSignInButtonState>();
   // final _googleSignIn = GoogleSignIn();
   // final _dio = Dio();
@@ -302,6 +304,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                           // invitation = "",
                                         );
 
+                                    // storage.write(
+                                    //     key: "token", value: 'user_token');
                                     //  _formKey.currentState!.save();
                                     //  _formKey.currentState!.reset();
                                     //_formKey.currentState?.validate();
@@ -358,6 +362,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     BlocConsumer<GoogleSignInCubit, GoogleSignInState>(
                       listener: (context, state) {
                         if (state is GoogleSignInSuccess) {
+                          loginService.saveLoginToken("loginToken");
                           Navigator.of(context).pushAndRemoveUntil(
                               MaterialPageRoute(
                                   builder: (context) =>
@@ -381,7 +386,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 state.message,
                                 // "Error",
                                 // state.message,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w400),
                               ),

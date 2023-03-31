@@ -24,6 +24,7 @@ import 'splashScreen/presentation/cubit/splash_cubit.dart';
 import 'splashScreen/presentation/page/splashScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -66,9 +67,9 @@ class MyApp extends StatelessWidget {
                   ),
                   home: //const CenteredBottomNavigation(),
 
-                      //   const SplashScreen()
-                      // home:
-                      const LoginScreen()
+                      const SplashScreen()
+                  // home:
+                  // const LoginScreen()
                   //),
                   ));
         });
