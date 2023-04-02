@@ -24,7 +24,7 @@ class SplashScreen extends StatelessWidget {
           listener: (context, state) async {
             if (state == SplashState.loaded) {
               LoginStorageService loginStorage = LoginStorageService();
-              final token1 = loginStorage.getLoginToken();
+              final token1 = loginStorage.getLoginToken("login");
               print(' sub screen token is$token1');
               if (token1 != null) {
                 Navigator.of(context).pushAndRemoveUntil(
@@ -38,6 +38,7 @@ class SplashScreen extends StatelessWidget {
                     (Route route) => false);
                 //  }
               }
+
               StorageService storage = StorageService();
               final token = await storage.getToken();
               print(' main screen token is$token');

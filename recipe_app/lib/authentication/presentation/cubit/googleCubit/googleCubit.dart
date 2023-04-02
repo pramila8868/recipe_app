@@ -18,10 +18,19 @@ class GoogleSignInCubit extends Cubit<GoogleSignInState> {
       ) async {
     emit(GoogleSignInLoading());
     try {
-      emit(GoogleSignInLoading());
+    //  emit(GoogleSignInLoading());
+      GoogleSignIn googleSignIn = GoogleSignIn();
+      final googleUser = await googleSignIn.signIn();
+      if (googleUser == null) return;
+
+      final token = googleUser.serverAuthCode;
+      print(token);
+      print(googleUser.serverAuthCode);
+      print(googleUser);
       final token1 = await _userRepository.signInWithGoogle(
           // googleToken
-          );
+          token.toString());
+      print(token1);
       emit(GoogleSignInSuccess(token1.toString()));
       //  emit(GoogleSignInSuccess(token1.toString()));
     } on DioError catch (e) {

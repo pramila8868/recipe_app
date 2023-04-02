@@ -19,16 +19,17 @@ class SignOut extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            height: 20,
+            height: 150,
           ),
           Align(
-              alignment: Alignment.topRight,
+              alignment: Alignment.center,
               child: BlocBuilder<GoogleSignInCubit, GoogleSignInState>(
                 builder: (context, state) {
                   return InkWell(
-                      onTap: () {
-                        context.read<GoogleSignInCubit>().dicontinue();
-                     //   _delete.deleteLoginToken();
+                      onTap: () async {
+                        await BlocProvider.of<GoogleSignInCubit>(context)
+                            .dicontinue();
+                        //   _delete.deleteLoginToken();
                         Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
                                 builder: (context) => const LoginScreen()),

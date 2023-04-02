@@ -89,7 +89,7 @@ class BadRequestException extends DioError {
     print(response!.data.toString());
     print(response!.data["errors"].toString());
     //print(response!.data["errors"][0]['message']["phone_number"].toString());
-    print(response!.data["errors"][0]['message']["field"].toString());
+   // print(response!.data["errors"][0]['message']["field"].toString());
     //["message"].toString());
     print("backend error");
     // final errors = response!.data["errors"];

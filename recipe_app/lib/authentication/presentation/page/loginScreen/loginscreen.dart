@@ -37,6 +37,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  late final String token = "";
   LoginStorageService loginService = LoginStorageService();
   // final _googleSignInKey = GlobalKey<GoogleSignInButtonState>();
   // final _googleSignIn = GoogleSignIn();
@@ -57,6 +58,8 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
+  final storage = const FlutterSecureStorage();
+  final LoginStorageService _loginStorageService = LoginStorageService();
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -82,10 +85,34 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 40.h,
                       ),
 
-                      const Text(
-                        "Hello,",
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.w600),
+                      InkWell(
+                        onTap: () async {
+                          final allvalue = await _loginStorageService
+                              .saveLoginToken("login", token);
+                          print(allvalue);
+                          print("token issss $allvalue");
+
+                          // value.for
+                          // Future<void> text =
+                          //     _loginStorageService.saveLoginToken("token");
+                          // print(text);
+                          // print("token");
+                          // void main() async {
+                          //   Future myValue =
+                          //       _loginStorageService.getLoginToken();
+                          //   if (myValue != null) {
+                          //     print(
+                          //         'Value is saved in secure storage: $myValue');
+                          //   } else {
+                          //     print('Value is not saved in secure storage.');
+                          //   }
+                          // }
+                        }, //storage.write(key: "hello", value: "value"),
+                        child: const Text(
+                          "Hello,",
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.w600),
+                        ),
                       ),
                       const SizedBox(
                         height: 2,
@@ -362,7 +389,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     BlocConsumer<GoogleSignInCubit, GoogleSignInState>(
                       listener: (context, state) {
                         if (state is GoogleSignInSuccess) {
-                          loginService.saveLoginToken("loginToken");
+                          loginService.saveLoginToken("login", "log_in");
                           Navigator.of(context).pushAndRemoveUntil(
                               MaterialPageRoute(
                                   builder: (context) =>
@@ -418,20 +445,20 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: CircularProgressIndicator());
                         } else {
                           return InkWell(
-                            // ignore: sort_child_properties_last
-                            child: CustomContainer(
-                              image: 'images/icon1.png',
-                              //image: "images/logo1.png",
-                            ),
-
-                            onTap:
-                                context.read<GoogleSignInCubit>().googleLogin,
-                            //   () async {
-                            // await context
-                            //     .read<GoogleSignInCubit>()
-                            //     .googleLogin();
-                            //},
-                          );
+                              // ignore: sort_child_properties_last
+                              child: CustomContainer(
+                                image: 'images/icon1.png',
+                                //image: "images/logo1.png",
+                              ),
+                              onTap: () {
+                                context.read<GoogleSignInCubit>().googleLogin();
+                              }
+                              //   () async {
+                              // await context
+                              //     .read<GoogleSignInCubit>()
+                              //     .googleLogin();
+                              //},
+                              );
                         }
                       },
                     ),

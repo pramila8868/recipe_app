@@ -1,23 +1,55 @@
 // ignore_for_file: avoid_print
 
-
 // ignore: depend_on_referenced_packages
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
+import 'package:recipe_app/authentication/data/Model/googleModel.dart';
 import 'package:recipe_app/authentication/data/Model/loginDetail.dart';
 import 'package:recipe_app/authentication/data/api/api.dart';
 
 import '../../../common/Dio/url.dart';
 
+// class LoginPostRepository {
+//   Api apiLogin = Api();
+//   String apiurl = Globals().logInUrl;
+//   Future<LoginDetail> logInUser(String name, String password) async {
+//     Map<String, dynamic> map = {
+//       "username": name,
+//       "password": password,
+//     };
+
+//     final response = await apiLogin.dio.post(
+//       apiurl,
+//       data: map,
+//       options: Options(
+//         contentType: "application/json; charset=UTF-8",
+//       ),
+//     );
+//     print(response);
+//     print(response.statusCode);
+
+//     final Map<String, dynamic> body = response.data;
+//     print(body);
+//     print("body is $body");
+//     return LoginDetail.fromJson(body);
+//     //  return UserDetail.fromJson(response.data);
+//     // } else {
+//     //   throw NoInternetConnectionException(response.requestOptions);
+//   }
+// }
+
 class LoginPostRepository {
+  Globals globals = Globals();
   Api apiLogin = Api();
-  String apiurl = Globals().logInUrl;
-  Future<LoginDetail> logInUser(String name, String password) async {
+
+  // String apiurl = Globals().logInUrl;
+  Future<GoogleModel> logInUser(String name, String password) async {
     Map<String, dynamic> map = {
       "username": name,
       "password": password,
     };
-   
-
+    String apiurl = globals.baseUrl + globals.logInUrl;
     final response = await apiLogin.dio.post(
       apiurl,
       data: map,
@@ -27,10 +59,30 @@ class LoginPostRepository {
     );
     print(response);
     print(response.statusCode);
-
-    final Map<String, dynamic> body = response.data;
-
-    return LoginDetail.fromJson(body);
+    final responseData = response.data;
+    final refreshData = responseData['refresh'];
+    print(refreshData);
+    final accessData = responseData['access'];
+    print(accessData);
+    print("Response of login is $refreshData");
+    //final Map<String, dynamic> body = response.data;
+    //print(body);
+    print("Response of login is $response.data['refresh']");
+    // //  print("body is $body");
+    // final GoogleModel loginResponse =
+    //     GoogleModel.fromJson(response.data['access']);
+    // print(loginResponse);
+    //final googelModel =  GoogleModel.fromJson(jsonDecode(response.data));//GoogleModel.fromJson(response.data);
+    //print(googelModel);
+    //print(GoogleModel.fromJson(response.data["access"]));
+    //return LoginDetail.fromJson(body);
+    //print(GoogleModel.fromJson(response.data['refresh']));
+    // print(GoogleModel.fromJson(jsonDecode(response.data.toString())));
+    // return GoogleModel.fromJson(jsonDecode(response.data.toString()));
+    //print(GoogleModel.fromJson(response.data['refresh']));
+    GoogleModel model = GoogleModel.fromJson(response.data);
+    print(model);
+    return GoogleModel.fromJson(response.data);
     //  return UserDetail.fromJson(response.data);
     // } else {
     //   throw NoInternetConnectionException(response.requestOptions);
