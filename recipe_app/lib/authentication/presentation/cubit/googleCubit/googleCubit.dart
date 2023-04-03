@@ -18,7 +18,7 @@ class GoogleSignInCubit extends Cubit<GoogleSignInState> {
       ) async {
     emit(GoogleSignInLoading());
     try {
-    //  emit(GoogleSignInLoading());
+      //  emit(GoogleSignInLoading());
       GoogleSignIn googleSignIn = GoogleSignIn();
       final googleUser = await googleSignIn.signIn();
       if (googleUser == null) return;
@@ -41,7 +41,7 @@ class GoogleSignInCubit extends Cubit<GoogleSignInState> {
 
   dicontinue() async {
     googleSignIn.disconnect();
-    await _storage.delete(key: 'token');
+    //await _storage.delete(key: 'token');
     print('disconnected');
   }
 }

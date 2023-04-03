@@ -1,5 +1,5 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:recipe_app/authentication/data/Model/googleModel.dart';
+
 
 class LoginStorageService {
   final FlutterSecureStorage _storage = const FlutterSecureStorage();
@@ -10,11 +10,11 @@ class LoginStorageService {
   }
 
 //Store a value with a key
-   Future saveLoginToken(String key, String token) async {
-     await _storage.write(key: key, value: token);
-   }
+  Future saveLoginToken(String key, String token) async {
+    await _storage.write(key: key, value: token);
+  }
 
-   Future deleteLoginToken() async {
-   await _storage.delete(key: 'token');
-   }
+  Future deleteLoginToken(String key) async {
+    await _storage.delete(key: key);
+  }
 }

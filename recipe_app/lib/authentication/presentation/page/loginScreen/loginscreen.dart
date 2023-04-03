@@ -37,7 +37,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  late final String token = "";
+  //late final String refreshToken;
   LoginStorageService loginService = LoginStorageService();
   // final _googleSignInKey = GlobalKey<GoogleSignInButtonState>();
   // final _googleSignIn = GoogleSignIn();
@@ -88,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       InkWell(
                         onTap: () async {
                           final allvalue = await _loginStorageService
-                              .saveLoginToken("login", token);
+                              .getLoginToken("refreshToken");
                           print(allvalue);
                           print("token issss $allvalue");
 

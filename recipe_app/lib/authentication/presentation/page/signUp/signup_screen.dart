@@ -130,16 +130,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             return "This field is required";
                           } else if (!RegExp(r"[a-zA-Z]+$").hasMatch(value)) {
                             return " Please enter a valid name";
-                          } else if (value.length > 25) {
-                            return "Name must be 11characters or less";
-                          }
+                          } //else if (value.length > 25) {
+                          //return "Name must be 11characters or less";
+                          //}
                           return null;
                           // }
                         },
                         obSecureText: false,
                         keyBoard: TextInputType.name,
                         //focusNode: _focusNode,
-                        autoNode: true, lengthLimitingTextInputFormatter: 20,
+                        autoNode: true, lengthLimitingTextInputFormatter: 30,
                       ),
                       SizedBox(
                         height: 20.h,
@@ -216,9 +216,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             return "Please enter a valid email address";
                           } else if (value.length < 8) {
                             return 'Email must be at least 8 digits long';
-                          } else if (!value.endsWith("com")) {
-                            return ("Enter valid email");
-                          }
+                          } //else if (!value.endsWith("com")) {
+                          //return ("Enter valid email");
+                          //}
                           // the email is valid
                           return null;
                         },
@@ -643,7 +643,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const LoginScreen()));
+                                      builder: (context) =>
+                                          const LoginScreen()));
                             },
                             child: Text(
                               "Sign in",

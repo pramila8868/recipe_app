@@ -1,11 +1,11 @@
-class GoogleModel {
+class ResponseModel {
   String? refresh;
   String? access;
   User? user;
 
-  GoogleModel({this.refresh, this.access, this.user});
+  ResponseModel({this.refresh, this.access, this.user});
 
-  GoogleModel.fromJson(Map<String, dynamic> json) {
+  ResponseModel.fromJson(Map<String, dynamic> json) {
     refresh = json['refresh'];
     access = json['access'];
     user = json['user'] != null ? new User.fromJson(json['user']) : null;

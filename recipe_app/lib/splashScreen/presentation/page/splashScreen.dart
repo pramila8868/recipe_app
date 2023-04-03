@@ -23,32 +23,28 @@ class SplashScreen extends StatelessWidget {
         child: BlocListener<SplashCubit, SplashState>(
           listener: (context, state) async {
             if (state == SplashState.loaded) {
-              LoginStorageService loginStorage = LoginStorageService();
-              final token1 = loginStorage.getLoginToken("login");
-              print(' sub screen token is$token1');
-              if (token1 != null) {
-                Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                        builder: (context) => const CenteredBottomNavigation()),
-                    (Route route) => false);
-              } else {
-                Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                        builder: (context) => const LoginScreen()),
-                    (Route route) => false);
-                //  }
-              }
-
               StorageService storage = StorageService();
-              final token = await storage.getToken();
-              print(' main screen token is$token');
-              if (token != null) {
-                Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                        builder: (context) => const LoginScreen()),
-                    (Route route) => false);
+              final isFirstLogin = await storage.getToken();
+              print(' main screen token is$isFirstLogin');
+              if (isFirstLogin != null) {
+                LoginStorageService loginStorage = LoginStorageService();
+                final accessToken =
+                    await loginStorage.getLoginToken("accessToken");
+                print(' sub screen token is$accessToken');
+                if (accessToken != null) {
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const CenteredBottomNavigation()),
+                      (Route route) => false);
+                } else {
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(
+                          builder: (context) => const LoginScreen()),
+                      (Route route) => false);
+                  //  }
+                }
 
-                // LoginStorageService loginStorage = LoginStorageService();
                 // final token1 = loginStorage.getLoginToken();
                 // print(' sub screen token is$token1');
                 // if (token1 != null) {
@@ -72,6 +68,41 @@ class SplashScreen extends StatelessWidget {
                 );
               }
             }
+
+            //---------------------------------
+
+            //     StorageService storage = StorageService();
+            //     final token = await storage.getToken();
+            //     print(' main screen token is$token');
+            //     if (token != null) {
+            //       Navigator.of(context).pushAndRemoveUntil(
+            //           MaterialPageRoute(
+            //               builder: (context) => const LoginScreen()),
+            //           (Route route) => false);
+
+            //       // LoginStorageService loginStorage = LoginStorageService();
+            //       // final token1 = loginStorage.getLoginToken();
+            //       // print(' sub screen token is$token1');
+            //       // if (token1 != null) {
+            //       //   Navigator.of(context).pushAndRemoveUntil(
+            //       //       MaterialPageRoute(
+            //       //           builder: (context) =>
+            //       //               const CenteredBottomNavigation()),
+            //       //       (Route route) => false);
+            //       // } else {
+            //       //   Navigator.of(context).pushAndRemoveUntil(
+            //       //       MaterialPageRoute(
+            //       //           builder: (context) => const LoginScreen()),
+            //       //       (Route route) => false);
+            //       //   //  }
+            //       // }
+            //     } else {
+            //       // ignore: use_build_context_synchronously
+            //       Navigator.pushReplacement(
+            //         context,
+            //         MaterialPageRoute(builder: (context) => const OnBoarding1()),
+            //       );
+            //     }
           },
           child: ShaderMask(
             shaderCallback: (Rect bounds) {

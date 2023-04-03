@@ -1,28 +1,20 @@
 {
   "project_info": {
-    "project_number": "24373963501",
-    "project_id": "event-nation",
-    "storage_bucket": "event-nation.appspot.com"
+    "project_number": "210067565813",
+    "project_id": "revel-arena",
+    "storage_bucket": "revel-arena.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:24373963501:android:6b7d8bbdfc8de054f37ae4",
+        "mobilesdk_app_id": "1:210067565813:android:6ed8e4d064778bc69569bc",
         "android_client_info": {
           "package_name": "com.revelarena.revel"
         }
       },
       "oauth_client": [
         {
-          "client_id": "24373963501-lqulqj4tov2ud20hnc6ktl219bnutbr1.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.revelarena.revel",
-            "certificate_hash": "4d86c100d44d6c081257e32b608e0e5ab8946681"
-          }
-        },
-        {
-          "client_id": "24373963501-v0h3o52vb3kc19r29rh9k1dkts69211f.apps.googleusercontent.com",
+          "client_id": "210067565813-tqn36525k0ejkd4mc51rqfj4nk40mgip.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.revelarena.revel",
@@ -30,21 +22,28 @@
           }
         },
         {
-          "client_id": "24373963501-sptf94cls6k1681at9lugtjentfp8609.apps.googleusercontent.com",
+          "client_id": "210067565813-92e74o7quhpvmgolanifbot3qkj7pd93.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCPAEfnbQptDZ66EHeCTDCLnhUW-DDB4hM"
+          "current_key": "AIzaSyAUEL6fmYYpQQpUqStqJ-MU1hrr9j0T9ZQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "24373963501-sptf94cls6k1681at9lugtjentfp8609.apps.googleusercontent.com",
+              "client_id": "210067565813-92e74o7quhpvmgolanifbot3qkj7pd93.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "210067565813-ipvidvpoai4mqj7dh52o2u6p0skjvada.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.revelarena.revel"
+              }
             }
           ]
         }

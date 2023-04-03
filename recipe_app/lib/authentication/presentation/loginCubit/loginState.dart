@@ -13,10 +13,11 @@ class LoginLoaded extends LoginState {
   //final List<UserDetail> userdetail;
   //final UserDetail userDetail;
   // final UserDetail userdetail;
-  final GoogleModel responseModel;
+  final ResponseModel responseModel;
   //final LoginDetail loginDetail;
 
-  LoginLoaded( this.responseModel//this.loginDetail
+  LoginLoaded(
+    this.responseModel, //this.loginDetail
   );
 }
 

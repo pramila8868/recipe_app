@@ -35,7 +35,7 @@ class UserRepository {
   GoogleSignIn googleSignIn = GoogleSignIn();
 //GoogleSignIn.debugLoggingEnabled = true;
 
-  Future<GoogleModel> signInWithGoogle(String token) async {
+  Future<ResponseModel> signInWithGoogle(String token) async {
     Map bodyToken = {"code": token};
     // String url = Globals().googleUrl;
     String url = globals.baseUrl + globals.googleUrl;
@@ -56,16 +56,17 @@ class UserRepository {
     Future token11 = _loginStorageService.getLoginToken("key");
     print(token11);
     final accessToken = response.data['access'];
-    Future token2 = _loginStorageService.saveLoginToken("key1", accessToken);
+    Future token2 =
+        _loginStorageService.saveLoginToken("accessToken", accessToken);
     print(token2);
-    Future token22 = _loginStorageService.getLoginToken("key1");
+    Future token22 = _loginStorageService.getLoginToken("accessToken");
     print(token22);
     print(accessToken);
     print(response.data['access']);
-    GoogleModel googleModel = GoogleModel.fromJson(body);
-    print(googleModel);
-    //print(googleModel);
-    return googleModel;
+    ResponseModel responseModel = ResponseModel.fromJson(body);
+    print(responseModel);
+    //print(ResponseModel);
+    return responseModel;
   }
 
 //   Future signInWithGoogle( String token,

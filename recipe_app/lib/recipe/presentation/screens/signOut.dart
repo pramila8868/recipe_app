@@ -5,9 +5,11 @@ import 'package:recipe_app/authentication/presentation/Common/Storage/loginStora
 import 'package:recipe_app/authentication/presentation/cubit/googleCubit/googleCubit.dart';
 import 'package:recipe_app/authentication/presentation/cubit/googleCubit/googleState.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipe_app/authentication/presentation/loginCubit/loginCubit.dart';
 import 'package:recipe_app/authentication/presentation/page/loginScreen/loginscreen.dart';
 
 class SignOut extends StatelessWidget {
+  final LoginStorageService _loginStorageService = LoginStorageService();
   LoginStorageService _delete = LoginStorageService();
   SignOut({super.key});
 
@@ -18,26 +20,25 @@ class SignOut extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 150,
           ),
           Align(
               alignment: Alignment.center,
-              child: BlocBuilder<GoogleSignInCubit, GoogleSignInState>(
-                builder: (context, state) {
-                  return InkWell(
-                      onTap: () async {
-                        await BlocProvider.of<GoogleSignInCubit>(context)
-                            .dicontinue();
-                        //   _delete.deleteLoginToken();
-                        Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(
-                                builder: (context) => const LoginScreen()),
-                            (Route route) => false);
-                      },
-                      child: const Icon(Icons.logout_outlined));
-                },
-              )),
+              child: InkWell(
+                  onTap: () {
+                    _loginStorageService.deleteLoginToken("accessToken");
+                    context.read<GoogleSignInCubit>().dicontinue();
+                    print("Logout");
+
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                          builder: (context) => const LoginScreen()),
+                    );
+                  },
+                  child: const Icon(Icons.logout_outlined))
+             
+              ),
         ],
       ),
     ));

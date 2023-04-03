@@ -4,9 +4,11 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+
 import 'package:recipe_app/authentication/data/Model/googleModel.dart';
 import 'package:recipe_app/authentication/data/Model/loginDetail.dart';
 import 'package:recipe_app/authentication/data/api/api.dart';
+import 'package:recipe_app/authentication/presentation/Common/Storage/loginStorageService.dart';
 
 import '../../../common/Dio/url.dart';
 
@@ -40,11 +42,12 @@ import '../../../common/Dio/url.dart';
 // }
 
 class LoginPostRepository {
+  LoginStorageService _loginStorageService = LoginStorageService();
   Globals globals = Globals();
   Api apiLogin = Api();
 
   // String apiurl = Globals().logInUrl;
-  Future<GoogleModel> logInUser(String name, String password) async {
+  Future<ResponseModel> logInUser(String name, String password) async {
     Map<String, dynamic> map = {
       "username": name,
       "password": password,
@@ -53,36 +56,56 @@ class LoginPostRepository {
     final response = await apiLogin.dio.post(
       apiurl,
       data: map,
-      options: Options(
-        contentType: "application/json; charset=UTF-8",
-      ),
+      // options: Options(headers: {'Range': 'bytes=0-9999'}),
+      // options: Options(
+      //   contentType: "application/json; charset=UTF-8",
+      // ),
     );
     print(response);
     print(response.statusCode);
     final responseData = response.data;
     final refreshData = responseData['refresh'];
     print(refreshData);
+    print("PRINT");
+    // Future token1 = _loginStorageService.saveLoginToken("key", refreshData);
+    // print(token1);
+    // Future token11 = _loginStorageService.getLoginToken("key");
+    // print("refreshToken is $token11");
+    // print('_______________');
+
+    String? token1 = await _loginStorageService.saveLoginToken("refreshToken",
+        refreshData); // String? to allow it to accept null values:
+    print(token1);
+    String? token11 = await _loginStorageService.getLoginToken("refreshToken");
+    print("refreshToken is $token11");
+    print('_______________');
     final accessData = responseData['access'];
     print(accessData);
+    String? token2 =
+        await _loginStorageService.saveLoginToken("accessToken", accessData);
+    print(token2);
+    String? token22 = await _loginStorageService.getLoginToken("accessToken");
+    print(token22);
+    print('accessToken is $token22');
     print("Response of login is $refreshData");
-    //final Map<String, dynamic> body = response.data;
+    // //final Map<String, dynamic> body = response.data;
     //print(body);
     print("Response of login is $response.data['refresh']");
     // //  print("body is $body");
-    // final GoogleModel loginResponse =
-    //     GoogleModel.fromJson(response.data['access']);
+    // final ResponseModel loginResponse =
+    //     ResponseModel.fromJson(response.data['access']);
     // print(loginResponse);
-    //final googelModel =  GoogleModel.fromJson(jsonDecode(response.data));//GoogleModel.fromJson(response.data);
+    //final googelModel =  ResponseModel.fromJson(jsonDecode(response.data));//ResponseModel.fromJson(response.data);
     //print(googelModel);
-    //print(GoogleModel.fromJson(response.data["access"]));
+    //print(ResponseModel.fromJson(response.data["access"]));
     //return LoginDetail.fromJson(body);
-    //print(GoogleModel.fromJson(response.data['refresh']));
-    // print(GoogleModel.fromJson(jsonDecode(response.data.toString())));
-    // return GoogleModel.fromJson(jsonDecode(response.data.toString()));
-    //print(GoogleModel.fromJson(response.data['refresh']));
-    GoogleModel model = GoogleModel.fromJson(response.data);
+    //print(ResponseModel.fromJson(response.data['refresh']));
+    // print(ResponseModel.fromJson(jsonDecode(response.data.toString())));
+    // return ResponseModel.fromJson(jsonDecode(response.data.toString()));
+    //print(ResponseModel.fromJson(response.data['refresh']));
+    ResponseModel? model = ResponseModel.fromJson(response.data);
     print(model);
-    return GoogleModel.fromJson(response.data);
+    return model; //ResponseModel.fromJson(response.data);
     //  return UserDetail.fromJson(response.data);
     // } else {
     //   throw NoInternetConnectionException(response.requestOptions);
@@ -107,57 +130,7 @@ class LoginPostRepository {
 
 
 
-//__________________________________________
-// class SignUpRepository {
-//   final _dio = Dio();
-//   Future<UserDetail> createUser(String name, String phnumber, String email,
-//       String password, String invitationCode) async {
-//     Map<String, dynamic> map = {
-//       "fullname": name,
-//       "phoneNumber": phnumber,
-//       "email": email,
-//       "password": password,
-//       "invitationCode": invitationCode
-//     };
-//     print(map);
-//     const apiUrl =
-//         "https://api-dev.revelarena.com/v1/auth/normal-user-register";
-//     try {
-//       final response = await _dio.post(
-//         apiUrl,
-//         data: map,
 
-//         // data: map={
-//         //   "fullname": name,
-//         //   "phoneNumber": phnumber,
-//         //   "email": email,
-//         //   "password": password,
-//         //   "invitationCode": invitationCode
-//         // },
-
-//         options: Options(contentType: "application/json; charset=UTF-8"),
-//       );
-//       print(response);
-//       print(response.statusCode);
-
-//       if (response.statusCode == 201) {
-//         print(response.data);
-//         print(response.statusCode);
-
-//         //final Map<String, dynamic> body =
-//         //    json.decode(json.encode(response.data));
-//         //   UserDetail userdetaillists = UserDetail.fromJson(body);
-//         //  return userdetaillists;
-//         return UserDetail.fromJson(response.data);
-//       } else {
-//         throw Exception("Failed to create user");
-//       }
-//     } catch (e) {
-//       print(e);
-//       throw Exception("Failed to create user: ${e.toString()}");
-//     }
-//   }
-// }
 //___________________________________________________________
 
 // class SignUpRepository {

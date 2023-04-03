@@ -2,7 +2,9 @@
 import 'package:bloc/bloc.dart';
 // ignore: depend_on_referenced_packages
 import 'package:dio/dio.dart';
+
 import 'package:recipe_app/authentication/data/Model/googleModel.dart';
+import 'package:recipe_app/authentication/presentation/Common/Storage/loginStorageService.dart';
 import 'package:recipe_app/authentication/presentation/loginCubit/loginState.dart';
 //import 'package:recipe_app/authentication/data/Model/loginDetail.dart';
 import 'package:recipe_app/authentication/domain/repository/loginRepository.dart';
@@ -47,6 +49,7 @@ import 'package:recipe_app/authentication/domain/repository/loginRepository.dart
 
 class LoginCubit extends Cubit<LoginState> {
   final LoginPostRepository _repository;
+  LoginStorageService _loginStorageService = LoginStorageService();
   LoginCubit(this._repository) : super(LoginInitial());
 
   // ignore: non_constant_identifier_names
@@ -56,9 +59,9 @@ class LoginCubit extends Cubit<LoginState> {
   ) async {
     emit(LoginLoading());
     try {
-      //final responseModel= GoogleModel();
-      GoogleModel response = await _repository.logInUser(name, password);
-      //  GoogleModel response = await _repository.logInUser(name, password
+      //final responseModel= ResponseModel();
+      ResponseModel response = await _repository.logInUser(name, password);
+      //  ResponseModel response = await _repository.logInUser(name, password
 
       //     );
       //  final accessToken = response.;
@@ -76,8 +79,12 @@ class LoginCubit extends Cubit<LoginState> {
     }
   }
 
-  void logOut() {
-    // _repository.
-    emit(LoginInitial());
-  }
+  // Future<void> logOut() async {
+  //   String? deletetoken =
+  //       await _loginStorageService.deleteLoginToken("accessToken");
+  //   print(deletetoken);
+  //   print("delete all token");
+  //   // _repository.
+  //   emit(LoginInitial());
+  // }
 }
