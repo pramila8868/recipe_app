@@ -1,7 +1,8 @@
 //part of 'signup_cubit.dart';
 
 //@immutable
-import 'package:recipe_app/authentication/data/Model/model.dart';
+import 'package:recipe_app/authentication/data/Model/mode.dart';
+
 
 abstract class SignupState {}
 

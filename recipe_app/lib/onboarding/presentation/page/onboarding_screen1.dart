@@ -1,12 +1,15 @@
+// ignore: depend_on_referenced_packages
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:recipe_app/authentication/presentation/Common/Storage/storageService.dart';
 import 'package:recipe_app/authentication/presentation/page/loginScreen/loginscreen.dart';
 import 'package:recipe_app/onboarding/model/onboarding.dart';
 import 'package:recipe_app/onboarding/presentation/bloc/onboarding/onbardingCubit.dart';
 
+// ignore: depend_on_referenced_packages
 import 'package:flutter_svg/flutter_svg.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:recipe_app/splashScreen/presentation/widget/const.dart';
 
@@ -31,7 +34,7 @@ class _OnBoarding1State extends State<OnBoarding1> {
     Onboarding(id: 2, image1: image1, image2: image4, text: onboardingtext3),
   ];
   //int pageIndex = 0;
-  final storage = FlutterSecureStorage();
+  final storage = const FlutterSecureStorage();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,10 +61,11 @@ class _OnBoarding1State extends State<OnBoarding1> {
                             0.75, //* 0.75, //* 0.87.h,
                         // color: Colors.pink,
                         child: PageView.builder(
-                          physics: BouncingScrollPhysics(),
+                          physics: const BouncingScrollPhysics(),
                           controller: pageController,
 
                           onPageChanged: (value) async {
+                            // ignore: avoid_print
                             print(7878);
                             await BlocProvider.of<OnbardingCubit>(context)
                                 .updatePageIndex(value);
@@ -90,7 +94,7 @@ class _OnBoarding1State extends State<OnBoarding1> {
                                       height: 112.h,
                                     ),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.3,
                                     width: double.infinity,
@@ -189,7 +193,7 @@ class _OnBoarding1State extends State<OnBoarding1> {
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) =>
-                                                            LoginScreen()))
+                                                            const LoginScreen()))
                                                 : pageController.jumpToPage(2);
                                           },
                                           child: Row(
@@ -249,11 +253,12 @@ class _OnBoarding1State extends State<OnBoarding1> {
                                                 key: "token",
                                                 value: 'user_token');
                                             state.activePageIndex > 1
+                                                // ignore: use_build_context_synchronously
                                                 ? Navigator.pushReplacement(
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) =>
-                                                            LoginScreen()))
+                                                            const LoginScreen()))
                                                 : pageController.jumpToPage(2);
                                           },
                                           child: const Center(

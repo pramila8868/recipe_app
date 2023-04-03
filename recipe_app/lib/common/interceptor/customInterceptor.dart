@@ -1,3 +1,7 @@
+// ignore: depend_on_referenced_packages
+// ignore_for_file: avoid_print
+
+// ignore: depend_on_referenced_packages
 import 'package:dio/dio.dart';
 
 class AppInterceptors extends Interceptor {
@@ -7,6 +11,8 @@ class AppInterceptors extends Interceptor {
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
+    print(options.path);
+    print(options.data);
     return handler.next(options);
   }
 
@@ -21,9 +27,11 @@ class AppInterceptors extends Interceptor {
     print(err.response!.statusCode);
     //String errorMsg = err.response?.data["message"];
     // //['message'];
+    // ignore: avoid_print
     print("error");
     //print(errorMsg);
     //String errorMessage = err.response!.data['message'];
+
     print(err.message);
     print(err.response);
 
@@ -62,10 +70,8 @@ class AppInterceptors extends Interceptor {
       case DioErrorType.unknown:
         throw NoInternetConnectionException(err.requestOptions);
       case DioErrorType.badCertificate:
-        // TODO: Handle this case.
         break;
       case DioErrorType.connectionError:
-        // TODO: Handle this case.
         break;
     }
 
@@ -82,8 +88,8 @@ class BadRequestException extends DioError {
     //for(var error in errors)
     print(response!.data.toString());
     print(response!.data["errors"].toString());
-    print(response!.data["errors"][0]['message']["phone_number"].toString());
-    print(response!.data["errors"][0]['message']["field"].toString());
+    //print(response!.data["errors"][0]['message']["phone_number"].toString());
+   // print(response!.data["errors"][0]['message']["field"].toString());
     //["message"].toString());
     print("backend error");
     // final errors = response!.data["errors"];

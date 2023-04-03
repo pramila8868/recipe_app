@@ -1,10 +1,13 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
+import 'package:recipe_app/authentication/presentation/Common/Storage/loginStorageService.dart';
 import 'package:recipe_app/authentication/presentation/Widget/custom_text_field.dart';
 import 'package:recipe_app/authentication/presentation/cubit/googleCubit/googleCubit.dart';
 import 'package:recipe_app/authentication/presentation/cubit/googleCubit/googleState.dart';
 import 'package:recipe_app/authentication/presentation/loginCubit/loginCubit.dart';
 import 'package:recipe_app/authentication/presentation/loginCubit/loginState.dart';
-
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:recipe_app/homePage/Presentation/Page/homeScreen.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_svg/flutter_svg.dart';
@@ -21,7 +24,9 @@ import 'package:recipe_app/authentication/presentation/widget/constant.dart';
 import 'package:recipe_app/authentication/presentation/widget/custom_container.dart';
 
 import 'package:recipe_app/authentication/presentation/page/signUp/signup_screen.dart';
+import 'package:recipe_app/recipe/presentation/screens/buttonNavogationBar.dart';
 
+import '../../../domain/repository/googleRepository.dart';
 import '../../widget/custom_button.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -32,7 +37,14 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  //late final String refreshToken;
+  LoginStorageService loginService = LoginStorageService();
+  // final _googleSignInKey = GlobalKey<GoogleSignInButtonState>();
+  // final _googleSignIn = GoogleSignIn();
+  // final _dio = Dio();
+  // final _secureStorage = FlutterSecureStorage();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final TextEditingController _emailcontroller =
       TextEditingController(text: "+977");
@@ -46,6 +58,8 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
+  final storage = const FlutterSecureStorage();
+  final LoginStorageService _loginStorageService = LoginStorageService();
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -71,10 +85,34 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 40.h,
                       ),
 
-                      const Text(
-                        "Hello,",
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.w600),
+                      InkWell(
+                        onTap: () async {
+                          final allvalue = await _loginStorageService
+                              .getLoginToken("refreshToken");
+                          print(allvalue);
+                          print("token issss $allvalue");
+
+                          // value.for
+                          // Future<void> text =
+                          //     _loginStorageService.saveLoginToken("token");
+                          // print(text);
+                          // print("token");
+                          // void main() async {
+                          //   Future myValue =
+                          //       _loginStorageService.getLoginToken();
+                          //   if (myValue != null) {
+                          //     print(
+                          //         'Value is saved in secure storage: $myValue');
+                          //   } else {
+                          //     print('Value is not saved in secure storage.');
+                          //   }
+                          // }
+                        }, //storage.write(key: "hello", value: "value"),
+                        child: const Text(
+                          "Hello,",
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.w600),
+                        ),
                       ),
                       const SizedBox(
                         height: 2,
@@ -108,6 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           } else if (value.length > 14) {
                             return "Invalid number ";
                           }
+                          // return null;
                           // return "null";
                         },
                         autovalidarorMode: AutovalidateMode.onUserInteraction,
@@ -222,8 +261,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       //   // ),
                       BlocConsumer<LoginCubit, LoginState>(
                         listener: (context, state) {
+                          // ignore: duplicate_ignore
                           if (state is LoginError) {
+                            // ignore: avoid_print
                             print("error state listened");
+                            // ignore: avoid_print
                             print(state.message);
 
                             Flushbar(
@@ -240,7 +282,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               // titleSize: 24,
                               icon: SvgPicture.asset('images/flushbar.svg'),
                               messageText: Padding(
-                                padding: EdgeInsets.only(left: 16),
+                                padding: const EdgeInsets.only(left: 16),
                                 child: Text(
                                   state.message,
                                   style: const TextStyle(
@@ -256,13 +298,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           } else if (state is LoginLoaded) {
                             Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(
-                                    builder: (context) => const HomeScreen()),
+                                    builder: (context) =>
+                                        const CenteredBottomNavigation()),
                                 (Route route) => false);
-                            // Navigator.pushAndRemoveUntil(context, newRoute, (route) => false)
-                            // Navigator.pushReplacement(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => const HomeScreen()));
                           }
                         },
                         builder: (context, state) {
@@ -293,6 +331,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                           // invitation = "",
                                         );
 
+                                    // storage.write(
+                                    //     key: "token", value: 'user_token');
                                     //  _formKey.currentState!.save();
                                     //  _formKey.currentState!.reset();
                                     //_formKey.currentState?.validate();
@@ -349,15 +389,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     BlocConsumer<GoogleSignInCubit, GoogleSignInState>(
                       listener: (context, state) {
                         if (state is GoogleSignInSuccess) {
+                          loginService.saveLoginToken("login", "log_in");
                           Navigator.of(context).pushAndRemoveUntil(
                               MaterialPageRoute(
-                                  builder: (context) => const HomeScreen()),
+                                  builder: (context) =>
+                                      const CenteredBottomNavigation()),
                               (Route route) => false);
                           // Navigator.pushAndRemoveUntil(context, newRoute, (route) => false)
                           // Navigator.pushReplacement(
                           //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => const HomeScreen()));
                         } else if (state is GoogleSignInError) {
                           Flushbar(
                             maxWidth: 344,
@@ -368,9 +408,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             backgroundColor: flushColor,
                             icon: const Icon(Icons.message_rounded),
                             messageText: Padding(
-                              padding: const EdgeInsets.only(left: 16),
+                              padding: EdgeInsets.only(left: 16),
                               child: Text(
                                 state.message,
+                                // "Error",
+                                // state.message,
                                 style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w400),
@@ -381,7 +423,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             //  title:"Error",
                           ).show(context);
                           print("message");
-                          print(state.message);
+                          print("error show");
+                          // ignore: avoid_print
+                          //print(state.message);
                         }
                       },
                       builder: (context, state) {
@@ -397,27 +441,39 @@ class _LoginScreenState extends State<LoginScreen> {
                         //   );
                         // }
                         if (state is GoogleSignInLoading) {
-                          return const CircularProgressIndicator();
+                          return const Center(
+                              child: CircularProgressIndicator());
                         } else {
                           return InkWell(
-                            onTap: context
-                                .read<GoogleSignInCubit>()
-                                .signIn, //.GoogleLogin,
-                            //.signInWithGoogle, //_handleGoogleSignIn,
-                            child: CustomContainer(
-                              image: 'images/icon1.png',
-                              //image: "images/logo1.png",
-                            ),
-                          );
+                              // ignore: sort_child_properties_last
+                              child: CustomContainer(
+                                image: 'images/icon1.png',
+                                //image: "images/logo1.png",
+                              ),
+                              onTap: () {
+                                context.read<GoogleSignInCubit>().googleLogin();
+                              }
+                              //   () async {
+                              // await context
+                              //     .read<GoogleSignInCubit>()
+                              //     .googleLogin();
+                              //},
+                              );
                         }
                       },
                     ),
                     SizedBox(
                       width: 25.w,
                     ),
-                    CustomContainer(
-                      image: 'images/icon2.png',
-                      //image: "images/logo1.png",
+                    InkWell(
+                      onTap: () {
+                        context.read<GoogleSignInCubit>().dicontinue();
+                        // UserRepository().dicontinue();
+                      },
+                      child: CustomContainer(
+                        image: 'images/icon2.png',
+                        //image: "images/logo1.png",
+                      ),
                     ),
                   ],
                 ),
@@ -437,7 +493,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SignUpScreen()));
+                                builder: (context) => const SignUpScreen()));
                       },
                       child: Text(
                         "Sign up",

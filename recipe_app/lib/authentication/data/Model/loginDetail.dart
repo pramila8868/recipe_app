@@ -1,4 +1,3 @@
-// ignore: file_names
 class LoginDetail {
   String? username;
   String? password;

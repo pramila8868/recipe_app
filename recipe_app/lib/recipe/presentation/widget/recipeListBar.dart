@@ -21,11 +21,19 @@ class RecipeListBar extends StatefulWidget {
 class _RecipeListBarState extends State<RecipeListBar>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  final List<String> tabList = [
+    "All",
+    "Eggs",
+    "Bread",
+    "Pasta",
+    "Milk",
+    "Tomato",
+  ];
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 6, vsync: this);
+    _tabController = TabController(length: tabList.length, vsync: this);
   }
 
   @override
@@ -52,7 +60,7 @@ class _RecipeListBarState extends State<RecipeListBar>
               // labelColor: text1,
 
               labelColor: const Color.fromRGBO(18, 18, 18, 1),
-              unselectedLabelColor: Color.fromRGBO(151, 162, 176, 1),
+              unselectedLabelColor: const Color.fromRGBO(151, 162, 176, 1),
 
               // unselectedLabelColor: Colors.red,
               isScrollable: true, //false,
@@ -60,27 +68,11 @@ class _RecipeListBarState extends State<RecipeListBar>
               indicatorColor: const Color.fromRGBO(226, 62, 62, 1),
 
               controller: _tabController,
-              // ignore: prefer_const_literals_to_create_immutables
-              tabs: [
-                const Tab(
-                  text: 'All',
-                ),
-                const Tab(
-                  text: 'Eggs',
-                ),
-                const Tab(
-                  text: 'Bread',
-                ),
-                const Tab(
-                  text: 'Pasta',
-                ),
-                const Tab(
-                  text: 'Milk',
-                ),
-                const Tab(
-                  text: 'Tomato',
-                ),
-              ],
+              tabs: List.generate(
+                tabList.length,
+                (index) => Tab(text: tabList[index]),
+              ),
+              
               onTap: (index) {
                 context
                     .read<TabBarCubit>()

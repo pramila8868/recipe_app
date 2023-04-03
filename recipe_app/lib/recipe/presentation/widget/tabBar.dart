@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_app/recipe/presentation/cubit/tabbar_cubit.dart';
 // ignore: depend_on_referenced_packages
@@ -46,6 +47,7 @@ class _TabBarPageState extends State<TabBarPage>
                 children: [
                   SvgPicture.asset(
                     "images/headchief.svg",
+                    // ignore: deprecated_member_use
                     color: recipeColor,
                   ),
                   SizedBox(
@@ -72,13 +74,13 @@ class _TabBarPageState extends State<TabBarPage>
                       //  labelColor: Colors.black,
                       // labelColor: text1,
 
-                      labelColor: Color.fromRGBO(18, 18, 18, 1),
-                      unselectedLabelColor: Color.fromRGBO(151, 162, 176, 1),
+                      labelColor: const Color.fromRGBO(18, 18, 18, 1),
+                      unselectedLabelColor: const Color.fromRGBO(151, 162, 176, 1),
 
                       // unselectedLabelColor: Colors.red,
                       isScrollable: false,
                       indicatorSize: TabBarIndicatorSize.label,
-                      indicatorColor: Color.fromRGBO(226, 62, 62, 1),
+                      indicatorColor: const Color.fromRGBO(226, 62, 62, 1),
                         
                       controller: _tabController,
                       // ignore: prefer_const_literals_to_create_immutables
@@ -107,7 +109,7 @@ class _TabBarPageState extends State<TabBarPage>
                 width: double.infinity,
                 height: 124.h,
                 //height: MediaQuery.of(context).size.height * 0.06.h,
-                color: Color.fromRGBO(241, 241, 241, 1),
+                color: const Color.fromRGBO(241, 241, 241, 1),
 
                 child: TabBarView(
                   controller: _tabController,

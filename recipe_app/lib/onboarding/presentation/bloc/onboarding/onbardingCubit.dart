@@ -1,4 +1,6 @@
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
+// ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
 
 part 'onbardingState.dart';
@@ -19,6 +21,7 @@ class OnbardingCubit extends Cubit<OnbardingState> {
   updatePageIndex(int newPageIndex) {
     print("called");
     emit(OnbardingInitial());
+    // ignore: avoid_print
     print(newPageIndex);
     activePageIndex = newPageIndex;
     emit(OnboardingLoaded(activePageIndex: newPageIndex));

@@ -1,15 +1,13 @@
 // ignore_for_file: avoid_print
 
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
+// ignore: depend_on_referenced_packages
 import 'package:dio/dio.dart';
-import 'package:recipe_app/HomePage/Presentation/Page/homeScreen.dart';
+import 'package:recipe_app/authentication/data/Model/mode.dart';
 
-import 'package:recipe_app/authentication/data/Model/model.dart';
 import 'package:recipe_app/authentication/domain/repository/SignUpRepository.dart';
 import 'package:recipe_app/authentication/presentation/cubit/signUpCubit/signUpState.dart';
-import 'package:recipe_app/authentication/presentation/page/signUp/signup_screen.dart';
 
 //import '../../data/Repository/repository.dart';
 

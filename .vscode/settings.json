@@ -1,4 +1,5 @@
 {
     "search.useParentIgnoreFiles": true,
-    "githubPullRequests.quickDiff": true
+    "githubPullRequests.quickDiff": true,
+    "cmake.sourceDirectory": "${workspaceFolder}/recipe_app/linux"
 }

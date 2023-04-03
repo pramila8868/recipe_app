@@ -1,19 +1,30 @@
 {
   "project_info": {
+<<<<<<< HEAD
     "project_number": "24373963501",
     "project_id": "event-nation",
     "storage_bucket": "event-nation.appspot.com"
+=======
+    "project_number": "210067565813",
+    "project_id": "revel-arena",
+    "storage_bucket": "revel-arena.appspot.com"
+>>>>>>> b1c283b222290606a6e727cd17c55ba56258ece9
   },
   "client": [
     {
       "client_info": {
+<<<<<<< HEAD
         "mobilesdk_app_id": "1:24373963501:android:6b7d8bbdfc8de054f37ae4",
+=======
+        "mobilesdk_app_id": "1:210067565813:android:6ed8e4d064778bc69569bc",
+>>>>>>> b1c283b222290606a6e727cd17c55ba56258ece9
         "android_client_info": {
           "package_name": "com.revelarena.revel"
         }
       },
       "oauth_client": [
         {
+<<<<<<< HEAD
           "client_id": "24373963501-4cnktdibihiu992uqgtng07qi4dauvab.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -47,6 +58,9 @@
         },
         {
           "client_id": "24373963501-v0h3o52vb3kc19r29rh9k1dkts69211f.apps.googleusercontent.com",
+=======
+          "client_id": "210067565813-tqn36525k0ejkd4mc51rqfj4nk40mgip.apps.googleusercontent.com",
+>>>>>>> b1c283b222290606a6e727cd17c55ba56258ece9
           "client_type": 1,
           "android_info": {
             "package_name": "com.revelarena.revel",
@@ -54,21 +68,41 @@
           }
         },
         {
+<<<<<<< HEAD
           "client_id": "24373963501-sptf94cls6k1681at9lugtjentfp8609.apps.googleusercontent.com",
+=======
+          "client_id": "210067565813-92e74o7quhpvmgolanifbot3qkj7pd93.apps.googleusercontent.com",
+>>>>>>> b1c283b222290606a6e727cd17c55ba56258ece9
           "client_type": 3
         }
       ],
       "api_key": [
         {
+<<<<<<< HEAD
           "current_key": "AIzaSyCPAEfnbQptDZ66EHeCTDCLnhUW-DDB4hM"
+=======
+          "current_key": "AIzaSyAUEL6fmYYpQQpUqStqJ-MU1hrr9j0T9ZQ"
+>>>>>>> b1c283b222290606a6e727cd17c55ba56258ece9
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
+<<<<<<< HEAD
               "client_id": "24373963501-sptf94cls6k1681at9lugtjentfp8609.apps.googleusercontent.com",
               "client_type": 3
+=======
+              "client_id": "210067565813-92e74o7quhpvmgolanifbot3qkj7pd93.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "210067565813-ipvidvpoai4mqj7dh52o2u6p0skjvada.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.revelarena.revel"
+              }
+>>>>>>> b1c283b222290606a6e727cd17c55ba56258ece9
             }
           ]
         }
@@ -76,4 +110,8 @@
     }
   ],
   "configuration_version": "1"
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b1c283b222290606a6e727cd17c55ba56258ece9

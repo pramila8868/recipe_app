@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 import 'package:another_flushbar/flushbar.dart';
 // ignore: depend_on_referenced_packages

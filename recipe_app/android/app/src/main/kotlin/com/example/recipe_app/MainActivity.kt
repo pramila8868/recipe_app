@@ -1,4 +1,4 @@
-package com.example.recipe_app
+package com.revelarena.revel
 
 import io.flutter.embedding.android.FlutterActivity
 
