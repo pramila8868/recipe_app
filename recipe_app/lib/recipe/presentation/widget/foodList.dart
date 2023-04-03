@@ -14,9 +14,11 @@ class FoodListPage extends StatelessWidget {
   List<FoodListModel> foodListmodel = [
     FoodListModel(
         id: 0,
-        text: "Spicy Arrabiata Pasta",
+        text:
+            "Spicy Arrabiata Pasta Spicy Arrabiata Pasta Spicy Arrabiata Pasta",
         image: image23,
-        icon1: const Icon(Icons.favorite)), //SvgPicture.asset('images/image6.svg')),
+        icon1: const Icon(
+            Icons.favorite)), //SvgPicture.asset('images/image6.svg')),
     //icon: Icon(Icons.ad)
 
     FoodListModel(

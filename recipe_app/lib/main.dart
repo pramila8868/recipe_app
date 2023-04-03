@@ -16,6 +16,7 @@ import 'authentication/domain/repository/googleRepository.dart';
 import 'authentication/domain/repository/loginRepository.dart';
 import 'authentication/presentation/loginCubit/loginCubit.dart';
 //import 'authentication/presentation/page/loginScreen/loginscreen.dart';
+import 'authentication/presentation/page/loginScreen/loginscreen.dart';
 import 'recipe/presentation/cubit/tabbar_cubit.dart';
 import 'recipe/presentation/screens/buttonNavogationBar.dart';
 import 'splashScreen/presentation/cubit/splash_cubit.dart';
@@ -56,37 +57,39 @@ class MyApp extends StatelessWidget {
                       GoogleSignInCubit(GoogleSignInRepository())),
             ],
             child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              title: 'Flutter Demo',
-              theme: ThemeData(
-                primarySwatch: Colors.blue,
-              ),
-              home: //FoodRecipe(),
-                  // Practice(),
-                  // RecipeScreen()
-                  const CenteredBottomNavigation(),
-              // BottomNavigation()
-              // const MyWidget(),
-              // FutureBuilder<String?>(
-              //   future: authService.getToken(),
-              //   builder: (context, snapshot) {
-              //     if (snapshot.connectionState == ConnectionState.waiting) {
-              //       return SplashScreen();
-              //     } else {
-              //       return snapshot.hasData
-              //           ? const LoginScreen()
-              //           : const OnBoarding1(); //LoginPage(authService: authService);
-              //     }
-              //   },
-              // ),
-              // TabBarPage(),
-              // const SplashScreen()
-              // home:
-              //  OnBoarding1()
-              // OnBoardingScreen1(),
-              //const LoginScreen()
-              //  SignUpScreen(),
-            ),
+                debugShowCheckedModeBanner: false,
+                title: 'Flutter Demo',
+                theme: ThemeData(
+                  primarySwatch: Colors.blue,
+                ),
+                home: //_CenteredBottomNavigationState()
+                    CenteredBottomNavigation()
+                //FoodRecipe(),
+                // Practice(),
+                // RecipeScreen()
+                // const LoginScreen(),
+                // BottomNavigation()
+                // const MyWidget(),
+                // FutureBuilder<String?>(
+                //   future: authService.getToken(),
+                //   builder: (context, snapshot) {
+                //     if (snapshot.connectionState == ConnectionState.waiting) {
+                //       return SplashScreen();
+                //     } else {
+                //       return snapshot.hasData
+                //           ? const LoginScreen()
+                //           : const OnBoarding1(); //LoginPage(authService: authService);
+                //     }
+                //   },
+                // ),
+                // TabBarPage(),
+                // const SplashScreen()
+                // home:
+                //  OnBoarding1()
+                // OnBoardingScreen1(),
+                //const LoginScreen()
+                //  SignUpScreen(),
+                ),
           );
           //  home: const MyHomePage(title: 'Flutter Demo Home Page'),
           //    );

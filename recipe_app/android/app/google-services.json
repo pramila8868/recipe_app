@@ -1,0 +1,79 @@
+{
+  "project_info": {
+    "project_number": "24373963501",
+    "project_id": "event-nation",
+    "storage_bucket": "event-nation.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24373963501:android:6b7d8bbdfc8de054f37ae4",
+        "android_client_info": {
+          "package_name": "com.revelarena.revel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "24373963501-4cnktdibihiu992uqgtng07qi4dauvab.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.revelarena.revel",
+            "certificate_hash": "ab8b6595f892eb6d69e377715b6fd15af3f956c0"
+          }
+        },
+        {
+          "client_id": "24373963501-lqulqj4tov2ud20hnc6ktl219bnutbr1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.revelarena.revel",
+            "certificate_hash": "4d86c100d44d6c081257e32b608e0e5ab8946681"
+          }
+        },
+        {
+          "client_id": "24373963501-m7atblpdppip8oet0kl2s77gt0vtjspt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.revelarena.revel",
+            "certificate_hash": "8ac680139962397c7c4513f896c2f8bd3198335b"
+          }
+        },
+        {
+          "client_id": "24373963501-msmct5idhs8lvnmeicv4i267elolmru0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.revelarena.revel",
+            "certificate_hash": "a9e5f97f5ebecebf5aec8671fe0875c28d787176"
+          }
+        },
+        {
+          "client_id": "24373963501-v0h3o52vb3kc19r29rh9k1dkts69211f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.revelarena.revel",
+            "certificate_hash": "591262a0619e3afde0b5559c8e539165efc480e9"
+          }
+        },
+        {
+          "client_id": "24373963501-sptf94cls6k1681at9lugtjentfp8609.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPAEfnbQptDZ66EHeCTDCLnhUW-DDB4hM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "24373963501-sptf94cls6k1681at9lugtjentfp8609.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

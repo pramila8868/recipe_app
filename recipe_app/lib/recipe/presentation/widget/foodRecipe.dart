@@ -68,8 +68,8 @@ class FoodRecipe extends StatelessWidget {
                 child: Text(
                   "Chicken",
                   softWrap: false,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                       color: labelColor,
                       fontSize: 20,
@@ -99,8 +99,8 @@ class FoodRecipe extends StatelessWidget {
                 child: Text(
                   "Noodles",
                   softWrap: false,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                       color: labelColor,
                       fontSize: 20,
@@ -192,6 +192,5 @@ class FoodRecipe1 extends StatelessWidget {
         ],
       ),
     );
-    
   }
 }

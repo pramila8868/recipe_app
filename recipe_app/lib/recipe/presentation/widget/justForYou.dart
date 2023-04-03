@@ -69,9 +69,9 @@ class JustForYou extends StatelessWidget {
                     ),
                     child: Text(
                       foRYoumodel[index].text,
-                      softWrap: false,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+                      softWrap: true,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                           color: labelColor,
                           fontSize: 24,

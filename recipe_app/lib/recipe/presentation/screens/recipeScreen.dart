@@ -20,7 +20,7 @@ class RecipeScreen extends StatelessWidget {
     return SafeArea(
       bottom: false,
       child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             // ignore: prefer_const_literals_to_create_immutables
