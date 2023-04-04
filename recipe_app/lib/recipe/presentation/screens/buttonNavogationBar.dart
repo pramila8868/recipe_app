@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/authentication/presentation/widget/search.dart';
 import 'package:recipe_app/authentication/presentation/page/loginScreen/loginscreen.dart';
-<<<<<<< HEAD
 import 'package:recipe_app/recipe/presentation/screens/ingredientList.dart';
-=======
-import 'package:recipe_app/recipe/presentation/screens/exploreScreen.dart';
-import 'package:recipe_app/recipe/presentation/screens/signOut.dart';
->>>>>>> b1c283b222290606a6e727cd17c55ba56258ece9
 import 'package:recipe_app/recipe/presentation/widget/constant.dart';
 import 'package:recipe_app/recipe/presentation/widget/imageConst.dart';
 // ignore: depend_on_referenced_packages
@@ -130,7 +125,7 @@ class _CenteredBottomNavigationState extends State<CenteredBottomNavigation> {
                     onPressed: () {
                       _onItemTapped(1);
                     },
->>>>>>> b1c283b222290606a6e727cd17c55ba56258ece9
+
                   ),
                   onPressed: () {
                     _onItemTapped(1);

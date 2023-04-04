@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
         designSize: const Size(375, 823),
         builder: (context, child) {
           return MultiBlocProvider(
-<<<<<<< HEAD
+
             providers: [
               BlocProvider(
                 create: (context) => SplashCubit()
@@ -73,36 +73,12 @@ class MyApp extends StatelessWidget {
                 ),
                 home: //_CenteredBottomNavigationState()
                     CenteredBottomNavigation()
-                //FoodRecipe(),
-                // Practice(),
-                // RecipeScreen()
-                // const LoginScreen(),
-                // BottomNavigation()
-                // const MyWidget(),
-                // FutureBuilder<String?>(
-                //   future: authService.getToken(),
-                //   builder: (context, snapshot) {
-                //     if (snapshot.connectionState == ConnectionState.waiting) {
-                //       return SplashScreen();
-                //     } else {
-                //       return snapshot.hasData
-                //           ? const LoginScreen()
-                //           : const OnBoarding1(); //LoginPage(authService: authService);
-                //     }
-                //   },
-                // ),
-                // TabBarPage(),
-                // const SplashScreen()
-                // home:
-                //  OnBoarding1()
-                // OnBoardingScreen1(),
-                //const LoginScreen()
-                //  SignUpScreen(),
+              
                 ),
           );
           //  home: const MyHomePage(title: 'Flutter Demo Home Page'),
           //    );
-=======
+
               providers: [
                 BlocProvider(
                   create: (context) => SplashCubit()
@@ -132,7 +108,7 @@ class MyApp extends StatelessWidget {
                   // const LoginScreen()
                   //),
                   ));
->>>>>>> b1c283b222290606a6e727cd17c55ba56258ece9
+
         });
   }
 }
