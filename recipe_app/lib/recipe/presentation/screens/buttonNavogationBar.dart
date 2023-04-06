@@ -38,9 +38,14 @@ class _CenteredBottomNavigationState extends State<CenteredBottomNavigation> {
     // SignUpScreen(),
 =======
     SignOut(),
+<<<<<<< HEAD
     //ExploreScreen(),
     const Search(),
 >>>>>>> b1c283b222290606a6e727cd17c55ba56258ece9
+=======
+    ExploreScreen(), 
+    //const Search(),
+>>>>>>> 878ed641f0 (commit)
   ]; // Add your pages here  ];
 
   void _onItemTapped(int index) {

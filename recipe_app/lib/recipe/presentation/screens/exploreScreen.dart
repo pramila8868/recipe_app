@@ -29,13 +29,7 @@ class ExploreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        // padding: EdgeInsets.all(12.0),
-
-        //   ),
-        // (
-        //     // padding: const EdgeInsets.all(12.0),
-        child: GridView.builder(
+    return GridView.builder(
       itemCount: exploreList.length, //images.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2, //crossAxisSpacing: 1.0, //mainAxisSpacing: 1.0
@@ -44,15 +38,21 @@ class ExploreScreen extends StatelessWidget {
         return Container(
           width: 600,
           decoration: BoxDecoration(
-              image:
-                  DecorationImage(image: AssetImage(exploreList[index].image))),
+              image: DecorationImage(
+                  image: AssetImage(exploreList[index].image),
+                  fit: BoxFit.cover)),
           child: Column(children: [
-            Container(child: Icon(exploreList[index].icon1.icon)),
+            Container(
+                height: 56,
+                width: 56,
+                decoration:
+                    const BoxDecoration(color: Colors.blue, shape: BoxShape.circle),
+                child: Icon(exploreList[index].icon1.icon)),
             Text(exploreList[index].text.toString()),
           ]),
           // child:
         ); // Image.asset() //Image.network(images[index]);
       },
-    ));
+    );
   }
 }
