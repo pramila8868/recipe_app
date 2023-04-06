@@ -54,11 +54,10 @@ class FoodListPage extends StatelessWidget {
             },
             blendMode: BlendMode.softLight,
             child: InkWell(
-              onTap: (){
-                 Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                          builder: (context) => const RecipeDetail()),
-                    );
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => RecipeDetail()),
+                );
               },
               child: Container(
                 margin: const EdgeInsets.only(right: 8),
@@ -71,7 +70,7 @@ class FoodListPage extends StatelessWidget {
                   image: DecorationImage(
                     image: AssetImage(foodListmodel[index].image),
                     //("images/image6.png"),
-            
+
                     // //    image: SvgPicture.(
                     // //      foRYoumodel[index].image.toString(),
                     // // //     //   fit: BoxFit.contain,
@@ -79,7 +78,7 @@ class FoodListPage extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-            
+
                 // margin: const EdgeInsets.all(8),
                 child: //Padding(
                     // padding: const EdgeInsets.only(left: 8, top: 176),

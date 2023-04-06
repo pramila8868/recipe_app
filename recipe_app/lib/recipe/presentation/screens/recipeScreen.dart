@@ -22,9 +22,9 @@ class RecipeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             // ignore: prefer_const_literals_to_create_immutables
             children: [
-              const SizedBox(
-                height: 26,
-              ),
+              // const SizedBox(
+              //   height: 26,
+              // ),
               const TabBarPage(),
               // ignore: prefer_const_constructors
 

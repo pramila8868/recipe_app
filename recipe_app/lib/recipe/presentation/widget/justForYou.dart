@@ -25,64 +25,65 @@ class JustForYou extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //return Container();
-    return ListView.builder(
-        physics: const BouncingScrollPhysics(),
-        itemCount: foRYoumodel
-            .length, //model!.length, //forYoumodel,//2, //data.length,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (BuildContext context, int index) {
-          return Padding(
-            padding: const EdgeInsets.only(
-              left: 20,
-              // left: 16, //right: 20,
-              //top: 20,
-              //bottom: 20
-            ),
-            child: Center(
-              child: Container(
-                width: 220.w,
-                height: 84.h,
-                // ignore: prefer_const_constructors
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  // color: Colors.red,
-                  image: DecorationImage(
-                    image: AssetImage(
-                      foRYoumodel[index].image,
-                    ),
-                    //  image: SvgPicture.(
-                    //image: foRYoumodel[index].image.toString(),
-                    // //     //   fit: BoxFit.contain,
-                    //    )
+    return Container(
+      height: 124.h,
+      color: const Color.fromRGBO(241, 241, 241, 1),
+      child: ListView.builder(
+          physics: const BouncingScrollPhysics(),
+          itemCount: foRYoumodel
+              .length, //model!.length, //forYoumodel,//2, //data.length,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (BuildContext context, int index) {
+            return Padding(
+              padding: const EdgeInsets.only(
+                left: 20,
+                // left: 16, //right: 20,
+                //top: 20,
+                //bottom: 20
+              ),
+              child: Center(
+                child: Container(
+                  width: 220.w,
+                  height: 84.h,
+                  // ignore: prefer_const_constructors
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    // color: Colors.red,
+                    image: DecorationImage(
+                      image: AssetImage(
+                        foRYoumodel[index].image,
+                      ),
+                      
 
-                    fit: BoxFit.cover,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
 
-                //margin: const EdgeInsets.all(8),
-                child: Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: 12,
-                      bottom: 4,
-                    ),
-                    child: Text(
-                      foRYoumodel[index].text,
-                      softWrap: true,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                          color: labelColor,
-                          fontSize: 24,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: "Metropolis"),
+                  //margin: const EdgeInsets.all(8),
+                  child: Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        left: 12,
+                        bottom: 4,
+                      ),
+                      child: Text(
+                        foRYoumodel[index].text,
+                        softWrap: false,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            color: labelColor,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: "Metropolis"),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          );
-        });
+            );
+          }),
+    );
   }
 }

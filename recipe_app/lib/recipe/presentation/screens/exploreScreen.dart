@@ -3,33 +3,45 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:recipe_app/recipe/data/model/exploreModel.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ExploreScreen extends StatelessWidget {
   List<ExploreModel> exploreList = [
     ExploreModel(
-        icon1: Icon(Icons.abc),
+        iconImage: 'images/explore1.svg',
         image: "images/image27.jpg",
         text: "Weight Loss"),
     ExploreModel(
-        icon1: Icon(Icons.abc),
+        iconImage: "images/explore2.svg",
         image: "images/image28.jpg",
         text: "Heart-Friendly"),
     ExploreModel(
-        icon1: Icon(Icons.abc), image: "images/image29.jpg", text: "Weekend"),
+        iconImage: "images/explore3.svg",
+        image: "images/image29.jpg",
+        text: "Weekend"),
     ExploreModel(
-        icon1: Icon(Icons.abc), image: "images/image30.jpg", text: "Mushroom"),
+        iconImage: "images/explore4.svg",
+        image: "images/image30.jpg",
+        text: "Mushroom"),
     ExploreModel(
-        icon1: Icon(Icons.abc), image: "images/image31.jpg", text: "Smmothies"),
+        iconImage: "images/explore5.svg",
+        image: "images/image31.jpg",
+        text: "Smmothies"),
     ExploreModel(
-        icon1: Icon(Icons.abc), image: "images/image32.jpg", text: "Fish"),
+        iconImage: "images/explore6.svg",
+        image: "images/image32.jpg",
+        text: "Fish"),
     ExploreModel(
-        icon1: Icon(Icons.abc), image: "images/image33.jpg", text: "Chowmin"),
+        iconImage: "images/explore8.svg",
+        image: "images/image33.jpg",
+        text: "Chowmin"),
   ];
   ExploreScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+      physics: const BouncingScrollPhysics(),
       itemCount: exploreList.length, //images.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2, //crossAxisSpacing: 1.0, //mainAxisSpacing: 1.0
@@ -42,13 +54,34 @@ class ExploreScreen extends StatelessWidget {
                   image: AssetImage(exploreList[index].image),
                   fit: BoxFit.cover)),
           child: Column(children: [
-            Container(
+            Padding(
+              padding: const EdgeInsets.only(top: 45),
+              child: Container(
                 height: 56,
                 width: 56,
-                decoration:
-                    const BoxDecoration(color: Colors.blue, shape: BoxShape.circle),
-                child: Icon(exploreList[index].icon1.icon)),
-            Text(exploreList[index].text.toString()),
+                decoration: const BoxDecoration(
+                    color: Color.fromRGBO(7, 98, 103, 1),
+                    shape: BoxShape.circle),
+                child: Center(
+                  child: SvgPicture.asset(
+                    exploreList[index].iconImage,
+                    height: 29.h,
+                    width: 29.w,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            Text(
+              exploreList[index].text.toString(),
+              style: const TextStyle(
+                  fontFamily: "Metropolis",
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Color.fromRGBO(251, 251, 250, 1)),
+            ),
           ]),
           // child:
         ); // Image.asset() //Image.network(images[index]);
@@ -56,3 +89,39 @@ class ExploreScreen extends StatelessWidget {
     );
   }
 }
+
+// //  GestureDetector(
+//                                         onTap: () {
+//                                           setState(() {
+//                                             _isChecked = !_isChecked;
+//                                           });
+//                                         },
+//                                         child: Padding(
+//                                           padding: const EdgeInsets.only(
+//                                               left: 10, right: 46),
+//                                           child: Container(
+//                                             width: 24.0,
+//                                             height: 24.0,
+//                                             decoration: BoxDecoration(
+//                                               color: Colors.red,
+//                                               borderRadius:
+//                                                   BorderRadius.circular(4.0),
+//                                               border: Border.all(
+//                                                 width: 2.0,
+//                                                 color: _isChecked
+//                                                     ? Colors.white
+//                                                     : Colors.grey.shade400,
+//                                               ),
+//                                             ),
+//                                             child: _isChecked
+//                                                 ? const Icon(
+//                                                     Icons.check,
+//                                                     size: 16.0,
+//                                                     color: Colors.red,
+//                                                   )
+//                                                 : null,
+//                                           ),
+//                                         ),
+//                                       )
+
+//bool _isChecked = false;

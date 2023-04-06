@@ -44,41 +44,6 @@ class MyApp extends StatelessWidget {
         designSize: const Size(375, 823),
         builder: (context, child) {
           return MultiBlocProvider(
-
-            providers: [
-              BlocProvider(
-                create: (context) => SplashCubit()
-                  ..loadsplash(), //cascade notation.. chain multiple method on the same object,contun the same method chain,  return splashcubit itself instead loadsplashcall function on object
-                //   child: OnBoardingScreen() //const SplashScreen(),
-              ),
-              BlocProvider(create: (context) => OnbardingCubit()),
-              BlocProvider(create: (context) => CheckboxCubit()),
-              BlocProvider(create: (context) => SignupCubit(PostRepository())),
-              // BlocProvider(
-              //     create: (context) => GoogleSignInCubit(
-              //         GoogleSignInRepository()
-              //             as GoogleSignInState)), //UserRepository())),
-              BlocProvider(
-                  create: (context) => LoginCubit(LoginPostRepository())),
-              BlocProvider(create: (context) => TabBarCubit()),
-              BlocProvider(
-                  create: (context) =>
-                      GoogleSignInCubit(GoogleSignInRepository())),
-            ],
-            child: MaterialApp(
-                debugShowCheckedModeBanner: false,
-                title: 'Flutter Demo',
-                theme: ThemeData(
-                  primarySwatch: Colors.blue,
-                ),
-                home: //_CenteredBottomNavigationState()
-                    CenteredBottomNavigation()
-              
-                ),
-          );
-          //  home: const MyHomePage(title: 'Flutter Demo Home Page'),
-          //    );
-
               providers: [
                 BlocProvider(
                   create: (context) => SplashCubit()
@@ -108,7 +73,6 @@ class MyApp extends StatelessWidget {
                   // const LoginScreen()
                   //),
                   ));
-
         });
   }
 }

@@ -97,6 +97,15 @@ flutter:
      - family: Rancho
        fonts:
          - asset: fonts/Rancho-Regular.ttf
+     - family: Quicksand
+       fonts:
+         - asset: fonts/Quicksand-Regular.ttf  
+     - family: Red Hat Text
+       fonts:
+         - asset: fonts/RedHatText-Regular.ttf
+     - family: Red Hat Display
+       fonts:
+         - asset: fonts/RedHatDisplay-Regular.ttf         
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
